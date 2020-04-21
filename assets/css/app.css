@@ -1,0 +1,47 @@
+
+
+body {
+    margin: 0;
+}
+
+.container-principal {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.row-main {
+    flex: 1;
+
+}
+
+main {
+    margin-top: 40px;
+    padding: 0 30px 0 30px ;
+
+
+}
+
+
+.title {
+    margin-bottom: 0px;
+}
+
+
+.link-white{
+    color: white;
+}
+
+.link-white:hover{
+    color: white;
+}
+
+/* ########### TITRE ############### */
+h1 {
+    color: #0097a2;
+}
+
+/* ########### BUTTON ############### */
+
+.btn{
+    border-radius: 20px;
+}
