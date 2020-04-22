@@ -2,6 +2,8 @@
 
 body {
     margin: 0;
+    background-color: rgb(40, 95, 122);
+
 }
 
 .container-principal {
@@ -15,18 +17,45 @@ body {
 }
 
 main {
-    margin-top: 40px;
+    margin-top: 20px;
     padding: 0 30px 0 30px ;
+}
 
+.white-container {
+    background-color: #FFFFFF;
+    padding: 20px;
+}
+
+.white-container-arround {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border: #99b4b3 solid 6px;
+    border-radius: 20px;
+}
+
+/* ########### TABLEAUX ############### */
+table {
+    background-color: #FFFFFF;
+}
+
+/* ########### NAVBAR SECONDAIRE ############### */
+.navlink-custom {
+    padding: 5px 10px 5px 10px ;
+    color: #FFFFFF;
+
+}
+.navlink-custom:hover {
+    color: #c7c7c7;
+    text-decoration: none;
 
 }
 
-
-.title {
-    margin-bottom: 0px;
+.active {
+    background-color: red;
 }
 
 
+/* ########### LINK ############### */
 .link-white{
     color: white;
 }
@@ -38,6 +67,11 @@ main {
 /* ########### TITRE ############### */
 h1 {
     color: #0097a2;
+}
+
+
+.title {
+    margin-bottom: 0px;
 }
 
 /* ########### BUTTON ############### */

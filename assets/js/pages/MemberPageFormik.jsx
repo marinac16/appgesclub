@@ -10,6 +10,7 @@ import StatusAPI from "../services/statusAPI";
 import {Link} from "react-router-dom";
 import FieldCheckBox from "../components/forms/FieldCheckBox";
 import moment from "moment";
+import NavbarMembers from "../components/NavbarMembers";
 
 
 const MemberPageFormik = ({match, history}) => {
@@ -149,6 +150,12 @@ const MemberPageFormik = ({match, history}) => {
 
   return (<>
 
+    <div className="mb-3 d-flex justify-content-between align-items-center">
+      <NavbarMembers/>
+    </div>
+
+    <div className="white-container mt-4">
+
     {(!editing && <h1>Ajout d'un licencié</h1>) || (<h1>Modification d'un licencié</h1>)}
     <hr/>
 
@@ -268,6 +275,7 @@ const MemberPageFormik = ({match, history}) => {
       </div>
     </form>
 
+    </div>
   </>);
 };
 export default MemberPageFormik;

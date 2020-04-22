@@ -19,9 +19,6 @@ const Sidebar = ({history}) => {
             <Link to="/members" className="link-sidebar"><i className="fas fa-2x fa-user-friends"/></Link>
           </li>
           <li className="list-group-item bg-dark li-sidebar">
-            <Link to="/teams" className="link-sidebar">ÉQUIPES</Link>
-          </li>
-          <li className="list-group-item bg-dark li-sidebar">
             <Link to="#" className="link-sidebar"><i className="fas fa-2x fa-calendar-week"/></Link>
           </li>
         </ul>

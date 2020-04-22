@@ -4,6 +4,8 @@ import GendersAPI from "../services/gendersAPI";
 import CategoriesAPI from "../services/categoriesAPI";
 import MembersAPI from "../services/membersAPI";
 import moment from "moment";
+import NavbarMembers from "../components/NavbarMembers";
+import {Link} from "react-router-dom";
 
 
 const TeamViewPage = ({match, history}) => {
@@ -81,14 +83,12 @@ const TeamViewPage = ({match, history}) => {
 
   const handleAddMember = async event => {
     event.preventDefault();
-    try{
+    try {
       console.log(id, newMember);
       await TeamsAPI.addMember(id, [newMember]);
 
 
-
-
-    }catch (error) {
+    } catch (error) {
       setError("Ce joueur ne peut pas etre ajouté !")
 
     }
@@ -97,58 +97,61 @@ const TeamViewPage = ({match, history}) => {
 
   return (<>
 
-  <h1 className="text-primary">{team.name}</h1>
-  <table className="table table-hover">
-    <thead>
-    <tr>
-      <th>Joueur</th>
-      <th>Date de naissance</th>
-      <th>Numéro de licence</th>
-      <th>Email</th>
-      <th>Téléphone</th>
-    </tr>
-    </thead>
-    <tbody>
-
-    {team.members.map(memberOfTeam =>
-      <tr key={memberOfTeam.id}>
-        <td>{memberOfTeam.firstName} {memberOfTeam.lastName}</td>
-        <td>{formatDate(memberOfTeam.birthDate)}</td>
-        <td>{memberOfTeam.licenceNumber}</td>
-        <td>{memberOfTeam.email}</td>
-        <td>{memberOfTeam.phoneNumber}</td>
+    <div className="mb-3 d-flex justify-content-between align-items-center">
+      <NavbarMembers/>
+      <h3 className="text-light">{team.name}</h3>
+    </div>
+    <table className="table table-hover">
+      <thead>
+      <tr>
+        <th>Joueur</th>
+        <th>Date de naissance</th>
+        <th>Numéro de licence</th>
+        <th>Email</th>
+        <th>Téléphone</th>
       </tr>
-    )}
+      </thead>
+      <tbody>
 
-    </tbody>
-  </table>
+      {team.members.map(memberOfTeam =>
+        <tr key={memberOfTeam.id}>
+          <td>{memberOfTeam.firstName} {memberOfTeam.lastName}</td>
+          <td>{formatDate(memberOfTeam.birthDate)}</td>
+          <td>{memberOfTeam.licenceNumber}</td>
+          <td>{memberOfTeam.email}</td>
+          <td>{memberOfTeam.phoneNumber}</td>
+        </tr>
+      )}
 
-
-  <form onSubmit={handleAddMember}>
-    <h4 className="text-secondary">Ajouter un(e) joueur(se) à cette équipe</h4>
-  <div className="form-group d-flex justify-content-between align-items-center">
-    <input className="form-control form-control-sm"
-           value={newMember}
-           type="text"
-           placeholder="Choisissez un joueur ..."
-           name="newMember"
-           onChange={handleChange}
-           id="search"
-           list="joueurs"/>
-    <datalist id="joueurs">
-      {members.map(member => (
-        <option key={member.id}>{member.firstName + " " + member.lastName}</option>
-      ))}
-    </datalist>
-    <button onClick={handleAddMember} type="submit" className="btn btn-success ml-3">
-      Ajouter
-    </button>
-  </div>
+      </tbody>
+    </table>
 
 
-  </form>
+    <form onSubmit={handleAddMember}>
+      <h4 className="text-light">Ajouter un(e) joueur(se) à cette équipe</h4>
+      <div className="form-group d-flex justify-content-between align-items-center">
+        <input className="form-control form-control-sm"
+               value={newMember}
+               type="text"
+               placeholder="Choisissez un joueur ..."
+               name="newMember"
+               onChange={handleChange}
+               id="search"
+               list="joueurs"/>
+        <datalist id="joueurs">
+          {members.map(member => (
+            <option key={member.id}>{member.firstName + " " + member.lastName}</option>
+          ))}
+        </datalist>
+        <button onClick={handleAddMember} type="submit" className="btn btn-success ml-3">
+          Ajouter
+        </button>
+      </div>
 
-</>)
-  ;
+
+    </form>
+
+  </>)
+    ;
 };
 export default TeamViewPage;

@@ -4,6 +4,7 @@ import Pagination from "../components/Pagination";
 import TeamsAPI from "../services/teamsAPI"
 import {Link} from "react-router-dom";
 import MembersAPI from "../services/membersAPI";
+import NavbarMembers from "../components/NavbarMembers";
 
 const TeamsPage = (props) => {
 
@@ -67,7 +68,7 @@ const TeamsPage = (props) => {
   return (
     <>
       <div className="mb-3 d-flex justify-content-between align-items-center">
-        <h1>Liste des Équipes</h1>
+        <NavbarMembers/>
         <Link to="/teams/new" className="btn btn-success" >Créer une équipe</Link>
       </div>
 

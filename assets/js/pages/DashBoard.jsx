@@ -40,7 +40,7 @@ const HomePage = (props) => {
 
   return (
     <>
-      <Container className="p-0">
+      <Container fluid className="white-container-arround mt-4">
         <h1 className="title">Tableau de bord</h1>
         <hr/>
         <Row className="mt-50">

@@ -5,6 +5,7 @@ import MembersAPI from "../services/membersAPI"
 import {Link} from "react-router-dom";
 import Select from "../components/forms/Select";
 import CategoriesAPI from "../services/categoriesAPI";
+import NavbarMembers from "../components/NavbarMembers";
 
 const MembersPage = (props) => {
 
@@ -84,10 +85,13 @@ const MembersPage = (props) => {
 
   return (
     <>
+
+
       <div className="mb-3 d-flex justify-content-between align-items-center">
-        <h1>Liste des Licenciés</h1>
+        <NavbarMembers/>
         <Link to="/members/new" className="btn btn-success">Ajouter un licencié</Link>
       </div>
+
 
       <div className="form-group">
         <input type="text" onChange={handleSearch} value={search} className="form-control"

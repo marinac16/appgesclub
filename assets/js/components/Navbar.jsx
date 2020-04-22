@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import AuthAPI from "../services/authAPI";
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 
 const Navbar = ({history}) => {
@@ -17,7 +17,7 @@ const Navbar = ({history}) => {
   return (
 
     <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-      <NavLink className="navbar-brand" to="/">App GESCLUB</NavLink>
+      <Link className="navbar-brand" to="/">App GESCLUB</Link>
 
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
               aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">

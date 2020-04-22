@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import TeamsAPI from "../services/teamsAPI";
 import GendersAPI from "../services/gendersAPI";
 import CategoriesAPI from "../services/categoriesAPI";
+import NavbarMembers from "../components/NavbarMembers";
 
 
 const TeamPage = ({match, history}) => {
@@ -94,7 +95,8 @@ const TeamPage = ({match, history}) => {
         //TODO : Flash notification de succes
         history.replace("/teams");
         setErrors({});
-      }} catch ({response}) {
+      }
+    } catch ({response}) {
       const {violations} = response.data;
 
       if (violations) {
@@ -104,10 +106,17 @@ const TeamPage = ({match, history}) => {
         });
         setErrors(apiErrors);
         //TODO : Flash notification des erreurs
-      }}};
+      }
+    }
+  };
 
-    return (
-      <>
+  return (
+    <>
+
+      <div className="mb-3 d-flex justify-content-between align-items-center">
+        <NavbarMembers/>
+      </div>
+      <div className="white-container mt-4">
         {(editing && <h1>Modification d'une équipe</h1>) || (<h1>Création d'un équipe</h1>)}
         <hr/>
 
@@ -154,9 +163,9 @@ const TeamPage = ({match, history}) => {
             <Link to="/teams" className="btn btn-link">Retour à la liste des équipes</Link>
           </div>
         </form>
-
+      </div>
 
       </>
-    );
-  };
-  export default TeamPage;
+      );
+      };
+      export default TeamPage;
