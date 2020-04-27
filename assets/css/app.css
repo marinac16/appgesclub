@@ -21,7 +21,10 @@ main {
     padding: 0 30px 0 30px ;
 }
 
+/* ########### CONTAINER BLANC ############### */
+
 .white-container {
+    border-radius: 10px;
     background-color: #FFFFFF;
     padding: 20px;
 }
@@ -33,10 +36,6 @@ main {
     border-radius: 20px;
 }
 
-/* ########### TABLEAUX ############### */
-table {
-    background-color: #FFFFFF;
-}
 
 /* ########### NAVBAR SECONDAIRE ############### */
 .navlink-custom {
@@ -54,7 +53,23 @@ table {
     background-color: red;
 }
 
+/* ########### FORMULAIRES ############### */
+.form-control {
+    border-radius: 10px;
+}
 
+/* ########### TABLEAUX ############### */
+table {
+    background-color: #FFFFFF;
+
+}
+
+
+/* ########### Card ############### */
+
+.card {
+    border-radius: 10px;
+}
 /* ########### LINK ############### */
 .link-white{
     color: white;

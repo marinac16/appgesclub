@@ -3,7 +3,6 @@ import moment from "moment";
 import Pagination from "../components/Pagination";
 import MembersAPI from "../services/membersAPI"
 import {Link} from "react-router-dom";
-import Select from "../components/forms/Select";
 import CategoriesAPI from "../services/categoriesAPI";
 import NavbarMembers from "../components/NavbarMembers";
 
@@ -119,7 +118,7 @@ const MembersPage = (props) => {
             <td className="text-center">{member.email}</td>
             <td className="text-center">{member.phoneNumber}</td>
             <td className="text-center">{member.teams.map(team => (team.name))}</td>
-            <td className="text-center">{member.status.map(s => (s.name))}</td>
+            <td className="text-center">{member.statuses.map(s => (s.name))}</td>
             <td className="text-right">
               <Link
                 to={"members/" + member.id}

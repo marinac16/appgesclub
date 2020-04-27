@@ -17,7 +17,7 @@ function create (values) {
     {...values,
       gender:`/api/genders/${values.gender}`,
       category:`/api/categories/${values.category}`,
-      status:`[/api/statuses/${values.statuses}]`});
+      statuses:values.statuses.map(status => `/api/statuses/${status}`)});
 }
 
 function update(id, values){
@@ -26,7 +26,7 @@ function update(id, values){
       {...values,
         gender:`/api/genders/${values.gender}`,
         category:`/api/categories/${values.category}`,
-        status:`/api/statuses/${values.status}`,
+        statuses: values.statuses.map(status => `/api/statuses/${status}`),
         team:`/api/teams/${values.team}`});
 }
 

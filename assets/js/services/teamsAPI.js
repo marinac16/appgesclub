@@ -24,7 +24,16 @@ function update(id, team) {
   return axios.put("http://localhost/appli-GESCLUB/public/api/teams/" + id,
     {...team,
       gender: `/api/genders/${team.gender}`,
-      category: `/api/categories/${team.category}`
+      category: `/api/categories/${team.category}`,
+    });
+}
+
+function updateMembers(id, team) {
+  return axios.put("http://localhost/appli-GESCLUB/public/api/teams/" + id,
+    {...team,
+      gender: `/api/genders/${team.gender.id}`,
+      category: `/api/categories/${team.category.id}`,
+      members: team.members.map(m => `/api/members/${m.id}`)
     });
 }
 
@@ -33,10 +42,11 @@ function deleteTeam(id) {
     .delete("http://localhost/appli-GESCLUB/public/api/teams/" + id)
 }
 
-function addMember (id, member) {
+function addMember (id, newMember) {
   return axios.post("http://localhost/appli-GESCLUB/public/api/teams/" + id + "/addMember",
-    {...member,
-      member: `[/api/members/${member.id}]`
+    {...newMember,
+      members: newMember.map(m => `/api/members/${m}`)
+
     })
 }
 
@@ -45,6 +55,7 @@ export default {
   find,
   create,
   update,
+  updateMembers,
   delete: deleteTeam,
   addMember,
 }

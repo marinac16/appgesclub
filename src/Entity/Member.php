@@ -74,38 +74,37 @@ class Member
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Gender", inversedBy="members")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"members_read"})
+     * @Groups({"members_read", "teams_read"})
      */
     private $gender;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="members")
      * @ORM\JoinColumn(nullable=true)
-     * @Groups({"members_read", "genders_read"})
+     * @Groups({"members_read", "genders_read", "teams_read"})
      */
     private $category;
+
+
+    /**
+     * @ORM\Column(type="boolean")
+     * @Groups({"members_read", "teams_read"})
+     */
+    private $licencieAuClub;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Status", inversedBy="members")
+     * @ORM\JoinTable(name="members_statuses")
+     * @ORM\JoinColumn(nullable=true)
+     * @Groups({"members_read"})
+     */
+    private $statuses;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Team", mappedBy="members")
      * @Groups({"members_read"})
      */
     private $teams;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Status")
-     * @ORM\JoinTable(name="member_status",
-     * joinColumns={@ORM\JoinColumn(name="member_id", referencedColumnName="id")},
-     * inverseJoinColumns={@ORM\JoinColumn(name="status_id", referencedColumnName="id", unique=true)})
-     * @Groups({"members_read"})
-     *
-     */
-    private $status;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $licencieAuClub;
-
 
 
     //**
@@ -117,7 +116,7 @@ class Member
     public function __construct()
     {
         $this->teams = new ArrayCollection();
-        $this->status = new ArrayCollection();
+        $this->statuses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -196,60 +195,7 @@ class Member
 
         return $this;
     }
-
-    /**
-     * @return Collection|Team[]
-     */
-    public function getTeams(): Collection
-    {
-        return $this->teams;
-    }
-
-    public function addTeam(Team $team): self
-    {
-        if (!$this->teams->contains($team)) {
-            $this->teams[] = $team;
-            $team->addMember($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTeam(Team $team): self
-    {
-        if ($this->teams->contains($team)) {
-            $this->teams->removeElement($team);
-            $team->removeMember($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Status[]
-     */
-    public function getStatus(): Collection
-    {
-        return $this->status;
-    }
-
-    public function addStatus(Status $status): self
-    {
-        if (!$this->status->contains($status)) {
-            $this->status[] = $status;
-        }
-
-        return $this;
-    }
-
-    public function removeStatus(Status $status): self
-    {
-        if ($this->status->contains($status)) {
-            $this->status->removeElement($status);
-        }
-
-        return $this;
-    }
+    
 
     public function getUser(): ?User
     {
@@ -306,6 +252,61 @@ class Member
     {
         $this->licencieAuClub = $licencieAuClub;
     }
+
+    /**
+     * @return Collection|Status[]
+     */
+    public function getStatuses(): Collection
+    {
+        return $this->statuses;
+    }
+
+    public function addStatus(Status $status): self
+    {
+        if (!$this->statuses->contains($status)) {
+            $this->statuses[] = $status;
+        }
+
+        return $this;
+    }
+
+    public function removeStatus(Status $status): self
+    {
+        if ($this->statuses->contains($status)) {
+            $this->statuses->removeElement($status);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Team[]
+     */
+    public function getTeams(): Collection
+    {
+        return $this->teams;
+    }
+
+    public function addTeam(Team $team): self
+    {
+        if (!$this->teams->contains($team)) {
+            $this->teams[] = $team;
+            $team->addMember($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTeam(Team $team): self
+    {
+        if ($this->teams->contains($team)) {
+            $this->teams->removeElement($team);
+            $team->removeMember($this);
+        }
+
+        return $this;
+    }
+
 
 
 

@@ -32,7 +32,17 @@ class Status
      */
     private $name;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Member", mappedBy="statuses")
+     * @Groups({"status_read"})
+     */
+    private $members;
 
+
+    public function __construct()
+    {
+        $this->members = new ArrayCollection();
+    }
 
     public function __toString()
     {
@@ -55,5 +65,36 @@ class Status
 
         return $this;
     }
+
+    /**
+     * @return Collection|Member[]
+     */
+    public function getMembers(): Collection
+    {
+        return $this->members;
+    }
+
+    public function addMember(Member $member): self
+    {
+        if (!$this->members->contains($member)) {
+            $this->members[] = $member;
+            $member->addStatus($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMember(Member $member): self
+    {
+        if ($this->members->contains($member)) {
+            $this->members->removeElement($member);
+            $member->removeStatus($this);
+        }
+
+        return $this;
+    }
+
+
+
 
 }

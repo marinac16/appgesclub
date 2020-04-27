@@ -35,6 +35,13 @@ class AppFixtures extends Fixture
 
         $faker = Factory::create('fr_FR');
 
+        $statuses = ['Joueur', 'Coach', 'Dirigeant', 'Bénévole'];
+        foreach ($statuses as $status) {
+            $statut = new Status();
+            $statut->setName($status);
+            $manager->persist($statut);
+        }
+
         for ($c = 0; $c < 1; $c++) {
             $club = new Club();
             $club->setName('Treillières Basket Club');
@@ -82,6 +89,7 @@ class AppFixtures extends Fixture
                                 $member->setCategory($category);
                                 $member->setGender($gender);
                                 $member->setLicencieAuClub(true);
+                                $member->addStatus($statut);
                                 $member->addTeam($team);
                                 $manager->persist($member);
 
@@ -94,12 +102,7 @@ class AppFixtures extends Fixture
 
         }
 
-        $statuses = ['Joueur', 'Coach', 'Dirigeant', 'Bénévole'];
-        foreach ($statuses as $status) {
-            $statut = new Status();
-            $statut->setName($status);
-            $manager->persist($statut);
-        }
+
 
         $manager->flush();
     }

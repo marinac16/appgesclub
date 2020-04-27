@@ -21,6 +21,7 @@ const MemberPageFormik = ({match, history}) => {
   const [genders, setGenders] = useState([]);
   const [categories, setCategories] = useState([]);
   const [statuses, setStatuses] = useState([]);
+  const [checked, setChecked] = useState(true);
   const member = useFormik({
     initialValues: {
       firstName: "",
@@ -32,7 +33,7 @@ const MemberPageFormik = ({match, history}) => {
       gender: "",
       category: "",
       licencieAuClub: true,
-      statuses: []
+      statuses: ""
     },
 
     onSubmit: async values => {
@@ -75,7 +76,7 @@ const MemberPageFormik = ({match, history}) => {
     phoneNumber: "",
     gender: "",
     category: "",
-    statuses: []
+    statuses: ""
   });
 
   //Récupération des genres (F/M)
@@ -112,7 +113,7 @@ const MemberPageFormik = ({match, history}) => {
   const fetchMember = async id => {
     try {
       const data = await MembersAPI.find(id);
-      const {firstName, lastName, birthDate, licenceNumber, email, phoneNumber, gender, category, status, licencieAuClub} = data;
+      const {firstName, lastName, birthDate, licenceNumber, email, phoneNumber, gender, category, statuses, licencieAuClub} = data;
       member.setValues({
         firstName,
         lastName,
@@ -122,7 +123,7 @@ const MemberPageFormik = ({match, history}) => {
         phoneNumber,
         gender: gender.id,
         category: category.id,
-        status: status.id,
+        statuses: statuses.id,
         licencieAuClub,
       });
     } catch (error) {
@@ -148,13 +149,14 @@ const MemberPageFormik = ({match, history}) => {
   }, [id]);
 
 
+
   return (<>
 
     <div className="mb-3 d-flex justify-content-between align-items-center">
       <NavbarMembers/>
     </div>
 
-    <div className="white-container mt-4">
+    <div className="white-container">
 
     {(!editing && <h1>Ajout d'un licencié</h1>) || (<h1>Modification d'un licencié</h1>)}
     <hr/>
@@ -249,24 +251,26 @@ const MemberPageFormik = ({match, history}) => {
         ))}
       </Select>
       <p>Statut(s)</p>
-      <div className="div-checkbox-team d-flex justify-content-start flex-wrap align-items-center">
+      <div className="div-checkbox-team d-flex justify-content-start flex-wrap align-items-center ml-4">
         {statuses.map(status => (
           <FieldCheckBox key={status.id}
                          id={status.id}
-                         value={(!editing && status.id) || (status.id)}
+                         value={status.id}
                          label={status.name}
                          type="checkbox"
-                         name="status"
+                         name="statuses"
+                         checked={checked}
                          onChange={member.handleChange}
           />))}
 
       </div>
-      <div className="div-checkbox-team d-flex justify-content-start flex-wrap align-items-center">
+      <div className="div-checkbox-team d-flex justify-content-start flex-wrap align-items-center ml-4">
         <FieldCheckBox
-          value={false}
+          value={member.values.licencieAuClub=false}
           label="Je coche cette case si je ne fais pas parti des licenciés du club, et je confirme être licencié dans un autre club."
           type="checkbox"
           name="licencieAuClub"
+          selected={member.values.licencieAuClub}
           onChange={member.handleChange}/></div>
 
       <div className="form-group d-flex flex-row-reverse">

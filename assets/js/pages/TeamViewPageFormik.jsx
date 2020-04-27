@@ -3,6 +3,7 @@ import TeamsAPI from "../services/teamsAPI";
 import MembersAPI from "../services/membersAPI";
 import moment from "moment";
 import NavbarMembers from "../components/NavbarMembers";
+import {useFormik} from "formik";
 
 
 const TeamViewPage = ({match, history}) => {
@@ -15,23 +16,43 @@ const TeamViewPage = ({match, history}) => {
 
   const [error, setError] = useState("");
   const [members, setMembers] = useState([]);
-  const [newMember, setNewMember] = useState({
-    id:""
-    }
-  );
-  const [team, setTeam] = useState({
+  const [newMember, setNewMember] = useState([]);
+  const [teamAPI, setTeamAPI] = useState({
     name: "",
     gender: "",
     category: "",
-    members: [{
-      firstName:"",
-      lastName:"",
-      birthDate:"",
-      licenceNumber: "",
-      email: "",
-      phoneNumber: "",
-    }]
-    ,
+    members: [],
+  });
+  const team = useFormik({
+    initialValues: {
+      name: "",
+      gender: "",
+      category: "",
+      members: [],
+    },
+
+    onSubmit: async values => {
+      console.log(values);
+      try {
+        console.log(id);
+          await TeamsAPI.addMember(id, values);
+          //TODO : Flash notification de succes
+          history.replace("/teams");
+
+      } catch ({response}) {
+        const {violations} = response.data;
+
+        if (violations) {
+          const apiErrors = {};
+          violations.forEach(({propertyPath, message}) => {
+            apiErrors[propertyPath] = message;
+          });
+
+          //TODO : Flash notification des erreurs
+        }
+      }
+
+    }
   });
 
   //Récupérer la liste des members
@@ -48,7 +69,7 @@ const TeamViewPage = ({match, history}) => {
   const fetchTeam = async id => {
     try {
       const data = await TeamsAPI.find(id);
-      setTeam(data);
+      setTeamAPI(data);
     } catch (error) {
       console.log(error.response);
       //TODO : Notification flash d'une erreur
@@ -70,30 +91,6 @@ const TeamViewPage = ({match, history}) => {
   }, [id]);
 
 
-  // Gestion des changements / enregistrements des inputs dans le formulaires
-  const handleChange = ({currentTarget}) => {
-    setNewMember({id: currentTarget.value});
-  };
-
-  //Mise a jour d'une équipe en ajoutant un membre dans l'équipe
-  const handleSubmit = async event => {
-    event.preventDefault();
-
-    const originalMembers = (team.members);
-    originalMembers.push(newMember);
-
-    setTeam({members: originalMembers});
-    console.log(team.members);
-
-    try {
-      await TeamsAPI.updateMembers(id, team);
-      //window.location.reload()
-    } catch (error) {
-      setError("Ce joueur ne peut pas etre ajouté !");
-
-    }
-  };
-
   return (<>
 
     <div className="mb-3 d-flex justify-content-between align-items-center">
@@ -108,24 +105,17 @@ const TeamViewPage = ({match, history}) => {
         <th>Numéro de licence</th>
         <th>Email</th>
         <th>Téléphone</th>
-        <th></th>
       </tr>
       </thead>
       <tbody>
 
-      {team.members.map(memberOfTeam =>
+      {teamAPI.members.map(memberOfTeam =>
         <tr key={memberOfTeam.id}>
           <td>{memberOfTeam.firstName} {memberOfTeam.lastName}</td>
           <td>{formatDate(memberOfTeam.birthDate)}</td>
           <td>{memberOfTeam.licenceNumber}</td>
           <td>{memberOfTeam.email}</td>
           <td>{memberOfTeam.phoneNumber}</td>
-          <td>
-            <button
-              //onClick={() => handleDelete(team.id)}
-              className="ml-1 btn btn-sm btn-outline-danger"><i className="fas fa-user-times"/>
-            </button>
-          </td>
         </tr>
       )}
 
@@ -133,30 +123,24 @@ const TeamViewPage = ({match, history}) => {
     </table>
 
 
-    <form onSubmit={handleSubmit} className="d-flex mt-5 p-3 white-container">
-      <h5 className="text-primary mr-3">Ajouter un(e) joueur(se) à cette équipe : </h5>
-
-        <input className="form-control form-control-sm w-25"
+    <form onSubmit={team.handleSubmit}>
+      <h4 className="text-light">Ajouter un(e) joueur(se) à cette équipe</h4>
+      <div className="form-group d-flex justify-content-between align-items-center">
+        <input className="form-control form-control-sm"
                type="text"
-               value={newMember.id}
                placeholder="Choisissez un joueur ..."
-               id="search"
-               onChange={handleChange}
+               id="members"
+               onChange={team.handleChange}
                list="joueurs"/>
         <datalist id="joueurs">
           {members.map(member => (
-            <option key={member.id}
-                    value={member.id}
-                    name="members"
-                    label={member.firstName + " " + member.lastName}
-
-
-            />
+            <option key={member.id} value={member.id} name="members" label={member.firstName + " " + member.lastName}/>
           ))}
         </datalist>
-        <button type="submit" className="btn btn-success ml-3 d-flex ">
-         <i className="fas fa-user-plus pr-2"/>
+        <button type="submit" className="btn btn-success ml-3">
+          Ajouter
         </button>
+      </div>
 
 
     </form>

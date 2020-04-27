@@ -2,19 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4bc1c1df-6302-433b-8454-d726f195cdba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/components/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/Navbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/components/Sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/Sidebar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/DashBoard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/DashBoard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/LoginPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/MemberPageFormik.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/MemberPageFormik.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/MembersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/MembersPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/RegisterPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/RegisterPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/TeamPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/TeamPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/TeamViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/TeamViewPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/TeamsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/TeamsPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/services/membersAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/services/membersAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/services/teamsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/services/teamsAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Member.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Member.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Status.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Status.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Team.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Team.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,21 +175,22 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/js/pages" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets" />
+      <recent name="$PROJECT_DIR$/assets/js" />
+      <recent name="$PROJECT_DIR$/assets/images" />
+      <recent name="$PROJECT_DIR$/assets/js/components" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets/js/pages" />
       <recent name="$PROJECT_DIR$/assets/css" />
       <recent name="$PROJECT_DIR$/assets/js/components" />
       <recent name="$PROJECT_DIR$/assets/js/services" />
       <recent name="$PROJECT_DIR$/assets/js/components/forms" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assets" />
-      <recent name="$PROJECT_DIR$/assets/js" />
-      <recent name="$PROJECT_DIR$/assets/images" />
-      <recent name="$PROJECT_DIR$/assets/js/components" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -221,7 +222,9 @@
       <workItem from="1587199215842" duration="28307000" />
       <workItem from="1587374418528" duration="11159000" />
       <workItem from="1587457411538" duration="9901000" />
-      <workItem from="1587542645701" duration="1582000" />
+      <workItem from="1587542645701" duration="8749000" />
+      <workItem from="1587627860374" duration="4067000" />
+      <workItem from="1587713101291" duration="22520000" />
     </task>
     <servers />
   </component>
@@ -254,6 +257,10 @@
       <screen x="0" y="23" width="2048" height="1038" />
     </state>
     <state x="388" y="472" key="NewPhpFileDialog/0.23.2048.1038@0.23.2048.1038" timestamp="1586190875830" />
+    <state x="2277" y="100" key="SettingsEditor" timestamp="1587643094448">
+      <screen x="2048" y="23" width="1440" height="877" />
+    </state>
+    <state x="2277" y="100" key="SettingsEditor/2048.23.1440.877/0.23.2048.1038@2048.23.1440.877" timestamp="1587643094448" />
     <state x="189" y="253" width="670" height="676" key="search.everywhere.popup" timestamp="1586684579200">
       <screen x="0" y="23" width="2048" height="1038" />
     </state>

@@ -47,26 +47,25 @@ class Team
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="teams")
-     * @ORM\JoinColumn(nullable=false)
-     * @Groups({"teams_read", "genders_read"})
+     * @ORM\JoinColumn(nullable=true)
+     * @Groups({"teams_read", "members_read"})
      */
     private $category;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Gender", inversedBy="teams")
-     * @ORM\JoinColumn(nullable=false)
-     * @Groups({"teams_read"})
+     * @ORM\JoinColumn(nullable=true)
+     * @Groups({"teams_read", "members_read"})
      */
     private $gender;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Member", inversedBy="teams")
-     * @ORM\JoinColumn(name="team_members", nullable=true)
+     * @ORM\JoinTable(name="teams_members")
+     * @ORM\JoinColumn(nullable=true)
      * @Groups({"teams_read"})
      */
     private $members;
-
-
 
     public function __construct()
     {
@@ -122,27 +121,25 @@ class Team
         return $this->members;
     }
 
-    /**
-     * @param Member $members
-     * @return $this || Array
-     */
-    public function addMember(Member $members): self
+    public function addMember(Member $member): self
     {
-        if (!$this->members->contains($members)) {
-            $this->members[] = $members;
+        if (!$this->members->contains($member)) {
+            $this->members[] = $member;
         }
 
         return $this;
     }
 
-    public function removeMember(Member $members): self
+    public function removeMember(Member $member): self
     {
-        if ($this->members->contains($members)) {
-            $this->members->removeElement($members);
+        if ($this->members->contains($member)) {
+            $this->members->removeElement($member);
         }
 
         return $this;
     }
+
+
 
 
 }
