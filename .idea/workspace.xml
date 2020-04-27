@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4bc1c1df-6302-433b-8454-d726f195cdba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/MemberPageFormik.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/MemberPageFormik.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/MembersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/MembersPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/TeamViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/TeamViewPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/services/membersAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/services/membersAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/services/teamsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/services/teamsAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Member.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Member.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Status.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Status.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Team.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Team.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/components/NavbarMembers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/NavbarMembers.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,6 +214,7 @@
       <workItem from="1587542645701" duration="8749000" />
       <workItem from="1587627860374" duration="4067000" />
       <workItem from="1587713101291" duration="22520000" />
+      <workItem from="1587978278724" duration="898000" />
     </task>
     <servers />
   </component>
