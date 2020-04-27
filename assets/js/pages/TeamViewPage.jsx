@@ -3,6 +3,7 @@ import TeamsAPI from "../services/teamsAPI";
 import MembersAPI from "../services/membersAPI";
 import moment from "moment";
 import NavbarMembers from "../components/NavbarMembers";
+import Select from "../components/forms/Select";
 
 
 const TeamViewPage = ({match, history}) => {
@@ -15,22 +16,12 @@ const TeamViewPage = ({match, history}) => {
 
   const [error, setError] = useState("");
   const [members, setMembers] = useState([]);
-  const [newMember, setNewMember] = useState({
-    id:""
-    }
-  );
+  const [newMember, setNewMember] = useState([]);
   const [team, setTeam] = useState({
     name: "",
     gender: "",
     category: "",
-    members: [{
-      firstName:"",
-      lastName:"",
-      birthDate:"",
-      licenceNumber: "",
-      email: "",
-      phoneNumber: "",
-    }]
+    members: []
     ,
   });
 
@@ -69,14 +60,31 @@ const TeamViewPage = ({match, history}) => {
     }
   }, [id]);
 
+  const handleRemoveMember = async id => {
+    const originalMembers = (team.members);
+    const index = originalMembers.findIndex(member => member.id === id);
+
+    originalMembers.splice(index, 1);
+    setTeam({members: originalMembers});
+
+    try {
+      console.log(team.id, team);
+      await TeamsAPI.updateMembers(team.id, team);
+      window.location.reload();
+    } catch (error) {
+      setError("Ce joueur ne peut pas etre supprimé !");
+
+    }
+  };
 
   // Gestion des changements / enregistrements des inputs dans le formulaires
   const handleChange = ({currentTarget}) => {
     setNewMember({id: currentTarget.value});
   };
 
+
   //Mise a jour d'une équipe en ajoutant un membre dans l'équipe
-  const handleSubmit = async event => {
+  const handleAddMember = async event => {
     event.preventDefault();
 
     const originalMembers = (team.members);
@@ -87,7 +95,7 @@ const TeamViewPage = ({match, history}) => {
 
     try {
       await TeamsAPI.updateMembers(id, team);
-      //window.location.reload()
+      window.location.reload()
     } catch (error) {
       setError("Ce joueur ne peut pas etre ajouté !");
 
@@ -108,7 +116,7 @@ const TeamViewPage = ({match, history}) => {
         <th>Numéro de licence</th>
         <th>Email</th>
         <th>Téléphone</th>
-        <th></th>
+        <th/>
       </tr>
       </thead>
       <tbody>
@@ -122,7 +130,7 @@ const TeamViewPage = ({match, history}) => {
           <td>{memberOfTeam.phoneNumber}</td>
           <td>
             <button
-              //onClick={() => handleDelete(team.id)}
+              onClick={() => handleRemoveMember(memberOfTeam.id)}
               className="ml-1 btn btn-sm btn-outline-danger"><i className="fas fa-user-times"/>
             </button>
           </td>
@@ -133,30 +141,30 @@ const TeamViewPage = ({match, history}) => {
     </table>
 
 
-    <form onSubmit={handleSubmit} className="d-flex mt-5 p-3 white-container">
+    <form onSubmit={handleAddMember} className="d-flex mt-5 p-3 white-container">
       <h5 className="text-primary mr-3">Ajouter un(e) joueur(se) à cette équipe : </h5>
 
-        <input className="form-control form-control-sm w-25"
-               type="text"
-               value={newMember.id}
-               placeholder="Choisissez un joueur ..."
-               id="search"
-               onChange={handleChange}
-               list="joueurs"/>
-        <datalist id="joueurs">
-          {members.map(member => (
-            <option key={member.id}
-                    value={member.id}
-                    name="members"
-                    label={member.firstName + " " + member.lastName}
+      <input className="form-control form-control-sm w-25"
+             type="text"
+             placeholder="Choisissez un joueur ..."
+             id="search"
+             name="members"
+             onChange={handleChange}
+             list="joueurs"/>
+      <datalist id="joueurs">
+        {members.map((member, key) => (
+          <option key={key}
+                  value={member.id}
+            >
+            {member.firstName + " " + member.lastName}
+          </option>
+        ))}
+      </datalist>
 
 
-            />
-          ))}
-        </datalist>
-        <button type="submit" className="btn btn-success ml-3 d-flex ">
-         <i className="fas fa-user-plus pr-2"/>
-        </button>
+      <button type="submit" className="btn btn-success ml-3 d-flex ">
+        <i className="fas fa-user-plus pr-2"/>
+      </button>
 
 
     </form>

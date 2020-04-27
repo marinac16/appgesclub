@@ -12,7 +12,6 @@ import MemberPage from "./pages/MemberPage";
 import TeamsPage from "./pages/TeamsPage";
 import TeamPage from "./pages/TeamPage";
 import TeamViewPage from "./pages/TeamViewPage";
-import TeamViewPageFormik from "./pages/TeamViewPageFormik";
 import LoginPage from "./pages/LoginPage";
 import MemberPageFormik from "./pages/MemberPageFormik";
 import RegisterPage from "./pages/RegisterPage";
