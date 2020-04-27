@@ -15,6 +15,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     normalizationContext={"groups"={"members_read"}
  *     },
  *     denormalizationContext={"disable_type_enforcement"=true},
+ *     itemOperations={"GET", "PUT", "DELETE", "GETBY"= {
+ *      "method"="get",
+ *     "path"="/members/{name}",
+ *     "controller"="App\Controller\FindByStatus",
+ *     "swagger_context"={
+ *          "summary"="Récupération de tous les membres en fonction d'un status défini"
+ *     }}},
  *     attributes={"pagination_enabled"=false}
  *     )
  * )

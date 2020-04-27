@@ -4,8 +4,11 @@
     <list default="true" id="4bc1c1df-6302-433b-8454-d726f195cdba" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/TeamViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/TeamViewPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/TeamViewPageFormik.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/components/NavbarMembers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/NavbarMembers.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pages/CoachsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/CoachsPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/services/membersAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/services/membersAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Member.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Member.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/MemberRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/MemberRepository.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,24 +167,24 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/js/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Controller" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Controller" />
+      <recent name="$PROJECT_DIR$/assets/js/pages" />
+      <recent name="$PROJECT_DIR$/assets/css" />
+      <recent name="$PROJECT_DIR$/assets/js/components" />
+      <recent name="$PROJECT_DIR$/assets/js/services" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets" />
       <recent name="$PROJECT_DIR$/assets/js" />
       <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/assets/js/components" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assets/js/pages" />
-      <recent name="$PROJECT_DIR$/assets/css" />
-      <recent name="$PROJECT_DIR$/assets/js/components" />
-      <recent name="$PROJECT_DIR$/assets/js/services" />
-      <recent name="$PROJECT_DIR$/assets/js/components/forms" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -217,7 +220,8 @@
       <workItem from="1587627860374" duration="4067000" />
       <workItem from="1587713101291" duration="22520000" />
       <workItem from="1587978278724" duration="5540000" />
-      <workItem from="1587987388433" duration="2489000" />
+      <workItem from="1587987388433" duration="4810000" />
+      <workItem from="1587993750075" duration="7258000" />
     </task>
     <servers />
   </component>
@@ -258,6 +262,10 @@
       <screen x="2048" y="23" width="1440" height="877" />
     </state>
     <state x="2277" y="100" key="SettingsEditor/2048.23.1440.877/0.23.2048.1038@2048.23.1440.877" timestamp="1587643094448" />
+    <state x="2417" y="184" width="700" height="530" key="recent.locations.popup" timestamp="1588001858307">
+      <screen x="2048" y="23" width="1440" height="877" />
+    </state>
+    <state x="2417" y="184" width="700" height="530" key="recent.locations.popup/2048.23.1440.877/0.23.2048.1038@2048.23.1440.877" timestamp="1588001858307" />
     <state x="189" y="253" width="670" height="676" key="search.everywhere.popup" timestamp="1586684579200">
       <screen x="0" y="23" width="2048" height="1038" />
     </state>

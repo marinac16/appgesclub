@@ -8,7 +8,7 @@ const NavbarMembers = (props) => {
 
       <Link to="/members" className="navlink-custom"><i className="fas fa-user"/>  Membres</Link>
       <Link to="/teams" className="navlink-custom"><i className="fas fa-users"/>  Équipes</Link>
-      <a className="navlink-custom" href="#"><i className="fas fa-user-tie"/> Coachs</a>
+      <Link to="/coachs" className="navlink-custom"><i className="fas fa-user-tie"/> Coachs</Link>
       <a className="navlink-custom" href="#"> <i className="fas fa-user-tie"/> Dirigeants</a>
       <a className="navlink-custom" href="#"><i className="fas fa-chart-pie"/> Statistiques</a>
 
