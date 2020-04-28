@@ -12,12 +12,10 @@ function find(id) {
     .then(response => response.data)
 }
 
-function findAllByStatus() {
+function findAllByStatus(status) {
   return axios
-    .get("http://localhost/appli-GESCLUB/public/api/members")
+    .get("http://localhost/appli-GESCLUB/public/api/members?statuses.name=" + status)
     .then(response => response.data["hydra:member"])
-
-
 }
 
 function create(values) {

@@ -15,17 +15,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     normalizationContext={
         "groups"={"teams_read"}
  *     },
- *     itemOperations={"GET", "PUT", "DELETE", "addMember"= {
- *      "method"="post",
- *     "path"="/teams/{id}/addMember",
- *     "controller"="App\Controller\TeamAddMemberController",
- *     "swagger_context"={
- *          "summary"="Ajout d'un joueur dans un équipe",
- *          "description"="Ajout d'un joueur dans un équipe"
- *     }}},
- *      attributes={"pagination_enabled"=false}
- *     )
  * )
+ *
  *
  */
 class Team

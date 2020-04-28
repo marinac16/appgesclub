@@ -19,12 +19,4 @@ class MemberRepository extends ServiceEntityRepository
         parent::__construct($registry, Member::class);
     }
 
-    public function findByStatus () {
-        $query = $this
-            ->createQueryBuilder('m')
-            ->select('m', 's')
-            ->join('m.status', 's')
-            ->addOrderBy('m.status');
-        return $query->getQuery()->getResult();
-    }
 }

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import NavbarMembers from "../components/NavbarMembers";
 import moment from "moment";
 import MembersAPI from "../services/membersAPI";
+import {Link} from "react-router-dom";
 
 const CoachsPage= (props) => {
 
@@ -12,7 +13,7 @@ const CoachsPage= (props) => {
 
   const fetchCoachs = async () => {
     try {
-      const data = await MembersAPI.findAllByStatus();
+      const data = await MembersAPI.findAllByStatus("Coach");
       console.log(data);
       setCoachs(data);
     } catch (error) {
@@ -34,11 +35,10 @@ const CoachsPage= (props) => {
       <thead>
       <tr>
         <th>Coachs</th>
-        <th>Date de naissance</th>
         <th>Numéro de licence</th>
+        <th>Date de naissance</th>
         <th>Email</th>
         <th>Téléphone</th>
-        <th/>
       </tr>
       </thead>
       <tbody>
@@ -46,16 +46,11 @@ const CoachsPage= (props) => {
       {coachs.map(coach =>
         <tr key={coach.id}>
           <td>{coach.firstName} {coach.lastName}</td>
-          <td>{formatDate(coach.birthDate)}</td>
           <td>{coach.licenceNumber}</td>
+          <td>{formatDate(coach.birthDate)}</td>
           <td>{coach.email}</td>
           <td>{coach.phoneNumber}</td>
-          <td>
-            <button
-              //onClick={() => handleRemoveMember(memberOfTeam.id)}
-              className="ml-1 btn btn-sm btn-outline-danger"><i className="fas fa-user-times"/>
-            </button>
-          </td>
+
         </tr>
       )}
 
