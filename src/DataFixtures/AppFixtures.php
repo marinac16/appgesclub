@@ -35,7 +35,7 @@ class AppFixtures extends Fixture
 
         $faker = Factory::create('fr_FR');
 
-        $statuses = ['Joueur', 'Coach', 'Dirigeant', 'Bénévole'];
+        $statuses = ['Bénévole', 'Coach', 'Dirigeant', 'Joueur'];
         foreach ($statuses as $status) {
             $statut = new Status();
             $statut->setName($status);
@@ -101,6 +101,7 @@ class AppFixtures extends Fixture
 
 
         }
+
 
 
 

@@ -15,21 +15,21 @@ const TeamViewPage = ({match, history}) => {
   const formatDate = (str) => moment(str).format('DD/MM/YYYY');
 
   const [error, setError] = useState("");
-  const [members, setMembers] = useState([]);
+  const [players, setPlayers] = useState([]);
   const [newMember, setNewMember] = useState([]);
   const [team, setTeam] = useState({
     name: "",
     gender: "",
     category: "",
-    members: []
-    ,
+    players: [],
+    coachs: []
   });
 
-  //Récupérer la liste des members
-  const fetchMembers = async () => {
+  //Récupérer la liste des joueurs
+  const fetchPlayers = async () => {
     try {
-      const data = await MembersAPI.findAll();
-      setMembers(data);
+      const data = await MembersAPI.findAllByStatus("Joueur");
+      setPlayers(data);
     } catch (error) {
       console.log(error.response)
     }
@@ -40,6 +40,7 @@ const TeamViewPage = ({match, history}) => {
     try {
       const data = await TeamsAPI.find(id);
       setTeam(data);
+      console.log(data)
     } catch (error) {
       console.log(error.response);
       //TODO : Notification flash d'une erreur
@@ -49,7 +50,7 @@ const TeamViewPage = ({match, history}) => {
 
   // Au chargement du composant, on va chercher les customers
   useEffect(() => {
-    fetchMembers();
+    fetchPlayers();
   }, []);
 
   // Récupération de la bonne facture quand l'identifiant de l'url change
@@ -61,11 +62,11 @@ const TeamViewPage = ({match, history}) => {
   }, [id]);
 
   const handleRemoveMember = async id => {
-    const originalMembers = (team.members);
+    const originalMembers = (team.players);
     const index = originalMembers.findIndex(member => member.id === id);
 
     originalMembers.splice(index, 1);
-    setTeam({members: originalMembers});
+    setTeam({players: originalMembers});
 
     try {
       console.log(team.id, team);
@@ -87,11 +88,11 @@ const TeamViewPage = ({match, history}) => {
   const handleAddMember = async event => {
     event.preventDefault();
 
-    const originalMembers = (team.members);
+    const originalMembers = (team.players);
     originalMembers.push(newMember);
 
-    setTeam({members: originalMembers});
-    console.log(team.members);
+    setTeam({players: originalMembers});
+    console.log(team.players);
 
     try {
       await TeamsAPI.updateMembers(id, team);
@@ -121,7 +122,7 @@ const TeamViewPage = ({match, history}) => {
       </thead>
       <tbody>
 
-      {team.members.map(memberOfTeam =>
+      {team.players.map(memberOfTeam =>
         <tr key={memberOfTeam.id}>
           <td>{memberOfTeam.firstName} {memberOfTeam.lastName}</td>
           <td>{formatDate(memberOfTeam.birthDate)}</td>
@@ -148,11 +149,11 @@ const TeamViewPage = ({match, history}) => {
              type="text"
              placeholder="Choisissez un joueur ..."
              id="search"
-             name="members"
+             name="players"
              onChange={handleChange}
              list="joueurs"/>
       <datalist id="joueurs">
-        {members.map((member, key) => (
+        {players.map((member, key) => (
           <option key={key}
                   value={member.id}
             >

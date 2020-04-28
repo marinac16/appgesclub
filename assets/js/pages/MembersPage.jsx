@@ -77,7 +77,6 @@ const MembersPage = (props) => {
     m =>
       m.firstName.toLowerCase().includes(search.toLowerCase()) ||
       m.lastName.toLowerCase().includes(search.toLowerCase())
-
   );
   // Pagination
   const PaginatedMembers = Pagination.getData(filteredMembers, currentPage, itemsPerPage);
@@ -117,7 +116,15 @@ const MembersPage = (props) => {
             <td className="text-center">{formatDate(member.birthDate)}</td>
             <td className="text-center">{member.email}</td>
             <td className="text-center">{member.phoneNumber}</td>
-            <td className="text-center">{member.teams.map(team => (team.name))}</td>
+            <td className="text-center">
+              {member.teams.map(
+                team =>
+                  <span
+                    key={team.id}
+                    className="badge badge-pill mr-1 badge-warning">
+                    {team.name}
+                  </span>)}
+            </td>
             <td className="text-center">{member.statuses.map(s => (s.name))}</td>
             <td className="text-right">
               <Link

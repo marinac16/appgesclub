@@ -4,17 +4,17 @@ import moment from "moment";
 import MembersAPI from "../services/membersAPI";
 import {Link} from "react-router-dom";
 
-const CoachsPage= (props) => {
+const DirigeantsPage= (props) => {
 
   //Gestion du format de date
   const formatDate = (str) => moment(str).format('DD/MM/YYYY');
 
-  const [coachs, setCoachs] = useState([]);
+  const [dirigeants, setdirigeants] = useState([]);
 
-  const fetchCoachs = async () => {
+  const fetchDirigeants = async () => {
     try {
-      const data = await MembersAPI.findAllByStatus("Coach");
-      setCoachs(data);
+      const data = await MembersAPI.findAllByStatus("Dirigeant");
+      setdirigeants(data);
     } catch (error) {
       console.log(error.response)
     }
@@ -22,7 +22,7 @@ const CoachsPage= (props) => {
 
   // Au chargement du composant, on va chercher les coachs
   useEffect(() => {
-    fetchCoachs();
+    fetchDirigeants();
   }, []);
 
   return (<>
@@ -33,7 +33,7 @@ const CoachsPage= (props) => {
     <table className="table table-hover">
       <thead>
       <tr>
-        <th>Coachs</th>
+        <th>Dirigeants</th>
         <th>Numéro de licence</th>
         <th>Date de naissance</th>
         <th>Email</th>
@@ -42,13 +42,13 @@ const CoachsPage= (props) => {
       </thead>
       <tbody>
 
-      {coachs.map(coach =>
-        <tr key={coach.id}>
-          <td>{coach.firstName} {coach.lastName}</td>
-          <td>{coach.licenceNumber}</td>
-          <td>{formatDate(coach.birthDate)}</td>
-          <td>{coach.email}</td>
-          <td>{coach.phoneNumber}</td>
+      {dirigeants.map(dirigeant =>
+        <tr key={dirigeant.id}>
+          <td>{dirigeant.firstName} {dirigeant.lastName}</td>
+          <td>{dirigeant.licenceNumber}</td>
+          <td>{formatDate(dirigeant.birthDate)}</td>
+          <td>{dirigeant.email}</td>
+          <td>{dirigeant.phoneNumber}</td>
 
         </tr>
       )}
@@ -57,5 +57,5 @@ const CoachsPage= (props) => {
     </table>
     </>);
 };
-export default CoachsPage;
+export default DirigeantsPage;
 

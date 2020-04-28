@@ -12,6 +12,7 @@ import TeamsPage from "./pages/TeamsPage";
 import TeamPage from "./pages/TeamPage";
 import TeamViewPage from "./pages/TeamViewPage";
 import CoachsPage from "./pages/CoachsPage";
+import DirigeantsPage from "./pages/DirigeantsPage";
 import LoginPage from "./pages/LoginPage";
 import MemberPageFormik from "./pages/MemberPageFormik";
 import RegisterPage from "./pages/RegisterPage";
@@ -61,6 +62,7 @@ const App = () => {
                   <PrivateRoute path="/teams/:id" component={TeamPage}/>
                   <PrivateRoute path="/teams" component={TeamsPage}/>
                   <PrivateRoute path="/coachs" component={CoachsPage}/>
+                  <PrivateRoute path="/dirigeants" component={DirigeantsPage}/>
                   <PrivateRoute path="/dashboard" component={DashBoard}/>
                   <Route path="/" component={HomePage}/>
                 </Switch>

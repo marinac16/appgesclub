@@ -52,15 +52,24 @@ class Team
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Member", inversedBy="teams")
-     * @ORM\JoinTable(name="teams_members")
+     * @ORM\JoinTable(name="teams_players")
      * @ORM\JoinColumn(nullable=true)
      * @Groups({"teams_read"})
      */
-    private $members;
+    private $players;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Member", inversedBy="teamsCoaching")
+     * @ORM\JoinTable(name="teams_coachs")
+     * @ORM\JoinColumn(nullable=true)
+     * @Groups({"teams_read"})
+     */
+    private $coachs;
 
     public function __construct()
     {
-        $this->members = new ArrayCollection();
+        $this->players = new ArrayCollection();
+        $this->coachs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -107,15 +116,15 @@ class Team
     /**
      * @return Collection|Member[]
      */
-    public function getMembers(): Collection
+    public function getPlayers(): Collection
     {
-        return $this->members;
+        return $this->players;
     }
 
     public function addMember(Member $member): self
     {
-        if (!$this->members->contains($member)) {
-            $this->members[] = $member;
+        if (!$this->players->contains($member)) {
+            $this->players[] = $member;
         }
 
         return $this;
@@ -123,8 +132,34 @@ class Team
 
     public function removeMember(Member $member): self
     {
-        if ($this->members->contains($member)) {
-            $this->members->removeElement($member);
+        if ($this->players->contains($member)) {
+            $this->players->removeElement($member);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Member[]
+     */
+    public function getCoachs(): Collection
+    {
+        return $this->coachs;
+    }
+
+    public function addCoach(Member $coach): self
+    {
+        if (!$this->coachs->contains($coach)) {
+            $this->coachs[] = $coach;
+        }
+
+        return $this;
+    }
+
+    public function removeCoach(Member $coach): self
+    {
+        if ($this->coachs->contains($coach)) {
+            $this->coachs->removeElement($coach);
         }
 
         return $this;
