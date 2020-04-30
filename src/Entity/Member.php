@@ -111,8 +111,9 @@ class Member
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Team", mappedBy="coachs")
+     * @Groups({"members_read"})
      */
-    private $teamsCoaching;
+    private $teamsCoached;
 
 
     //**
@@ -125,7 +126,7 @@ class Member
     {
         $this->teams = new ArrayCollection();
         $this->statuses = new ArrayCollection();
-        $this->teamsCoaching = new ArrayCollection();
+        $this->teamsCoached = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -319,15 +320,15 @@ class Member
     /**
      * @return Collection|Team[]
      */
-    public function getTeamsCoaching(): Collection
+    public function getTeamsCoached(): Collection
     {
-        return $this->teamsCoaching;
+        return $this->teamsCoached;
     }
 
     public function addTeamsCoaching(Team $teamsCoaching): self
     {
-        if (!$this->teamsCoaching->contains($teamsCoaching)) {
-            $this->teamsCoaching[] = $teamsCoaching;
+        if (!$this->teamsCoached->contains($teamsCoaching)) {
+            $this->teamsCoached[] = $teamsCoaching;
             $teamsCoaching->addCoach($this);
         }
 
@@ -336,8 +337,8 @@ class Member
 
     public function removeTeamsCoaching(Team $teamsCoaching): self
     {
-        if ($this->teamsCoaching->contains($teamsCoaching)) {
-            $this->teamsCoaching->removeElement($teamsCoaching);
+        if ($this->teamsCoached->contains($teamsCoaching)) {
+            $this->teamsCoached->removeElement($teamsCoaching);
             $teamsCoaching->removeCoach($this);
         }
 

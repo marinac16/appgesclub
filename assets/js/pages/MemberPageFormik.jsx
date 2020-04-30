@@ -156,7 +156,7 @@ const MemberPageFormik = ({match, history}) => {
       <NavbarMembers/>
     </div>
 
-    <div className="white-container">
+    <div className="bg-container">
 
     {(!editing && <h1>Ajout d'un licencié</h1>) || (<h1>Modification d'un licencié</h1>)}
     <hr/>

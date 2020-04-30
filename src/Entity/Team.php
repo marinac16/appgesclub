@@ -59,7 +59,7 @@ class Team
     private $players;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Member", inversedBy="teamsCoaching")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Member", inversedBy="teamsCoached")
      * @ORM\JoinTable(name="teams_coachs")
      * @ORM\JoinColumn(nullable=true)
      * @Groups({"teams_read"})
@@ -164,6 +164,19 @@ class Team
 
         return $this;
     }
+
+
+    public function setPlayers($players): void
+    {
+        $this->players = $players;
+    }
+
+    public function setCoachs($coachs): void
+    {
+        $this->coachs = $coachs;
+    }
+
+
 
 
 

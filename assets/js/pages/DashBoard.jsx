@@ -41,37 +41,26 @@ const HomePage = (props) => {
   return (
     <>
       <Container fluid className="white-container-arround mt-4">
-        <h1 className="title">Tableau de bord</h1>
+        <h1 className="title text-primary">Tableau de bord</h1>
         <hr/>
         <Row className="mt-50">
           <Col sm={4}>
             <div className="card text-white bg-primary mb-3">
               <div className="card-header d-flex justify-content-between align-items-center">
-                <h3>Membres</h3>
+                <h3>Gestion des Adhérants</h3>
                 <Link to="/members/new" className="link-white"><i className="fas fa-2x fa-plus-circle"/></Link>
               </div>
               <div className="card-body">
-                <p className="card-text">Vous avez {nbMembers} membres</p>
+                <p className="card-text">Vous avez {nbMembers} adhérants</p>
+                <p className="card-text">Vous avez {nbTeams} équipes</p>
               </div>
               <div className="card-footer text-right"><Link to="/members" className="link-white">Voir la liste</Link></div>
             </div>
           </Col>
           <Col sm={4}>
-            <div className="card text-white bg-warning mb-3">
-              <div className="card-header d-flex justify-content-between align-items-center">
-                <h3>Équipes</h3>
-                <Link to="/teams/new" className="link-white"><i className="fas fa-2x fa-plus-circle"/></Link>
-              </div>
-              <div className="card-body">
-                <p className="card-text">Vous avez {nbTeams} équipes</p>
-              </div>
-              <div className="card-footer text-right"><Link to="/teams" className="link-white">Voir la liste</Link></div>
-            </div>
-          </Col>
-          <Col sm={4}>
             <div className="card text-white bg-success mb-3">
               <div className="card-header d-flex justify-content-between align-items-center">
-                <h3>Weekends</h3>
+                <h3>Gestion des Weekends</h3>
                 <Link to="#" className="link-white"><i className="fas fa-2x fa-plus-circle"/></Link>
               </div>
               <div className="card-body">
@@ -81,9 +70,21 @@ const HomePage = (props) => {
               <div className="card-footer text-right"><Link to="#" className="link-white">Voir la liste</Link></div>
             </div>
           </Col>
+          <Col sm={4}>
+            <div className="card text-white bg-warning mb-3">
+              <div className="card-header d-flex justify-content-between align-items-center">
+                <h3>Gestion des Mails</h3>
+              </div>
+              <div className="card-body">
+                <p className="card-text">Déja 10 000 mails envoyés</p>
+                <p className="card-text">Autres</p>
+              </div>
+              <div className="card-footer text-right"><Link to="/teams" className="link-white">Envoyer un mail</Link></div>
+            </div>
+          </Col>
+
         </Row>
       </Container>
-
 
     </>
   );

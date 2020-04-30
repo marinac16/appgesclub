@@ -88,6 +88,7 @@ class AppFixtures extends Fixture
                                 $member->setEmail($faker->email);
                                 $member->setCategory($category);
                                 $member->setGender($gender);
+                                $member->setLicenceNumber("BC1200" . $m);
                                 $member->setLicencieAuClub(true);
                                 $member->addStatus($statut);
                                 $member->addTeam($team);

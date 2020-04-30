@@ -46,7 +46,7 @@ const App = () => {
         <Container fluid className="container-principal">
           <Row className="row-main">
             {(isAuthenticated && (
-            <Col sm={1} className="sidebar bg-dark">
+            <Col sm={1} className="sidebar bg-blue">
               <Sidebar/>
             </Col>
               ))}
@@ -58,9 +58,9 @@ const App = () => {
                   <Route path="/register" component={RegisterPage}/>
                   <PrivateRoute path="/members/:id" component={MemberPageFormik}/>
                   <PrivateRoute path="/members" component={MembersPage}/>
-                  <PrivateRoute path="/team/:id" component={TeamViewPage}/>
                   <PrivateRoute path="/teams/:id" component={TeamPage}/>
                   <PrivateRoute path="/teams" component={TeamsPage}/>
+                  <PrivateRoute path="/team/:id" component={TeamViewPage}/>
                   <PrivateRoute path="/coachs" component={CoachsPage}/>
                   <PrivateRoute path="/dirigeants" component={DirigeantsPage}/>
                   <PrivateRoute path="/dashboard" component={DashBoard}/>

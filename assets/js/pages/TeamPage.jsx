@@ -116,7 +116,7 @@ const TeamPage = ({match, history}) => {
       <div className="mb-3 d-flex justify-content-between align-items-center">
         <NavbarMembers/>
       </div>
-      <div className="white-container mt-4">
+      <div className="bg-container mt-4">
         {(editing && <h1>Modification d'une équipe</h1>) || (<h1>Création d'un équipe</h1>)}
         <hr/>
 
@@ -160,7 +160,7 @@ const TeamPage = ({match, history}) => {
           </Select>
           <div className="form-group d-flex flex-row-reverse">
             <button type="submit" className="btn btn-success">Enregistrer</button>
-            <Link to="/teams" className="btn btn-link">Retour à la liste des équipes</Link>
+            <Link to="/teams" className="btn btn-link text-white">Retour à la liste des équipes</Link>
           </div>
         </form>
       </div>

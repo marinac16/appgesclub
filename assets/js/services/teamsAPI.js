@@ -14,27 +14,34 @@ function find(id) {
 
 function create(team) {
   return axios.post("http://localhost/appli-GESCLUB/public/api/teams",
-    {...team,
-    gender: `/api/genders/${team.gender}`,
-    category: `/api/categories/${team.category}`
-  });
+    {
+      ...team,
+      gender: `/api/genders/${team.gender}`,
+      category: `/api/categories/${team.category}`
+    });
 }
 
 function update(id, team) {
   return axios.put("http://localhost/appli-GESCLUB/public/api/teams/" + id,
-    {...team,
+    {
+      ...team,
       gender: `/api/genders/${team.gender}`,
       category: `/api/categories/${team.category}`,
     });
 }
 
 function updateMembers(id, team) {
+
   return axios.put("http://localhost/appli-GESCLUB/public/api/teams/" + id,
-    {...team,
+    {
+      ...team,
       gender: `/api/genders/${team.gender.id}`,
       category: `/api/categories/${team.category.id}`,
-      members: team.members.map(m => `/api/members/${m.id}`)
+      players: team.players.map(p => `/api/members/${p.id}`),
+      coachs: team.coachs.map(c => `/api/members/${c.id}`)
+
     });
+
 }
 
 function deleteTeam(id) {
@@ -42,9 +49,10 @@ function deleteTeam(id) {
     .delete("http://localhost/appli-GESCLUB/public/api/teams/" + id)
 }
 
-function addMember (id, newMember) {
+function addMember(id, newMember) {
   return axios.post("http://localhost/appli-GESCLUB/public/api/teams/" + id + "/addMember",
-    {...newMember,
+    {
+      ...newMember,
       members: newMember.map(m => `/api/members/${m}`)
 
     })

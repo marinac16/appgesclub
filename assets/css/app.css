@@ -2,7 +2,7 @@
 
 body {
     margin: 0;
-    background-color: rgb(40, 95, 122);
+    background-color: #333333;
 
 }
 
@@ -23,9 +23,10 @@ main {
 
 /* ########### CONTAINER BLANC ############### */
 
-.white-container {
+.bg-container {
     border-radius: 10px;
-    background-color: #FFFFFF;
+    background-color: rgb(40, 95, 122);
+    color: #FFFFFF;
     padding: 20px;
 }
 
@@ -63,6 +64,11 @@ table {
     background-color: #FFFFFF;
 
 }
+.ligne-tableau-equipe:hover {
+    color: #FFFFFF;
+    background-color: #444444;
+}
+
 
 
 /* ########### Card ############### */
@@ -81,7 +87,7 @@ table {
 
 /* ########### TITRE ############### */
 h1 {
-    color: #0097a2;
+    color: #FFFFFF;
 }
 
 
@@ -93,4 +99,10 @@ h1 {
 
 .btn{
     border-radius: 20px;
+}
+
+/* ########### SURCHARGE BOOTSTRAP ############### */
+
+.bg-blue {
+    background-color: rgb(40, 95, 122);
 }

@@ -16,7 +16,7 @@ const Navbar = ({history}) => {
 
   return (
 
-    <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-blue">
       <Link className="navbar-brand" to="/">App GESCLUB</Link>
 
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
