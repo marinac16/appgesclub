@@ -3,6 +3,7 @@ import Field from "../components/forms/Field";
 import {Link} from "react-router-dom";
 import UsersAPI from "../services/usersAPI"
 import {Container, Row, Col} from "react-bootstrap"
+import {toast} from "react-toastify";
 
 
 const RegisterPage = (props) => {
@@ -35,34 +36,29 @@ const RegisterPage = (props) => {
     if (user.password !== user.passwordConfirm) {
       apiErrors.passwordConfirm = "Le mot de passe et la confirmation du mot de passe ne sont pas identiques";
       setErrors(apiErrors);
+      toast.error("Attention ! Une erreur est survenue...");
+      return;
     }
     event.preventDefault();
     console.log(user);
     try {
       await UsersAPI.register(user);
 
-      //TODO : Flash success
+      toast.success("Votre inscription a été valider, vous pouvez vous connecter !");
       history.replace("/login");
     } catch (error) {
       const {violations} = error.response.data;
-
       if (violations) {
-
         violations.forEach(violation => {
           apiErrors[violation.propertyPath] = violation.message;
         });
         setErrors(apiErrors);
-
-        //TODO : Flash notification des erreurs
+        toast.error("Attention ! Une erreur est survenue...");
       }
     }
 
   };
-
-
   return (<>
-
-
         <Row>
           <Col sm={3}/>
           <Col sm={6} className="white-container-arround mt-4">

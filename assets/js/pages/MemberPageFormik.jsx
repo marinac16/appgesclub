@@ -11,6 +11,7 @@ import {Link} from "react-router-dom";
 import FieldCheckBox from "../components/forms/FieldCheckBox";
 import moment from "moment";
 import NavbarMembers from "../components/NavbarMembers";
+import {toast} from "react-toastify";
 
 
 const MemberPageFormik = ({match, history}) => {
@@ -37,21 +38,20 @@ const MemberPageFormik = ({match, history}) => {
     },
 
     onSubmit: async values => {
-      console.log(values);
       try {
         if (editing) {
           await MembersAPI.update(id, values);
-          //TODO : Flash notification de succes
+          toast.info("Cet adhérant à bien été mis à jour");
           history.replace("/members");
         } else {
           await MembersAPI.create(values);
-          //TODO : Flash notification de succes
+          toast.info("Cet adhérant à bien été créé");
           history.replace("/members");
         }
         setErrors({});
       } catch ({response}) {
+        toast.error("Une erreur est survenue ...");
         const {violations} = response.data;
-
         if (violations) {
           const apiErrors = {};
           violations.forEach(({propertyPath, message}) => {
@@ -59,7 +59,7 @@ const MemberPageFormik = ({match, history}) => {
           });
           setErrors(apiErrors);
 
-          //TODO : Flash notification des erreurs
+
         }
       }
 
@@ -85,8 +85,8 @@ const MemberPageFormik = ({match, history}) => {
       const data = await GendersAPI.findAll();
       setGenders(data);
     } catch (error) {
-      history.replace('/members')
-      //TODO : Notification flash d'une erreur
+      toast.error("Une erreur est survenue ...");
+      history.replace('/members');
     }
   };
   //Récupération des Catégories
@@ -95,8 +95,8 @@ const MemberPageFormik = ({match, history}) => {
       const data = await CategoriesAPI.findAll();
       setCategories(data);
     } catch (error) {
+      toast.error("Une erreur est survenue ...");
       history.replace('/members');
-      //TODO : Notification flash d'une erreur
     }
   };
   //Récupération des status
@@ -105,8 +105,8 @@ const MemberPageFormik = ({match, history}) => {
       const data = await StatusAPI.findAll();
       setStatuses(data);
     } catch (error) {
+      toast.error("Une erreur est survenue ...");
       history.replace('/members');
-      //TODO : Notification flash d'une erreur
     }
   };
   //Récupération du membre en fonction de l'identifiant
@@ -128,8 +128,7 @@ const MemberPageFormik = ({match, history}) => {
       });
     } catch (error) {
       console.log(error.response);
-      //TODO : Notification flash d'une erreur
-      //history.replace("/members");
+      toast.error("Une erreur est survenue ...");
     }
   };
 
@@ -274,7 +273,7 @@ const MemberPageFormik = ({match, history}) => {
           onChange={member.handleChange}/></div>
 
       <div className="form-group d-flex flex-row-reverse">
-        <Link to="/members" className="btn btn-link">Retour à la liste des licenciés</Link>
+        <Link to="/members" className="btn btn-link text-white">Retour à la liste des licenciés</Link>
         <button type="submit" className="btn btn-success">Enregistrer</button>
       </div>
     </form>

@@ -2,24 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4bc1c1df-6302-433b-8454-d726f195cdba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/sidebar.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/sidebar.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/components/NavbarMembers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/NavbarMembers.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/CoachsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/CoachsPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/DirigeantsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/DirigeantsPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/components/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pages/GroupPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pages/GroupViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/GroupViewPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pages/GroupsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/GroupsPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/LoginPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pages/MemberPageFormik.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/MemberPageFormik.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/MembersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/MembersPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/RegisterPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/RegisterPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/TeamPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/TeamPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/TeamViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/TeamViewPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/TeamsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/TeamsPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/services/teamsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/services/teamsAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/services/groupsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/services/groupsAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Gender.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Gender.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Group.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Member.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Member.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Team.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Team.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,17 +187,17 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets" />
+      <recent name="$PROJECT_DIR$/assets/js" />
+      <recent name="$PROJECT_DIR$/assets/images" />
+      <recent name="$PROJECT_DIR$/assets/js/components" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets/js/pages" />
       <recent name="$PROJECT_DIR$/assets/js/services" />
       <recent name="$PROJECT_DIR$/src/Controller" />
       <recent name="$PROJECT_DIR$/assets/css" />
-      <recent name="$PROJECT_DIR$/assets/js/components" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assets" />
-      <recent name="$PROJECT_DIR$/assets/js" />
-      <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/assets/js/components" />
     </key>
   </component>
@@ -236,7 +239,7 @@
       <workItem from="1588061164225" duration="8069000" />
       <workItem from="1588159681131" duration="3213000" />
       <workItem from="1588235468071" duration="31906000" />
-      <workItem from="1588324494139" duration="3063000" />
+      <workItem from="1588324494139" duration="20090000" />
     </task>
     <servers />
   </component>
@@ -267,10 +270,10 @@
     <state x="266" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.2048.1041@0.23.2048.1041" timestamp="1585932718167" />
     <state x="266" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/2048.23.1440.877/0.23.2048.1038@0.23.2048.1038" timestamp="1587041604349" />
     <state x="2235" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/2048.23.1440.877/0.23.2048.1038@2048.23.1440.877" timestamp="1588251812406" />
-    <state x="2520" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587981677795">
+    <state x="2520" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588357889032">
       <screen x="2048" y="23" width="1440" height="877" />
     </state>
-    <state x="2520" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/2048.23.1440.877/0.23.2048.1038@2048.23.1440.877" timestamp="1587981677795" />
+    <state x="2520" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/2048.23.1440.877/0.23.2048.1038@2048.23.1440.877" timestamp="1588357889032" />
     <state x="388" y="472" key="NewPhpFileDialog" timestamp="1586190875830">
       <screen x="0" y="23" width="2048" height="1038" />
     </state>

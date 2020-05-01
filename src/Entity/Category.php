@@ -21,13 +21,13 @@ class Category
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"categories_read", "genders_read", "teams_read", "members_read"})
+     * @Groups({"categories_read", "genders_read", "teams_read", "members_read", "g_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"categories_read", "genders_read", "teams_read", "members_read"})
+     * @Groups({"categories_read", "genders_read", "teams_read", "members_read", "g_read"})
      */
     private $name;
 

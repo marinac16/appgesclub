@@ -5,14 +5,16 @@ import MembersAPI from "../services/membersAPI"
 import {Link} from "react-router-dom";
 import CategoriesAPI from "../services/categoriesAPI";
 import NavbarMembers from "../components/NavbarMembers";
+import {toast} from "react-toastify";
+import ThreeDotsLoader from "../components/Loader/ThreeDotsLoader";
 
 const MembersPage = (props) => {
 
   const [members, setMembers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
-  const [searchByCategory, setSearchByCategory] = useState("");
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   //Gestion du format de date
   const formatDate = (str) => moment(str).format('DD/MM/YYYY');
@@ -25,8 +27,9 @@ const MembersPage = (props) => {
     try {
       const data = await MembersAPI.findAll();
       setMembers(data);
+      setLoading(false);
     } catch (error) {
-      console.log(error.response)
+      toast.error("Une erreur est survenue ...");
     }
   };
 
@@ -37,7 +40,7 @@ const MembersPage = (props) => {
       setCategories(data);
     } catch (error) {
       history.replace('/members');
-      //TODO : Notification flash d'une erreur
+      toast.error("Une erreur est survenue ...")
     }
   };
 
@@ -58,8 +61,10 @@ const MembersPage = (props) => {
     //2. L'approche pessismiste
     try {
       await MembersAPI.delete(id);
+      toast.info("L'adhérant à bien été supprimé !")
     } catch (error) {
       setMembers(originalMembers);
+      toast.error("Une erreur est survenue ...")
     }
   };
 
@@ -92,8 +97,8 @@ const MembersPage = (props) => {
 
 
       <div className="form-group">
-        <input type="text" onChange={handleSearch} value={search} className="form-control"
-               placeholder="Rechercher ..."/>
+        <input type="text" onChange={handleSearch} value={search} className="form-control input-search"
+               placeholder="Faites une recherche en tapant le nom ou le prénom"/>
       </div>
       <table className="table bg-dark text-white">
         <thead>
@@ -108,42 +113,45 @@ const MembersPage = (props) => {
           <th></th>
         </tr>
         </thead>
-        <tbody>
-        {PaginatedMembers.map(member =>
-          <tr key={member.id}>
-            <td>{member.firstName} {member.lastName}</td>
-            <td>{member.licenceNumber}</td>
-            <td className="text-center">{formatDate(member.birthDate)}</td>
-            <td className="text-center">{member.email}</td>
-            <td className="text-center">{member.phoneNumber}</td>
-            <td className="text-center">
-              {member.teams.map(
-                team =>
-                  <li className="li-without-decoration">
-                    <h6><span
-                      key={team.id}
-                      className="badge badge-pill mr-1 badge-warning">
+
+        {!loading && (
+          <tbody>
+          {PaginatedMembers.map(member =>
+            <tr key={member.id}>
+              <td>{member.firstName} {member.lastName}</td>
+              <td>{member.licenceNumber}</td>
+              <td className="text-center">{formatDate(member.birthDate)}</td>
+              <td className="text-center">{member.email}</td>
+              <td className="text-center">{member.phoneNumber}</td>
+              <td className="text-center">
+                {member.teams.map(
+                  team =>
+                    <li className="li-without-decoration">
+                      <h6><span
+                        key={team.id}
+                        className="badge badge-pill mr-1 badge-warning">
                     {team.name}
                   </span></h6>
-                  </li>)}
-            </td>
-            <td className="text-center">{member.statuses.map(s => <li className="li-without-decoration">{s.name}</li>)}</td>
-            <td className="text-right">
-              <Link
-                to={"members/" + member.id}
-                className="btn btn-sm btn-primary">
-                <i className="fas fa-user-edit"/>
-              </Link>
-              <button
-                onClick={() => handleDelete(member.id)}
-                className="ml-1 btn btn-sm btn-primary"><i className="fas fa-trash"/>
-              </button>
-            </td>
-          </tr>
-        )}
-
-        </tbody>
+                    </li>)}
+              </td>
+              <td className="text-center">{member.statuses.map(s => <li
+                className="li-without-decoration">{s.name}</li>)}</td>
+              <td className="text-right">
+                <Link
+                  to={"members/" + member.id}
+                  className="btn btn-sm btn-primary">
+                  <i className="fas fa-user-edit"/>
+                </Link>
+                <button
+                  onClick={() => handleDelete(member.id)}
+                  className="ml-1 btn btn-sm btn-primary"><i className="fas fa-trash"/>
+                </button>
+              </td>
+            </tr>
+          )}
+          </tbody>)}
       </table>
+      {loading && <ThreeDotsLoader className="justify-center"/>}
       {itemsPerPage < filteredMembers.length && (
         <Pagination
           currentPage={currentPage}

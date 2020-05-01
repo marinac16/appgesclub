@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react';
 import AuthAPI from "../services/authAPI";
 import AuthContext from "../context/AuthContext";
 import {Col, Row} from "react-bootstrap";
+import {toast} from "react-toastify";
 
 const LoginPage = ({history}) => {
 
@@ -28,9 +29,11 @@ const LoginPage = ({history}) => {
       await AuthAPI.authenticate(credentials);
       setError("");
       setIsAuthenticated(true);
+      toast.info("Bonjour, vous êtes bien connecté !" );
       history.replace("/dashboard")
     } catch (error) {
       setError("Email invalide, veuillez vérifier votre saisie");
+      toast.error("Attention ! Une erreur est survenue...")
     }
   };
 

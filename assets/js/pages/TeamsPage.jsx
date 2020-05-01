@@ -4,15 +4,15 @@ import Pagination from "../components/Pagination";
 import TeamsAPI from "../services/teamsAPI"
 import {Link} from "react-router-dom";
 import NavbarMembers from "../components/NavbarMembers";
+import {toast} from "react-toastify";
+import ThreeDotsLoader from "../components/Loader/ThreeDotsLoader";
 
-const TeamsPage = (props) => {
+const TeamsPage = () => {
 
   const [teams, setTeams] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
-
-  //Gestion du format de date
-  const formatDate = (str) => moment(str).format('DD/MM/YYYY');
+  const [loading, setLoading] = useState(true);
 
   //Nombre d'items par page
   const itemsPerPage = 10;
@@ -22,8 +22,9 @@ const TeamsPage = (props) => {
     try {
       const data = await TeamsAPI.findAll();
       setTeams(data);
+      setLoading(false);
     }catch (error) {
-      console.log(error.response)
+      toast.error("Une erreur est survenue ...");
     }
   };
 
@@ -42,8 +43,10 @@ const TeamsPage = (props) => {
     //2. L'approche pessismiste
     try {
       await TeamsAPI.delete(id);
+      toast.info("L'équipe a bien été supprimée !");
     } catch (error) {
       setTeams(originalTeams);
+      toast.error("Une erreur est survenue ...");
     }
   };
 
@@ -74,7 +77,7 @@ const TeamsPage = (props) => {
       </div>
 
       <div className="form-group">
-        <input type="text" onChange={handleSearch} value={search} className="form-control"
+        <input type="text" onChange={handleSearch} value={search} className="form-control input-search"
                placeholder="Rechercher ..."/>
       </div>
       <table className="table bg-dark text-white">
@@ -87,7 +90,8 @@ const TeamsPage = (props) => {
             <th></th>
           </tr>
         </thead>
-        <tbody>
+
+        {!loading && (<tbody>
         {PaginatedTeams.map(team =>
           <tr key={team.id}>
             <td><Link to={"team/" + team.id} className="link-white text-orange">
@@ -111,9 +115,9 @@ const TeamsPage = (props) => {
           </tr>
         )}
 
-        </tbody>
+        </tbody>)}
       </table>
-
+      {loading && <ThreeDotsLoader/>}
       {itemsPerPage < filteredTeams.length && (
         <Pagination
           currentPage={currentPage}

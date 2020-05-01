@@ -23,12 +23,16 @@
         "bootstrap": "^4.4.1",
         "formik": "^2.1.4",
         "jwt-decode": "^2.2.0",
+        "loaders.css": "^0.1.2",
         "moment": "^2.24.0",
         "react": "^16.8.6",
         "react-admin": "^3.4.1",
         "react-bootstrap": "^1.0.0",
+        "react-content-loader": "^5.0.4",
         "react-dom": "^16.8.6",
+        "react-loaders": "^3.0.1",
         "react-router-dom": "^5.0.0",
-        "react-select": "^3.1.0"
+        "react-select": "^3.1.0",
+        "react-toastify": "^5.5.0"
     }
 }

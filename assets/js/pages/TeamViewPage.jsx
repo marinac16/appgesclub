@@ -4,14 +4,16 @@ import MembersAPI from "../services/membersAPI";
 import moment from "moment";
 import NavbarMembers from "../components/NavbarMembers";
 import {Container, Row, Col, Button} from "react-bootstrap";
-import Modal from 'react-bootstrap/Modal'
+import Modal from 'react-bootstrap/Modal';
 import {Link} from "react-router-dom";
+import ThreeDotsLoader from "../components/Loader/ThreeDotsLoader";
 
 
 const TeamViewPage = ({match, history}) => {
 
   const {id = "new"} = match.params;
   const [showing, setShowing] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   //Gestion du format de date
   const formatDate = (str) => moment(str).format('DD/MM/YYYY');
@@ -38,6 +40,7 @@ const TeamViewPage = ({match, history}) => {
     try {
       const data = await MembersAPI.findAllByStatus("Joueur");
       setJoueurs(data);
+      setLoading(false);
     } catch (error) {
       console.log(error.response)
     }
@@ -48,6 +51,7 @@ const TeamViewPage = ({match, history}) => {
     try {
       const data = await MembersAPI.findAllByStatus("Coach");
       setCoachs(data);
+      setLoading(false);
     } catch (error) {
       console.log(error.response)
     }
@@ -110,7 +114,6 @@ const TeamViewPage = ({match, history}) => {
     originalMembers.push(newMember);
 
     setTeam({players: originalMembers});
-    window.location.reload();
 
     try {
       await TeamsAPI.updateMembers(id, team);
@@ -131,7 +134,7 @@ const TeamViewPage = ({match, history}) => {
 
     try {
       await TeamsAPI.updateMembers(id, team);
-      window.location.reload()
+      window.location.reload();
     } catch (error) {
       setError("Ce joueur ne peut pas etre ajouté !");
 
@@ -156,6 +159,7 @@ const TeamViewPage = ({match, history}) => {
               </Link>
 
             </div>
+            {!loading && (<div>
             {team.coachs.map(coach =>
               <div className="card-body">
                 <h4>Coach <a className="text-primary">{coach.firstName} {coach.lastName}</a></h4>
@@ -164,8 +168,9 @@ const TeamViewPage = ({match, history}) => {
                   <li>Email : <a className="text-primary">{coach.email}</a></li>
                   <li>Téléphone : <a className="text-primary">{coach.phoneNumber}</a></li>
                 </ul>
-              </div>
-            )}
+              </div>)}
+            </div>)}
+            {loading && <ThreeDotsLoader/>}
 
             <div className="card-footer text-right">
               <button className="btn btn-success" onClick={handleShow}> Ajouter un Coach <i
@@ -189,8 +194,9 @@ const TeamViewPage = ({match, history}) => {
                   <th/>
                 </tr>
                 </thead>
-                <tbody>
 
+                {!loading && (
+                  <tbody>
                 {team.players.map(memberOfTeam =>
                   <tr key={memberOfTeam.id}>
                     <td>{memberOfTeam.firstName} {memberOfTeam.lastName}</td>
@@ -206,8 +212,10 @@ const TeamViewPage = ({match, history}) => {
                     </td>
                   </tr>
                 )}
-                </tbody>
+                </tbody>)}
               </table>
+              {loading && <ThreeDotsLoader/>}
+
               <form onSubmit={handleAddPlayer} className="white-container">
                 <div className="d-flex mt-2 p-3 white-container">
                   <h5 className="text-white mr-3">Ajouter un(e) joueur(se) à cette équipe : </h5>

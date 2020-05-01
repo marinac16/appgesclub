@@ -29,47 +29,47 @@ class Member
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"members_read", "genders_read", "teams_read", "categories_read"})
+     * @Groups({"members_read", "genders_read", "teams_read", "categories_read", "g_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"members_read", "genders_read", "teams_read", "categories_read"})
+     * @Groups({"members_read", "genders_read", "teams_read", "categories_read", "g_read"})
      * @Assert\NotBlank(message = "Le prénom est obligatoire")
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"members_read", "genders_read", "teams_read", "categories_read"})
+     * @Groups({"members_read", "genders_read", "teams_read", "categories_read", "g_read"})
      * @Assert\NotBlank(message = "Le nom de famille est obligatoire")
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="date")
-     * @Groups({"members_read", "genders_read", "teams_read"})
+     * @Groups({"members_read", "genders_read", "teams_read", "g_read"})
      * @Assert\NotBlank(message = "La date de naissance est obligatoire")
      */
     private $birthDate;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"members_read", "teams_read"})
+     * @Groups({"members_read", "teams_read", "g_read"})
      */
     private $licenceNumber;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"members_read", "genders_read", "teams_read"})
+     * @Groups({"members_read", "genders_read", "teams_read", "g_read"})
      * @Assert\NotBlank(message = "Le numero de téléphone est obligatoire")
      */
     private $phoneNumber;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"members_read", "genders_read", "teams_read"})
+     * @Groups({"members_read", "genders_read", "teams_read", "g_read"})
      * @Assert\NotBlank(message = "L'email' est obligatoire")
      */
     private $email;
@@ -77,21 +77,21 @@ class Member
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Gender", inversedBy="members")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"members_read", "teams_read"})
+     * @Groups({"members_read", "teams_read", "g_read"})
      */
     private $gender;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="members")
      * @ORM\JoinColumn(nullable=true)
-     * @Groups({"members_read", "genders_read", "teams_read"})
+     * @Groups({"members_read", "genders_read", "teams_read", "g_read"})
      */
     private $category;
 
 
     /**
      * @ORM\Column(type="boolean")
-     * @Groups({"members_read", "teams_read"})
+     * @Groups({"members_read", "teams_read", "g_read"})
      */
     private $licencieAuClub;
 
@@ -99,7 +99,7 @@ class Member
      * @ORM\ManyToMany(targetEntity="App\Entity\Status", inversedBy="members")
      * @ORM\JoinTable(name="members_statuses")
      * @ORM\JoinColumn(nullable=true)
-     * @Groups({"members_read"})
+     * @Groups({"members_read", "g_read"})
      */
     private $statuses;
 
@@ -117,6 +117,7 @@ class Member
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Group", mappedBy="members")
+     * @Groups({"members_read"})
      */
     private $groups;
 

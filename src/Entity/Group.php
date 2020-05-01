@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Entity(repositoryClass="App\Repository\GroupRepository")
  * @Orm\Table(name="`Group`")
  * @ApiResource(
- *     normalizationContext={"groups"={"groups_read"}
+ *     normalizationContext={"groups"={"g_read"}
  *     },
  * )
  */
@@ -22,19 +22,19 @@ class Group
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"groups_read", "teams_read", "genders_read", "categories_read", "members_read"})
+     * @Groups({"g_read", "teams_read", "genders_read", "categories_read", "members_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"groups_read", "members_read"})
+     * @Groups({"g_read", "members_read", "genders_read", "categories_read"})
      */
     private $name;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Member", inversedBy="groups")
-     * @Groups({"groups_read"})
+     * @Groups({"g_read", "genders_read", "categories_read"})
      */
     private $members;
 

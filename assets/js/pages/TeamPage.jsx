@@ -6,6 +6,7 @@ import TeamsAPI from "../services/teamsAPI";
 import GendersAPI from "../services/gendersAPI";
 import CategoriesAPI from "../services/categoriesAPI";
 import NavbarMembers from "../components/NavbarMembers";
+import {toast} from "react-toastify";
 
 
 const TeamPage = ({match, history}) => {
@@ -32,8 +33,9 @@ const TeamPage = ({match, history}) => {
       const data = await GendersAPI.findAll();
       setGenders(data);
     } catch (error) {
+      toast.error("Une erreur est survenue ...");
       history.replace('/teams');
-      //TODO : Notification flash d'une erreur
+
     }
   };
   //Récupération des Catégories
@@ -42,8 +44,8 @@ const TeamPage = ({match, history}) => {
       const data = await CategoriesAPI.findAll();
       setCategories(data);
     } catch (error) {
+      toast.error("Une erreur est survenue ...");
       history.replace('/teams');
-      //TODO : Notification flash d'une erreur
     }
   };
 
@@ -56,7 +58,7 @@ const TeamPage = ({match, history}) => {
 
     } catch (error) {
       console.log(error.response);
-      //TODO : Notification flash d'une erreur
+      toast.error("Une erreur est survenue ...");
       history.replace("/teams");
     }
   };
@@ -88,16 +90,17 @@ const TeamPage = ({match, history}) => {
     try {
       if (editing) {
         await TeamsAPI.update(id, team);
-        //TODO : Flash notification de succes
+        toast.info("Cette équipe à bien été mise à jour");
         history.replace("/teams");
       } else {
         await TeamsAPI.create(team);
-        //TODO : Flash notification de succes
+        toast.info("Cette équipe à bien été créée");
         history.replace("/teams");
         setErrors({});
       }
     } catch ({response}) {
       const {violations} = response.data;
+      toast.error("Une erreur est survenue ...");
 
       if (violations) {
         const apiErrors = {};
@@ -105,7 +108,7 @@ const TeamPage = ({match, history}) => {
           apiErrors[propertyPath] = message;
         });
         setErrors(apiErrors);
-        //TODO : Flash notification des erreurs
+
       }
     }
   };
@@ -119,7 +122,6 @@ const TeamPage = ({match, history}) => {
       <div className="bg-container mt-4">
         {(editing && <h1>Modification d'une équipe</h1>) || (<h1>Création d'un équipe</h1>)}
         <hr/>
-
 
         <form onSubmit={handleSubmit} className="mt-5">
           <Field

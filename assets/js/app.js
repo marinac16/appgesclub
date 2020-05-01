@@ -14,7 +14,6 @@ import TeamViewPage from "./pages/TeamViewPage";
 import CoachsPage from "./pages/CoachsPage";
 import DirigeantsPage from "./pages/DirigeantsPage";
 import GroupsPage from "./pages/GroupsPage";
-import GroupPage from "./pages/GroupPage";
 import GroupViewPage from "./pages/GroupViewPage";
 import LoginPage from "./pages/LoginPage";
 import MemberPageFormik from "./pages/MemberPageFormik";
@@ -23,10 +22,13 @@ import AuthAPI from "./services/authAPI";
 import AuthContext from "./context/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
 import {Container, Row, Col} from "react-bootstrap"
+import { ToastContainer, toast } from 'react-toastify';
+
 
 
 import '../css/app.css';
 import '../css/sidebar.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 AuthAPI.setup();
@@ -66,7 +68,6 @@ const App = () => {
                   <PrivateRoute path="/team/:id" component={TeamViewPage}/>
                   <PrivateRoute path="/coachs" component={CoachsPage}/>
                   <PrivateRoute path="/dirigeants" component={DirigeantsPage}/>
-                  <PrivateRoute path="/groupes/:id" component={GroupPage}/>
                   <PrivateRoute path="/groupes" component={GroupsPage}/>
                   <PrivateRoute path="/groupe/:id" component={GroupViewPage}/>
                   <PrivateRoute path="/dashboard" component={DashBoard}/>
@@ -77,6 +78,11 @@ const App = () => {
           </Row>
         </Container>
       </HashRouter>
+      <ToastContainer
+        position={toast.POSITION.BOTTOM_LEFT}
+        hideProgressBar={true}
+
+      />
     </AuthContext.Provider>
   );
 };
