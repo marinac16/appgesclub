@@ -10,7 +10,8 @@ const NavbarMembers = (props) => {
       <Link to="/teams" className="navlink-custom"><i className="fas fa-users"/>  Équipes</Link>
       <Link to="/coachs" className="navlink-custom"><i className="fas fa-user-tie"/> Coachs</Link>
       <Link to="/dirigeants" className="navlink-custom"><i className="fas fa-user-tie"/> Dirigeants</Link>
-      <a className="navlink-custom" href="#"><i className="fas fa-chart-pie"/> Statistiques</a>
+      <Link to="/groupes" className="navlink-custom"><i className="fas fa-user-friends"/> Groupes</Link>
+      <p className="navlink-custom"><i className="fas fa-chart-pie"/> Statistiques</p>
 
     </nav>
 

@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Category;
 use App\Entity\Club;
 use App\Entity\Gender;
+use App\Entity\Group;
 use App\Entity\Member;
 use App\Entity\Status;
 use App\Entity\Team;
@@ -41,6 +42,8 @@ class AppFixtures extends Fixture
             $statut->setName($status);
             $manager->persist($statut);
         }
+
+
 
         for ($c = 0; $c < 1; $c++) {
             $club = new Club();

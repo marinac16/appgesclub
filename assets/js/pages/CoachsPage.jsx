@@ -30,7 +30,7 @@ const CoachsPage= (props) => {
     <div className="mb-3 d-flex justify-content-between align-items-center">
       <NavbarMembers/>
     </div>
-    <table className="table table-hover">
+    <table className="table bg-dark text-white">
       <thead>
       <tr>
         <th>Coachs</th>
@@ -38,6 +38,7 @@ const CoachsPage= (props) => {
         <th>Date de naissance</th>
         <th>Email</th>
         <th>Téléphone</th>
+        <th>Équipe(s)</th>
       </tr>
       </thead>
       <tbody>
@@ -49,6 +50,15 @@ const CoachsPage= (props) => {
           <td>{formatDate(coach.birthDate)}</td>
           <td>{coach.email}</td>
           <td>{coach.phoneNumber}</td>
+          <td>{coach.teamsCoached.map(t =>
+            <li className="li-without-decoration">
+              <h6><span
+                key={t.id}
+                className="badge badge-pill mr-1 badge-warning">
+                {t.name}
+              </span></h6>
+            </li>)}
+          </td>
 
         </tr>
       )}

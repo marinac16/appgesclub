@@ -39,7 +39,7 @@ const LoginPage = ({history}) => {
       <Row>
         <Col sm={3}/>
         <Col sm={6} className="white-container-arround mt-4">
-          <h1>Connexion à l'application</h1>
+          <h1 className="text-primary">Connexion à l'application</h1>
 
           <form onSubmit={handleSubmit}>
             <div className="form-group">

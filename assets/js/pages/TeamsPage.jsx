@@ -3,7 +3,6 @@ import moment from "moment";
 import Pagination from "../components/Pagination";
 import TeamsAPI from "../services/teamsAPI"
 import {Link} from "react-router-dom";
-import MembersAPI from "../services/membersAPI";
 import NavbarMembers from "../components/NavbarMembers";
 
 const TeamsPage = (props) => {
@@ -18,7 +17,7 @@ const TeamsPage = (props) => {
   //Nombre d'items par page
   const itemsPerPage = 10;
 
-  //Récupérer la liste des équipes
+  //Récupérer la liste des équipes féminines
   const fetchTeams = async () => {
     try {
       const data = await TeamsAPI.findAll();
@@ -30,7 +29,7 @@ const TeamsPage = (props) => {
 
   // Au chargement du composant, on va chercher les teams
   useEffect(() => {
-    fetchTeams()
+    fetchTeams();
   }, []);
 
   // Gestion de la suppression d'un customers
@@ -48,23 +47,25 @@ const TeamsPage = (props) => {
     }
   };
 
-  //Gestion du changement de page
+//Gestion du changement de page
   const handlePageChange = page => setCurrentPage(page);
 
-  // Gestion de la recherche
+// Gestion de la recherche
   const handleSearch = ({currentTarget}) => {
     setSearch(currentTarget.value);
     setCurrentPage(1);
   };
 
-  // Filtrage des teams en fonction de la recherche
+// Filtrage des teams en fonction de la recherche
   const filteredTeams = teams.filter(
     t =>
       t.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  // Pagination
+// Pagination
   const PaginatedTeams = Pagination.getData(filteredTeams, currentPage, itemsPerPage);
+
+
   return (
     <>
       <div className="mb-3 d-flex justify-content-between align-items-center">
@@ -76,31 +77,35 @@ const TeamsPage = (props) => {
         <input type="text" onChange={handleSearch} value={search} className="form-control"
                placeholder="Rechercher ..."/>
       </div>
-      <table className="table table-hover">
+      <table className="table bg-dark text-white">
         <thead>
           <tr>
             <th>Équipes</th>
             <th className="text-center">Catégorie</th>
             <th className="text-center">Genre</th>
+            <th className="text-center">Coachs</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
         {PaginatedTeams.map(team =>
           <tr key={team.id}>
-            <td><Link to={"team/" + team.id} className="text-primary">{team.name}</Link></td>
+            <td><Link to={"team/" + team.id} className="link-white text-orange">
+              <h6><strong>{team.name}</strong></h6>
+            </Link></td>
             <td className="text-center">{team.category.name}</td>
             <td className="text-center">{team.gender.type}</td>
+            <td className="text-center">{team.coachs.map(c=> <li className="li-without-decoration">{c.firstName} {c.lastName}</li>)}</td>
 
             <td className="text-right">
               <Link
                 to={"teams/" + team.id}
-                className="btn btn-sm btn-outline-primary">
+                className="btn btn-sm btn-primary">
                 <i className="fas fa-pen"/>
               </Link>
               <button
                 onClick={() => handleDelete(team.id)}
-                className="ml-1 btn btn-sm btn-outline-primary"><i className="fas fa-trash"/>
+                className="ml-1 btn btn-sm btn-primary"><i className="fas fa-trash"/>
               </button>
             </td>
           </tr>
@@ -108,6 +113,7 @@ const TeamsPage = (props) => {
 
         </tbody>
       </table>
+
       {itemsPerPage < filteredTeams.length && (
         <Pagination
           currentPage={currentPage}
@@ -116,6 +122,7 @@ const TeamsPage = (props) => {
           onPageChanged={handlePageChange}
         />
       )}
+
     </>
 
   );

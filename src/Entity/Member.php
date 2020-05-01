@@ -115,6 +115,11 @@ class Member
      */
     private $teamsCoached;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Group", mappedBy="members")
+     */
+    private $groups;
+
 
     //**
      //* @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="members")
@@ -127,6 +132,7 @@ class Member
         $this->teams = new ArrayCollection();
         $this->statuses = new ArrayCollection();
         $this->teamsCoached = new ArrayCollection();
+        $this->groups = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -340,6 +346,34 @@ class Member
         if ($this->teamsCoached->contains($teamsCoaching)) {
             $this->teamsCoached->removeElement($teamsCoaching);
             $teamsCoaching->removeCoach($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Group[]
+     */
+    public function getGroups(): Collection
+    {
+        return $this->groups;
+    }
+
+    public function addGroup(Group $group): self
+    {
+        if (!$this->groups->contains($group)) {
+            $this->groups[] = $group;
+            $group->addMember($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroup(Group $group): self
+    {
+        if ($this->groups->contains($group)) {
+            $this->groups->removeElement($group);
+            $group->removeMember($this);
         }
 
         return $this;

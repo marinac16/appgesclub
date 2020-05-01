@@ -55,23 +55,29 @@ main {
 }
 
 /* ########### FORMULAIRES ############### */
-.form-control {
+.form-control, .input-group{
     border-radius: 10px;
 }
 
 /* ########### TABLEAUX ############### */
-table {
-    background-color: #FFFFFF;
-
-}
-.ligne-tableau-equipe:hover {
+.table tr:hover {
+    background-color: #2f2f2f;
     color: #FFFFFF;
-    background-color: #444444;
+
+}
+
+.table td{
+    border-color: #222222;
 }
 
 
+/* ########### LISTE ############### */
 
-/* ########### Card ############### */
+.li-without-decoration {
+    list-style:none;
+
+}
+/* ########### CARD ############### */
 
 .card {
     border-radius: 10px;
@@ -83,6 +89,10 @@ table {
 
 .link-white:hover{
     color: white;
+}
+.text-orange:hover {
+    color: #d39e2b;
+    text-decoration: none;
 }
 
 /* ########### TITRE ############### */

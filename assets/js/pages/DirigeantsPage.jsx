@@ -30,7 +30,7 @@ const DirigeantsPage= (props) => {
     <div className="mb-3 d-flex justify-content-between align-items-center">
       <NavbarMembers/>
     </div>
-    <table className="table table-hover">
+    <table className="table bg-dark text-white">
       <thead>
       <tr>
         <th>Dirigeants</th>

@@ -95,7 +95,7 @@ const MembersPage = (props) => {
         <input type="text" onChange={handleSearch} value={search} className="form-control"
                placeholder="Rechercher ..."/>
       </div>
-      <table className="table table-hover">
+      <table className="table bg-dark text-white">
         <thead>
         <tr>
           <th>Licencié</th>
@@ -119,22 +119,24 @@ const MembersPage = (props) => {
             <td className="text-center">
               {member.teams.map(
                 team =>
-                  <span
-                    key={team.id}
-                    className="badge badge-pill mr-1 badge-warning">
+                  <li className="li-without-decoration">
+                    <h6><span
+                      key={team.id}
+                      className="badge badge-pill mr-1 badge-warning">
                     {team.name}
-                  </span>)}
+                  </span></h6>
+                  </li>)}
             </td>
-            <td className="text-center">{member.statuses.map(s => (s.name))}</td>
+            <td className="text-center">{member.statuses.map(s => <li className="li-without-decoration">{s.name}</li>)}</td>
             <td className="text-right">
               <Link
                 to={"members/" + member.id}
-                className="btn btn-sm btn-outline-primary">
+                className="btn btn-sm btn-primary">
                 <i className="fas fa-user-edit"/>
               </Link>
               <button
                 onClick={() => handleDelete(member.id)}
-                className="ml-1 btn btn-sm btn-outline-primary"><i className="fas fa-trash"/>
+                className="ml-1 btn btn-sm btn-primary"><i className="fas fa-trash"/>
               </button>
             </td>
           </tr>

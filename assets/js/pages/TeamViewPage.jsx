@@ -28,6 +28,7 @@ const TeamViewPage = ({match, history}) => {
     coachs: []
   });
 
+  //Gestion de la modal
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -191,7 +192,7 @@ const TeamViewPage = ({match, history}) => {
                 <tbody>
 
                 {team.players.map(memberOfTeam =>
-                  <tr key={memberOfTeam.id} className="ligne-tableau-equipe">
+                  <tr key={memberOfTeam.id}>
                     <td>{memberOfTeam.firstName} {memberOfTeam.lastName}</td>
                     <td className="text-center">{formatDate(memberOfTeam.birthDate)}</td>
                     <td className="text-center">{memberOfTeam.licenceNumber}</td>

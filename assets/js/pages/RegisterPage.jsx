@@ -67,7 +67,7 @@ const RegisterPage = (props) => {
           <Col sm={3}/>
           <Col sm={6} className="white-container-arround mt-4">
 
-            <h1>Inscription</h1>
+            <h1 className="text-primary">Inscription</h1>
 
             <form onSubmit={handleSubmit}>
 

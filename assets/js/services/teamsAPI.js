@@ -5,6 +5,11 @@ function findAll() {
     .get("http://localhost/appli-GESCLUB/public/api/teams")
     .then(response => response.data["hydra:member"])
 }
+function findAllByGender(gender) {
+  return axios
+    .get("http://localhost/appli-GESCLUB/public/api/teams?gender.type=" + gender)
+    .then(response => response.data["hydra:member"])
+}
 
 function find(id) {
   return axios
@@ -39,9 +44,7 @@ function updateMembers(id, team) {
       category: `/api/categories/${team.category.id}`,
       players: team.players.map(p => `/api/members/${p.id}`),
       coachs: team.coachs.map(c => `/api/members/${c.id}`)
-
     });
-
 }
 
 function deleteTeam(id) {
@@ -60,6 +63,7 @@ function addMember(id, newMember) {
 
 export default {
   findAll,
+  findAllByGender,
   find,
   create,
   update,

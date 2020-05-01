@@ -61,13 +61,13 @@ const TeamPage = ({match, history}) => {
     }
   };
 
-  //Récupération de la liste des clients a chaque chargement du composant
+  //Récupération de la liste des genres et des catégories a chaque chargement du composant
   useEffect(() => {
     fetchGenders();
     fetchCategories();
   }, []);
 
-  // Récupération de la bonne facture quand l'identifiant de l'url change
+  // Récupération de la bonne équipe quand l'identifiant de l'url change
   useEffect(() => {
     if (id !== "new") {
       setEditing(true);
