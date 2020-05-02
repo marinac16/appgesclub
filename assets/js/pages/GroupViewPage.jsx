@@ -4,6 +4,7 @@ import GroupsAPI from "../services/groupsAPI";
 import MembersAPI from "../services/membersAPI";
 import TeamsAPI from "../services/teamsAPI";
 import moment from "moment";
+import {toast} from "react-toastify";
 
 
 const GroupViewPage = ({match, history}) => {
@@ -61,20 +62,33 @@ const GroupViewPage = ({match, history}) => {
     setNewMember({id: currentTarget.value});
   };
 
+  const handleRemoveMember = async id => {
+    const originalMembers = (group.members);
+    const index = originalMembers.findIndex(player => player.id === id);
+
+    originalMembers.splice(index, 1);
+    setGroup({members: originalMembers});
+
+    try {
+      await GroupsAPI.update(group.id, group);
+      window.location.reload();
+    } catch (error) {
+      toast.error("Une erreur est survenue ...")
+    }
+  };
+
   const handleAddMember = async event => {
     event.preventDefault();
 
     console.log(newMember);
     const originalMembers = (group.members);
     originalMembers.push(newMember);
-
     setGroup({members: originalMembers});
     try {
       await GroupsAPI.update(id, group);
-      window.location.reload()
+      window.location.reload();
     } catch (error) {
-
-
+      toast.error("Une erreur est survenue ...")
     }
 
   };
@@ -89,7 +103,6 @@ const GroupViewPage = ({match, history}) => {
       <div className="bg-container">
         <div className="d-flex justify-content-between align-items-center">
           <h3 className="text-white">{group.name}</h3>
-          <button className="btn btn-success">Bouton 1</button>
         </div>
 
         <table className="table bg-dark text-white mt-3">
@@ -114,7 +127,7 @@ const GroupViewPage = ({match, history}) => {
               <td className="text-center">{m.phoneNumber}</td>
               <td className="text-center">
                 <button
-                  //onClick={() => handleRemovePlayers(memberOfTeam.id)}
+                  onClick={() => handleRemoveMember(m.id)}
                   className="ml-1 btn btn-sm btn-danger"><i className="fas fa-user-times"/>
                 </button>
               </td>

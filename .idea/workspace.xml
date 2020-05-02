@@ -3,26 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4bc1c1df-6302-433b-8454-d726f195cdba" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/components/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/Navbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/GroupPage.jsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/GroupViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/GroupViewPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/GroupsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/GroupsPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/LoginPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/MemberPageFormik.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/MemberPageFormik.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/MembersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/MembersPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/RegisterPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/RegisterPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/TeamPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/TeamPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/TeamViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/TeamViewPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/TeamsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/TeamsPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/services/groupsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/services/groupsAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Gender.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Gender.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Group.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Member.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Member.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Team.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Team.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,7 +221,8 @@
       <workItem from="1588061164225" duration="8069000" />
       <workItem from="1588159681131" duration="3213000" />
       <workItem from="1588235468071" duration="31906000" />
-      <workItem from="1588324494139" duration="20090000" />
+      <workItem from="1588324494139" duration="20230000" />
+      <workItem from="1588408312022" duration="3273000" />
     </task>
     <servers />
   </component>

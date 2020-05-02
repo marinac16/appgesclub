@@ -69,10 +69,16 @@ class Team
      */
     private $coachs;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Match", mappedBy="teamLocal")
+     */
+    private $matches;
+
     public function __construct()
     {
         $this->players = new ArrayCollection();
         $this->coachs = new ArrayCollection();
+        $this->matches = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -177,6 +183,37 @@ class Team
     public function setCoachs($coachs): void
     {
         $this->coachs = $coachs;
+    }
+
+    /**
+     * @return Collection|Match[]
+     */
+    public function getMatches(): Collection
+    {
+        return $this->matches;
+    }
+
+    public function addMatch(Match $match): self
+    {
+        if (!$this->matches->contains($match)) {
+            $this->matches[] = $match;
+            $match->setTeamLocal($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMatch(Match $match): self
+    {
+        if ($this->matches->contains($match)) {
+            $this->matches->removeElement($match);
+            // set the owning side to null (unless already changed)
+            if ($match->getTeamLocal() === $this) {
+                $match->setTeamLocal(null);
+            }
+        }
+
+        return $this;
     }
 
 
