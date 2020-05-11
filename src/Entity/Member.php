@@ -29,20 +29,20 @@ class Member
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"members_read", "genders_read", "teams_read", "categories_read", "g_read"})
+     * @Groups({"members_read", "genders_read", "teams_read", "categories_read", "g_read", "matchs_read", "weekends_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"members_read", "genders_read", "teams_read", "categories_read", "g_read"})
+     * @Groups({"members_read", "genders_read", "teams_read", "categories_read", "g_read", "matchs_read", "weekends_read"})
      * @Assert\NotBlank(message = "Le prénom est obligatoire")
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"members_read", "genders_read", "teams_read", "categories_read", "g_read"})
+     * @Groups({"members_read", "genders_read", "teams_read", "categories_read", "g_read", "matchs_read", "weekends_read"})
      * @Assert\NotBlank(message = "Le nom de famille est obligatoire")
      */
     private $lastName;
@@ -56,20 +56,20 @@ class Member
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"members_read", "teams_read", "g_read"})
+     * @Groups({"members_read", "teams_read", "g_read", "matchs_read"})
      */
     private $licenceNumber;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"members_read", "genders_read", "teams_read", "g_read"})
+     * @Groups({"members_read", "genders_read", "teams_read", "g_read", "matchs_read"})
      * @Assert\NotBlank(message = "Le numero de téléphone est obligatoire")
      */
     private $phoneNumber;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"members_read", "genders_read", "teams_read", "g_read"})
+     * @Groups({"members_read", "genders_read", "teams_read", "g_read", "matchs_read"})
      * @Assert\NotBlank(message = "L'email' est obligatoire")
      */
     private $email;

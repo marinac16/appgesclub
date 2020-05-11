@@ -15,6 +15,9 @@ import CoachsPage from "./pages/CoachsPage";
 import DirigeantsPage from "./pages/DirigeantsPage";
 import GroupsPage from "./pages/GroupsPage";
 import GroupViewPage from "./pages/GroupViewPage";
+import WeekendsPage from "./pages/WeekendsPage";
+import WeekendPage from "./pages/WeekendPage";
+import WeekendViewPage from "./pages/WeekendViewPage";
 import LoginPage from "./pages/LoginPage";
 import MemberPageFormik from "./pages/MemberPageFormik";
 import RegisterPage from "./pages/RegisterPage";
@@ -29,6 +32,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import '../css/app.css';
 import '../css/sidebar.css';
 import 'react-toastify/dist/ReactToastify.css';
+
 
 
 AuthAPI.setup();
@@ -70,6 +74,10 @@ const App = () => {
                   <PrivateRoute path="/dirigeants" component={DirigeantsPage}/>
                   <PrivateRoute path="/groupes" component={GroupsPage}/>
                   <PrivateRoute path="/groupe/:id" component={GroupViewPage}/>
+                  <PrivateRoute path="/weekends/:id" component={WeekendPage}/>
+                  <PrivateRoute path="/weekends/" component={WeekendsPage}/>
+                  <PrivateRoute path="/weekend/domicile/:id" component={WeekendViewPage}/>
+                  <PrivateRoute path="/weekend/exterieur/:id" component={WeekendViewPage}/>
                   <PrivateRoute path="/dashboard" component={DashBoard}/>
                   <Route path="/" component={HomePage}/>
                 </Switch>

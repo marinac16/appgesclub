@@ -29,6 +29,17 @@ class Match
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     * @Groups({"matchs_read", "weekends_read"})
+     */
+    private $refMatch;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $location;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Team", inversedBy="matches")
      * @Groups({"matchs_read", "weekends_read"})
      */
@@ -41,7 +52,7 @@ class Match
     private $teamOpponent;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string")
      * @Groups({"matchs_read", "weekends_read"})
      */
     private $startTime;
@@ -55,6 +66,7 @@ class Match
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Member")
      * @ORM\JoinTable(name="matchs_referees")
+     * @ORM\JoinColumn(nullable=false)
      * @Groups({"matchs_read", "weekends_read"})
      */
     private $referees;
@@ -62,12 +74,14 @@ class Match
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Member")
      * @ORM\JoinTable(name="matchs_scorers")
+     * @ORM\JoinColumn(nullable=true)
      * @Groups({"matchs_read", "weekends_read"})
      */
     private $scorers;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Member")
+     * @ORM\JoinColumn(nullable=true)
      * @Groups({"matchs_read", "weekends_read"})
      */
     private $clubReferent;
@@ -77,6 +91,7 @@ class Match
      * @Groups({"matchs_read"})
      */
     private $weekend;
+
 
     public function __construct()
     {
@@ -113,12 +128,12 @@ class Match
         return $this;
     }
 
-    public function getStartTime(): ?\DateTimeInterface
+    public function getStartTime(): ?string
     {
         return $this->startTime;
     }
 
-    public function setStartTime(\DateTimeInterface $startTime): self
+    public function setStartTime(string $startTime): self
     {
         $this->startTime = $startTime;
 
@@ -212,4 +227,40 @@ class Match
 
         return $this;
     }
+
+    public function getRefMatch(): ?string
+    {
+        return $this->refMatch;
+    }
+
+    public function setRefMatch(string $refMatch): self
+    {
+        $this->refMatch = $refMatch;
+
+        return $this;
+    }
+
+    public function getLocation(): ?string
+    {
+        return $this->location;
+    }
+
+    public function setLocation(?string $location): self
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    public function setReferees($referees): void
+    {
+        $this->referees = $referees;
+    }
+
+    public function setScorers($scorers): void
+    {
+        $this->scorers = $scorers;
+    }
+
+
 }

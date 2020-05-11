@@ -28,13 +28,13 @@ class Team
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"teams_read", "genders_read", "categories_read", "members_read"})
+     * @Groups({"teams_read", "genders_read", "categories_read", "members_read", "matchs_read", "weekends_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"teams_read", "genders_read", "categories_read", "members_read"})
+     * @Groups({"teams_read", "genders_read", "categories_read", "members_read", "matchs_read", "weekends_read"})
      * @Assert\NotBlank(message = "Le nom de l'équipe est obligatoire")
      */
     private $name;

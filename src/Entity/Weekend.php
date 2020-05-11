@@ -47,7 +47,7 @@ class Weekend
     private $endDate;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Match", mappedBy="weekend")
+     * @ORM\OneToMany(targetEntity="App\Entity\Match", mappedBy="weekend", cascade={"persist", "remove"})
      * @Groups({"weekends_read"})
      */
     private $matches;

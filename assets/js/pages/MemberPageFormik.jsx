@@ -40,10 +40,12 @@ const MemberPageFormik = ({match, history}) => {
     onSubmit: async values => {
       try {
         if (editing) {
+          console.log(values);
           await MembersAPI.update(id, values);
           toast.info("Cet adhérant à bien été mis à jour");
           history.replace("/members");
         } else {
+          console.log(values);
           await MembersAPI.create(values);
           toast.info("Cet adhérant à bien été créé");
           history.replace("/members");
@@ -58,8 +60,6 @@ const MemberPageFormik = ({match, history}) => {
             apiErrors[propertyPath] = message;
           });
           setErrors(apiErrors);
-
-
         }
       }
 
