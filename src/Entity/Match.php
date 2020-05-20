@@ -2,6 +2,9 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -17,6 +20,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     attributes={"pagination_enabled"=false}
  *     )
  * )
+ * @ApiFilter(BooleanFilter::class, properties={"home"})
+ * @ApiFilter(SearchFilter::class, properties={"weekend"})
  */
 class Match
 {

@@ -2,17 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4bc1c1df-6302-433b-8454-d726f195cdba" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/components/NavbarMembers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/NavbarMembers.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/components/Sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/Sidebar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/components/forms/Field.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/forms/Field.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/MemberPageFormik.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/MemberPageFormik.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pages/DashBoard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/DashBoard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pages/WeekendViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/WeekendDomViewPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/services/matchsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/services/matchsAPI.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Match.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Match.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Member.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Member.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Team.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Team.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Weekend.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Weekend.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -173,24 +172,24 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/js/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/js/pages" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/js/pages" />
+      <recent name="$PROJECT_DIR$/assets/js/components" />
+      <recent name="$PROJECT_DIR$/assets/js/services" />
+      <recent name="$PROJECT_DIR$/assets/js/components/forms" />
+      <recent name="$PROJECT_DIR$/src/Controller" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets" />
       <recent name="$PROJECT_DIR$/assets/js" />
       <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/assets/js/components" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assets/js/components" />
-      <recent name="$PROJECT_DIR$/assets/js/services" />
-      <recent name="$PROJECT_DIR$/assets/js/pages" />
-      <recent name="$PROJECT_DIR$/assets/js/components/forms" />
-      <recent name="$PROJECT_DIR$/src/Controller" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -236,7 +235,10 @@
       <workItem from="1588577694034" duration="7386000" />
       <workItem from="1588679624801" duration="9792000" />
       <workItem from="1588755690570" duration="3203000" />
-      <workItem from="1589182226368" duration="1118000" />
+      <workItem from="1589182226368" duration="6380000" />
+      <workItem from="1589786153911" duration="9349000" />
+      <workItem from="1589876330771" duration="9707000" />
+      <workItem from="1589957150746" duration="17993000" />
     </task>
     <servers />
   </component>

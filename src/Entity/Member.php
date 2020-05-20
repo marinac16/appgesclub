@@ -122,12 +122,6 @@ class Member
     private $groups;
 
 
-    //**
-     //* @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="members")
-     //* @ORM\JoinColumn(nullable=true)
-     //*/
-    //private $user;
-
     public function __construct()
     {
         $this->teams = new ArrayCollection();

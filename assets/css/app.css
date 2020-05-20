@@ -84,6 +84,14 @@ main {
     list-style:none;
 }
 
+.dropdown-menu {
+    position: absolute;
+    will-change: transform;
+    top: 0;
+    left: 0;
+    transform: translate3d(0px, 38px, 0px);
+}
+
 /* ########### CARD ############### */
 
 .card {
@@ -137,6 +145,20 @@ h6 {
 
 .bg-blue {
     background-color: rgb(40, 95, 122);
+}
+
+/* ########### TEXT COLOR ############### */
+.text-marine{
+    color: #0a437b;
+}
+
+.text-green{
+    color: #2d613b;
+}
+
+/* ########### FONT AWESOME ############### */
+.fa-green{
+    color: #53b76f;
 }
 
 

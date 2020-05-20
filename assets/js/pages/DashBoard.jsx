@@ -51,8 +51,8 @@ const HomePage = (props) => {
                 <Link to="/members/new" className="link-white"><i className="fas fa-2x fa-plus-circle"/></Link>
               </div>
               <div className="card-body">
-                <p className="card-text">Vous avez {nbMembers} adhérants</p>
-                <p className="card-text">Vous avez {nbTeams} équipes</p>
+                <p className="text-marine"><b>Toute la gestion de vos adhérants, et vos équipes en un clic !! </b></p>
+                <p className="card-text">Vous avez {nbMembers} adhérants et {nbTeams} équipes</p>
               </div>
               <div className="card-footer text-right"><Link to="/members" className="link-white">Voir la liste</Link></div>
             </div>
@@ -61,13 +61,13 @@ const HomePage = (props) => {
             <div className="card text-white bg-success mb-3">
               <div className="card-header d-flex justify-content-between align-items-center">
                 <h3>Gestion des Weekends</h3>
-                <Link to="#" className="link-white"><i className="fas fa-2x fa-plus-circle"/></Link>
+                <Link to="weekends/new" className="link-white"><i className="fas fa-2x fa-plus-circle"/></Link>
               </div>
               <div className="card-body">
-                <p className="card-text">Weekend précédent</p>
-                <p className="card-text">Weekend suivant</p>
+                <p className="text-green"><b>Toute la gestion de vos weekends, vos matchs et vos rencontres ICI !</b></p>
+                <p className="card-text">Retrouvez la liste de tous vos matchs AJOUTER...SUPPRIMER...MODIFIER Organisez-vous comme vous le souhaitez !</p>
               </div>
-              <div className="card-footer text-right"><Link to="#" className="link-white">Voir la liste</Link></div>
+              <div className="card-footer text-right"><Link to="/weekends" className="link-white">Voir la liste</Link></div>
             </div>
           </Col>
           <Col sm={4}>

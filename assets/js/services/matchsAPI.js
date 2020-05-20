@@ -1,15 +1,20 @@
 import axios from "axios";
 
+function findAllByWeekendAndisHome(weekend, response) {
+  return axios
+    .get("http://localhost/appli-GESCLUB/public/api/matches?home=" + response + "&weekend=" + weekend)
+    .then(response => response.data["hydra:member"])
+}
+
 function create(match) {
   return axios
     .post("http://localhost/appli-GESCLUB/public/api/matches",
       {
         ...match,
         teamLocal: `/api/teams/${match.teamLocal}`,
-        clubReferent: `/api/members/${match.clubReferent}`,
         weekend: `/api/weekends/${match.weekend}`,
+        clubReferent: `/api/members/${match.clubReferent}`,
         referees: match.referees.map(r => `/api/members/${r}`),
-        scorers: match.scorers.map(s => `/api/members/${s}`)
       });
 }
 
@@ -21,8 +26,8 @@ function update(match, id) {
         teamLocal: `/api/teams/${match.teamLocal}`,
         clubReferent: `/api/members/${match.clubReferent}`,
         weekend: `/api/weekends/${match.weekend}`,
-        referees:`/api/members/${match.referees}`,
-        scorers:`/api/members/${match.scorers}`,
+        referees: match.referees.map(r => `/api/members/${r}`),
+        scorers: match.scorers.map(s => `/api/members/${s}`)
       });
 }
 
@@ -32,6 +37,7 @@ function deleteMatch(id) {
 }
 
 export default {
+  findAllByWeekendAndisHome,
   create,
   update,
   delete: deleteMatch,

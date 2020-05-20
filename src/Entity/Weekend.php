@@ -17,6 +17,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     attributes={"pagination_enabled"=false}
  *     )
  * )
+ *
  */
 class Weekend
 {
