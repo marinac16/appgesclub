@@ -170,7 +170,9 @@ const WeekendDomViewPage = ({match, history}) => {
             <div className="mb-3 d-flex justify-content">
               <Link to={"/weekends"} ><i className="mr-3 text-white fas fa-3x fa-arrow-alt-circle-left"/></Link>
               <h1>{weekend.name} - Matchs à l'extérieur</h1></div>
-            {!showForm && (<button onClick={handleShowForm} className="btn btn-success">Ajouter un match</button>)}
+            {!showForm && (<button onClick={handleShowForm} className="btn btn-success">Ajouter un match
+              <i className="pl-2 fas fa-location-arrow"/>
+            </button>)}
           </div>
           <hr/>
 

@@ -19,6 +19,7 @@ import WeekendsPage from "./pages/WeekendsPage";
 import WeekendPage from "./pages/WeekendPage";
 import WeekendDomViewPage from "./pages/WeekendDomViewPage";
 import WeekendExtViewPage from "./pages/WeekendExtViewPage";
+import MatchPage from "./pages/MatchPage";
 import LoginPage from "./pages/LoginPage";
 import MemberPageFormik from "./pages/MemberPageFormik";
 import RegisterPage from "./pages/RegisterPage";
@@ -75,10 +76,13 @@ const App = () => {
                   <PrivateRoute path="/dirigeants" component={DirigeantsPage}/>
                   <PrivateRoute path="/groupes" component={GroupsPage}/>
                   <PrivateRoute path="/groupe/:id" component={GroupViewPage}/>
+                  <PrivateRoute path="/weekends/:id/matches/:id" component={MatchPage}/>
                   <PrivateRoute path="/weekends/:id" component={WeekendPage}/>
                   <PrivateRoute path="/weekends/" component={WeekendsPage}/>
                   <PrivateRoute path="/weekend/domicile/:id" component={WeekendDomViewPage}/>
                   <PrivateRoute path="/weekend/exterieur/:id" component={WeekendExtViewPage}/>
+
+
                   <PrivateRoute path="/dashboard" component={DashBoard}/>
                   <Route path="/" component={HomePage}/>
                 </Switch>

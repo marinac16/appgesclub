@@ -246,6 +246,7 @@ const TeamViewPage = ({match, history}) => {
         </Col>
       </Row>
     </Container>
+
       {/* ------ MODAL ajouter un coach -------- */}
 
       <Modal show={show} onHide={handleClose} animation={true} size="lg" centered>

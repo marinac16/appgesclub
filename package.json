@@ -19,6 +19,7 @@
         "@kenshooui/react-multi-select": "^1.1.6",
         "@material-ui/core": "^4.9.10",
         "@material-ui/icons": "^4.9.1",
+        "@material-ui/lab": "^4.0.0-alpha.55",
         "axios": "^0.18.0",
         "bootstrap": "^4.4.1",
         "formik": "^2.1.4",

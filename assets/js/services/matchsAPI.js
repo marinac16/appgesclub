@@ -14,7 +14,6 @@ function create(match) {
         teamLocal: `/api/teams/${match.teamLocal}`,
         weekend: `/api/weekends/${match.weekend}`,
         clubReferent: `/api/members/${match.clubReferent}`,
-        referees: match.referees.map(r => `/api/members/${r}`),
       });
 }
 

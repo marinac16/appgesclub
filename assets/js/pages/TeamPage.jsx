@@ -120,7 +120,7 @@ const TeamPage = ({match, history}) => {
         <NavbarMembers/>
       </div>
       <div className="bg-container mt-4">
-        {(editing && <h1>Modification d'une équipe</h1>) || (<h1>Création d'un équipe</h1>)}
+        {(editing && <h1>Modification d'une équipe</h1>) || (<h1>Création d'une équipe</h1>)}
         <hr/>
 
         <form onSubmit={handleSubmit} className="mt-5">

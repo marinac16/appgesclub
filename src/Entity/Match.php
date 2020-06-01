@@ -34,13 +34,14 @@ class Match
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"matchs_read", "weekends_read"})
      */
     private $refMatch;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"matchs_read", "weekends_read"})
      */
     private $location;
 
@@ -51,13 +52,13 @@ class Match
     private $teamLocal;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"matchs_read", "weekends_read"})
      */
     private $teamOpponent;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      * @Groups({"matchs_read", "weekends_read"})
      */
     private $startTime;
@@ -71,7 +72,7 @@ class Match
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Member")
      * @ORM\JoinTable(name="matchs_referees")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      * @Groups({"matchs_read", "weekends_read"})
      */
     private $referees;
