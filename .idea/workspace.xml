@@ -4,10 +4,7 @@
     <list default="true" id="4bc1c1df-6302-433b-8454-d726f195cdba" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/TeamPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/TeamPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/TeamViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/TeamViewPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/WeekendDomViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/WeekendDomViewPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/WeekendExtViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/WeekendExtViewPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/services/matchsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/services/matchsAPI.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
@@ -177,18 +174,18 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assets" />
-      <recent name="$PROJECT_DIR$/assets/js" />
-      <recent name="$PROJECT_DIR$/assets/images" />
-      <recent name="$PROJECT_DIR$/assets/js/components" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets/js/pages" />
       <recent name="$PROJECT_DIR$/assets/js/components" />
       <recent name="$PROJECT_DIR$/assets/js/services" />
       <recent name="$PROJECT_DIR$/assets/js/components/forms" />
       <recent name="$PROJECT_DIR$/src/Controller" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets" />
+      <recent name="$PROJECT_DIR$/assets/js" />
+      <recent name="$PROJECT_DIR$/assets/images" />
+      <recent name="$PROJECT_DIR$/assets/js/components" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -240,7 +237,10 @@
       <workItem from="1589957150746" duration="17994000" />
       <workItem from="1590131014954" duration="1150000" />
       <workItem from="1590566441177" duration="1187000" />
-      <workItem from="1591018894979" duration="12195000" />
+      <workItem from="1591018894979" duration="12297000" />
+      <workItem from="1591178528935" duration="2200000" />
+      <workItem from="1591188200309" duration="5234000" />
+      <workItem from="1591261560908" duration="9970000" />
     </task>
     <servers />
   </component>
@@ -275,6 +275,22 @@
       <screen x="2048" y="23" width="1440" height="877" />
     </state>
     <state x="2520" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/2048.23.1440.877/0.23.2048.1038@2048.23.1440.877" timestamp="1588357889032" />
+    <state width="1398" height="230" key="GridCell.Tab.0.bottom" timestamp="1591187718483">
+      <screen x="2048" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="230" key="GridCell.Tab.0.bottom/2048.23.1440.877/0.23.2048.1038@2048.23.1440.877" timestamp="1591187718483" />
+    <state width="1398" height="230" key="GridCell.Tab.0.center" timestamp="1591187718482">
+      <screen x="2048" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="230" key="GridCell.Tab.0.center/2048.23.1440.877/0.23.2048.1038@2048.23.1440.877" timestamp="1591187718482" />
+    <state width="1398" height="230" key="GridCell.Tab.0.left" timestamp="1591187718481">
+      <screen x="2048" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="230" key="GridCell.Tab.0.left/2048.23.1440.877/0.23.2048.1038@2048.23.1440.877" timestamp="1591187718481" />
+    <state width="1398" height="230" key="GridCell.Tab.0.right" timestamp="1591187718482">
+      <screen x="2048" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="230" key="GridCell.Tab.0.right/2048.23.1440.877/0.23.2048.1038@2048.23.1440.877" timestamp="1591187718482" />
     <state x="388" y="472" key="NewPhpFileDialog" timestamp="1586190875830">
       <screen x="0" y="23" width="2048" height="1038" />
     </state>

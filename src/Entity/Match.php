@@ -75,22 +75,7 @@ class Match
      * @ORM\JoinColumn(nullable=true)
      * @Groups({"matchs_read", "weekends_read"})
      */
-    private $referees;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Member")
-     * @ORM\JoinTable(name="matchs_scorers")
-     * @ORM\JoinColumn(nullable=true)
-     * @Groups({"matchs_read", "weekends_read"})
-     */
-    private $scorers;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Member")
-     * @ORM\JoinColumn(nullable=true)
-     * @Groups({"matchs_read", "weekends_read"})
-     */
-    private $clubReferent;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Weekend", inversedBy="matches")
@@ -158,69 +143,6 @@ class Match
         return $this;
     }
 
-    /**
-     * @return Collection|Member[]
-     */
-    public function getReferees(): Collection
-    {
-        return $this->referees;
-    }
-
-    public function addReferee(Member $referee): self
-    {
-        if (!$this->referees->contains($referee)) {
-            $this->referees[] = $referee;
-        }
-
-        return $this;
-    }
-
-    public function removeReferee(Member $referee): self
-    {
-        if ($this->referees->contains($referee)) {
-            $this->referees->removeElement($referee);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Member[]
-     */
-    public function getScorers(): Collection
-    {
-        return $this->scorers;
-    }
-
-    public function addScorer(Member $scorer): self
-    {
-        if (!$this->scorers->contains($scorer)) {
-            $this->scorers[] = $scorer;
-        }
-
-        return $this;
-    }
-
-    public function removeScorer(Member $scorer): self
-    {
-        if ($this->scorers->contains($scorer)) {
-            $this->scorers->removeElement($scorer);
-        }
-
-        return $this;
-    }
-
-    public function getClubReferent(): ?Member
-    {
-        return $this->clubReferent;
-    }
-
-    public function setClubReferent(?Member $clubReferent): self
-    {
-        $this->clubReferent = $clubReferent;
-
-        return $this;
-    }
 
     public function getWeekend(): ?Weekend
     {

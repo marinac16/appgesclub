@@ -11,9 +11,9 @@ function create(match) {
     .post("http://localhost/appli-GESCLUB/public/api/matches",
       {
         ...match,
-        teamLocal: `/api/teams/${match.teamLocal}`,
-        weekend: `/api/weekends/${match.weekend}`,
-        clubReferent: `/api/members/${match.clubReferent}`,
+        teamLocal: `/api/teams/${match.teamLocal.id}`,
+        weekend: `/api/weekends/${match.weekend.id}`,
+        //clubReferent: `/api/members/${match.clubReferent}`,
       });
 }
 
@@ -22,11 +22,11 @@ function update(match, id) {
     .put("http://localhost/appli-GESCLUB/public/api/matches/" + id ,
       {
         ...match,
-        teamLocal: `/api/teams/${match.teamLocal}`,
-        clubReferent: `/api/members/${match.clubReferent}`,
-        weekend: `/api/weekends/${match.weekend}`,
-        referees: match.referees.map(r => `/api/members/${r}`),
-        scorers: match.scorers.map(s => `/api/members/${s}`)
+        teamLocal: `/api/teams/${match.teamLocal.id}`,
+        //clubReferent: `/api/members/${match.clubReferent}`,
+        weekend: `/api/weekends/${match.weekend.id}`,
+        //referees: match.referees.map(r => `/api/members/${r}`),
+        //scorers: match.scorers.map(s => `/api/members/${s}`)
       });
 }
 

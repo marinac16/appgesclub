@@ -154,10 +154,11 @@ const WeekendDomViewPage = ({match, history}) => {
         <hr/>
         <nav className="nav nav-tabs  flex-column flex-sm-row mt-3 mb-3">
           <Link to={"/weekend/domicile/" + id} className="navlink-custom text-warning"><i
-            className="fas fa-map-marker"/> Matchs à
-            domicile</Link>
+            className="fas fa-map-marker"/> Matchs à domicile</Link>
           <Link to={"/weekend/exterieur/" + id} className="navlink-custom"><i
             className="fas fa-location-arrow"/> Matchs à l'extérieur</Link>
+          <Link to={"/weekend/test/" + id} className="navlink-custom"><i
+            className="fas fa-location-arrow"/> Matchs test</Link>
         </nav>
         <table className="table bg-dark text-white mt-4">
           <thead>

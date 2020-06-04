@@ -34,6 +34,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import '../css/app.css';
 import '../css/sidebar.css';
 import 'react-toastify/dist/ReactToastify.css';
+import WeekendTestPage from "./pages/WeekendTestPage";
 
 
 
@@ -76,11 +77,13 @@ const App = () => {
                   <PrivateRoute path="/dirigeants" component={DirigeantsPage}/>
                   <PrivateRoute path="/groupes" component={GroupsPage}/>
                   <PrivateRoute path="/groupe/:id" component={GroupViewPage}/>
+                  <PrivateRoute path="/weekend/domicile/:id" component={WeekendDomViewPage}/>
+                  <PrivateRoute path="/weekend/exterieur/:id" component={WeekendExtViewPage}/>
+                  <PrivateRoute path="/weekend/test/:id" component={WeekendTestPage}/>
                   <PrivateRoute path="/weekends/:id/matches/:id" component={MatchPage}/>
                   <PrivateRoute path="/weekends/:id" component={WeekendPage}/>
                   <PrivateRoute path="/weekends/" component={WeekendsPage}/>
-                  <PrivateRoute path="/weekend/domicile/:id" component={WeekendDomViewPage}/>
-                  <PrivateRoute path="/weekend/exterieur/:id" component={WeekendExtViewPage}/>
+
 
 
                   <PrivateRoute path="/dashboard" component={DashBoard}/>
@@ -94,7 +97,6 @@ const App = () => {
       <ToastContainer
         position={toast.POSITION.BOTTOM_LEFT}
         hideProgressBar={true}
-
       />
     </AuthContext.Provider>
   );
