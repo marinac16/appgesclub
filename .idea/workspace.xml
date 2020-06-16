@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4bc1c1df-6302-433b-8454-d726f195cdba" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/WeekendDomViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/WeekendDomViewPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pages/WeekendTestPage.jsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/services/matchsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/services/matchsAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Match.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Match.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Member.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Member.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +32,12 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -240,7 +247,12 @@
       <workItem from="1591018894979" duration="12297000" />
       <workItem from="1591178528935" duration="2200000" />
       <workItem from="1591188200309" duration="5234000" />
-      <workItem from="1591261560908" duration="9970000" />
+      <workItem from="1591261560908" duration="10047000" />
+      <workItem from="1591342076294" duration="6619000" />
+      <workItem from="1591709717266" duration="3105000" />
+      <workItem from="1591863249251" duration="4992000" />
+      <workItem from="1592160043246" duration="5246000" />
+      <workItem from="1592230499593" duration="4846000" />
     </task>
     <servers />
   </component>
@@ -265,12 +277,12 @@
     </state>
     <state x="306" y="265" key="#com.intellij.ide.util.MemberChooser/2048.23.1440.877/0.23.2048.1038@0.23.2048.1038" timestamp="1587041553741" />
     <state x="2263" y="227" key="#com.intellij.ide.util.MemberChooser/2048.23.1440.877/0.23.2048.1038@2048.23.1440.877" timestamp="1588580584379" />
-    <state x="2235" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588251812406">
+    <state x="2235" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1592162077904">
       <screen x="2048" y="23" width="1440" height="877" />
     </state>
     <state x="266" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.2048.1041@0.23.2048.1041" timestamp="1585932718167" />
     <state x="266" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/2048.23.1440.877/0.23.2048.1038@0.23.2048.1038" timestamp="1587041604349" />
-    <state x="2235" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/2048.23.1440.877/0.23.2048.1038@2048.23.1440.877" timestamp="1588251812406" />
+    <state x="2235" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/2048.23.1440.877/0.23.2048.1038@2048.23.1440.877" timestamp="1592162077904" />
     <state x="2520" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588357889032">
       <screen x="2048" y="23" width="1440" height="877" />
     </state>

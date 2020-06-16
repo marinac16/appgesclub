@@ -121,6 +121,16 @@ class Member
      */
     private $groups;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Match", mappedBy="referentClub")
+     */
+    private $matchesReferentClub;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Match", mappedBy="referees")
+     */
+    private $matchesReferees;
+
 
     public function __construct()
     {
@@ -128,6 +138,8 @@ class Member
         $this->statuses = new ArrayCollection();
         $this->teamsCoached = new ArrayCollection();
         $this->groups = new ArrayCollection();
+        $this->matchesReferentClub = new ArrayCollection();
+        $this->matchesReferees = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -369,6 +381,65 @@ class Member
         if ($this->groups->contains($group)) {
             $this->groups->removeElement($group);
             $group->removeMember($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Match[]
+     */
+    public function getMatchesReferentClub(): Collection
+    {
+        return $this->matchesReferentClub;
+    }
+
+    public function addMatchesReferentClub(Match $matchesReferentClub): self
+    {
+        if (!$this->matchesReferentClub->contains($matchesReferentClub)) {
+            $this->matchesReferentClub[] = $matchesReferentClub;
+            $matchesReferentClub->setReferentClub($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMatchesReferentClub(Match $matchesReferentClub): self
+    {
+        if ($this->matchesReferentClub->contains($matchesReferentClub)) {
+            $this->matchesReferentClub->removeElement($matchesReferentClub);
+            // set the owning side to null (unless already changed)
+            if ($matchesReferentClub->getReferentClub() === $this) {
+                $matchesReferentClub->setReferentClub(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Match[]
+     */
+    public function getMatchesReferees(): Collection
+    {
+        return $this->matchesReferees;
+    }
+
+    public function addMatch(Match $match): self
+    {
+        if (!$this->matchesReferees->contains($match)) {
+            $this->matchesReferees[] = $match;
+            $match->addReferee($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMatch(Match $match): self
+    {
+        if ($this->matchesReferees->contains($match)) {
+            $this->matchesReferees->removeElement($match);
+            $match->removeReferee($this);
         }
 
         return $this;

@@ -70,24 +70,28 @@ class Match
     private $home;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Member")
-     * @ORM\JoinTable(name="matchs_referees")
-     * @ORM\JoinColumn(nullable=true)
-     * @Groups({"matchs_read", "weekends_read"})
-     */
-
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Weekend", inversedBy="matches")
      * @Groups({"matchs_read"})
      */
     private $weekend;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Member", inversedBy="matchesReferentClub")
+     * @Groups({"matchs_read", "weekends_read"})
+     */
+    private $referentClub;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Member", inversedBy="matches")
+     */
+    private $referees;
+
+
+
 
     public function __construct()
     {
         $this->referees = new ArrayCollection();
-        $this->scorers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -188,6 +192,44 @@ class Match
     public function setScorers($scorers): void
     {
         $this->scorers = $scorers;
+    }
+
+    public function getReferentClub(): ?Member
+    {
+        return $this->referentClub;
+    }
+
+    public function setReferentClub(?Member $referentClub): self
+    {
+        $this->referentClub = $referentClub;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Member[]
+     */
+    public function getReferees(): Collection
+    {
+        return $this->referees;
+    }
+
+    public function addReferee(Member $referee): self
+    {
+        if (!$this->referees->contains($referee)) {
+            $this->referees[] = $referee;
+        }
+
+        return $this;
+    }
+
+    public function removeReferee(Member $referee): self
+    {
+        if ($this->referees->contains($referee)) {
+            $this->referees->removeElement($referee);
+        }
+
+        return $this;
     }
 
 
