@@ -3,6 +3,7 @@ import AuthAPI from "../services/authAPI";
 import {Link, NavLink} from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import {toast} from "react-toastify";
+import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 
 const Navbar = ({history}) => {
 
@@ -40,7 +41,7 @@ const Navbar = ({history}) => {
             </>
           )) || (
             <li className="nav-items">
-              <NavLink onClick={handleLogout} to={'/login'} className="nav-link" ><i className="fas fa-2x fa-sign-out-alt"/></NavLink>
+              <NavLink onClick={handleLogout} to={'/login'} className="nav-link" ><PowerSettingsNewIcon/></NavLink>
             </li>
           )}
         </ul>

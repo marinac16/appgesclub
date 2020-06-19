@@ -4,6 +4,8 @@ import Container from "react-bootstrap/Container"
 import {Link} from "react-router-dom";
 import MembersAPI from "../services/membersAPI";
 import TeamsAPI from "../services/teamsAPI";
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import AddBoxIcon from '@material-ui/icons/AddBox';
 
 const HomePage = (props) => {
 
@@ -48,7 +50,7 @@ const HomePage = (props) => {
             <div className="card text-white bg-primary mb-3">
               <div className="card-header d-flex justify-content-between align-items-center">
                 <h3>Gestion des Adhérants</h3>
-                <Link to="/members/new" className="link-white"><i className="fas fa-2x fa-plus-circle"/></Link>
+                <Link to="/members/new" className="link-white"><AddCircleIcon/></Link>
               </div>
               <div className="card-body">
                 <p className="text-marine"><b>Toute la gestion de vos adhérants, et vos équipes en un clic !! </b></p>
@@ -61,7 +63,7 @@ const HomePage = (props) => {
             <div className="card text-white bg-success mb-3">
               <div className="card-header d-flex justify-content-between align-items-center">
                 <h3>Gestion des Weekends</h3>
-                <Link to="weekends/new" className="link-white"><i className="fas fa-2x fa-plus-circle"/></Link>
+                <Link to="weekends/new" className="link-white"><AddBoxIcon/></Link>
               </div>
               <div className="card-body">
                 <p className="text-green"><b>Toute la gestion de vos weekends, vos matchs et vos rencontres ICI !</b></p>

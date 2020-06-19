@@ -2,7 +2,6 @@ import React, {useState, useContext} from 'react';
 import AuthAPI from "../services/authAPI";
 import AuthContext from "../context/AuthContext";
 import {toast} from "react-toastify";
-
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -102,7 +101,7 @@ const LoginPage = ({history}) => {
                   <BlurOnIcon className={classes.large}/>
                 </Avatar>
                 <Typography component="h1" variant="h5" color={"primary"}>
-                  Se connecter
+                  Connexion
                 </Typography>
                 <form onSubmit={handleSubmit} className={classes.form} noValidate>
                   <TextField
