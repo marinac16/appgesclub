@@ -27,14 +27,12 @@ import AuthAPI from "./services/authAPI";
 import AuthContext from "./context/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
 import {Container, Row, Col} from "react-bootstrap"
-import { ToastContainer, toast } from 'react-toastify';
-
+import {ToastContainer, toast} from 'react-toastify';
 
 
 import '../css/app.css';
 import '../css/sidebar.css';
 import 'react-toastify/dist/ReactToastify.css';
-
 
 
 AuthAPI.setup();
@@ -46,29 +44,26 @@ const App = () => {
   const NavbarWithRouter = withRouter(Navbar);
 
 
-
-
   return (
     <AuthContext.Provider value={{
       isAuthenticated,
       setIsAuthenticated
     }}>
       <HashRouter>
-        <NavbarWithRouter/>
 
         <Container fluid className="container-principal">
           <Row className="row-main">
             {(isAuthenticated && (
-            <Col sm={1} className="sidebar bg-blue">
-              <Sidebar/>
-            </Col>
-              ))}
+              <Col sm={1} className="sidebar bg-blue">
+                <Sidebar/>
+              </Col>
+            ))}
             <Col sm={(isAuthenticated && (11) || (12))}>
-
-              <main className="container-main pt-5">
-                <Switch>
-                  <Route path="/login" component={LoginPage}/>
-                  <Route path="/register" component={RegisterPage}/>
+              <Switch>
+                <Route path="/login" component={LoginPage}/>
+                <Route path="/register" component={RegisterPage}/>
+                <main className="container-main pt-5">
+                  <NavbarWithRouter/>
                   <PrivateRoute path="/members/:id" component={MemberPageFormik}/>
                   <PrivateRoute path="/members" component={MembersPage}/>
                   <PrivateRoute path="/teams/:id" component={TeamPage}/>
@@ -84,9 +79,9 @@ const App = () => {
                   <PrivateRoute path="/weekends/:id" component={WeekendPage}/>
                   <PrivateRoute path="/weekends/" component={WeekendsPage}/>
                   <PrivateRoute path="/dashboard" component={DashBoard}/>
-                  <Route path="/" component={HomePage}/>
-                </Switch>
-              </main>
+                </main>
+                <Route path="/" component={HomePage}/>
+              </Switch>
             </Col>
           </Row>
         </Container>
