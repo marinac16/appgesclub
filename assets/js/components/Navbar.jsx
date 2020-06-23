@@ -4,6 +4,7 @@ import {Link, NavLink} from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import {toast} from "react-toastify";
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
+import Tooltip from "@material-ui/core/Tooltip";
 
 const Navbar = ({history}) => {
 
@@ -19,7 +20,7 @@ const Navbar = ({history}) => {
 
   return (
 
-    <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-blue">
+    <nav className="navbar fixed-top navbar-expand-lg navbar-dark ">
       <Link className="navbar-brand" to="/">App GESCLUB</Link>
 
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
@@ -40,9 +41,12 @@ const Navbar = ({history}) => {
               </li>
             </>
           )) || (
-            <li className="nav-items">
-              <NavLink onClick={handleLogout} to={'/login'} className="nav-link" ><PowerSettingsNewIcon/></NavLink>
-            </li>
+            <Tooltip title="Déconnexion">
+              <li className="nav-items">
+                <NavLink onClick={handleLogout} to={'/login'}
+                         className="nav-link text-dark"><PowerSettingsNewIcon/></NavLink>
+              </li>
+            </Tooltip>
           )}
         </ul>
       </div>

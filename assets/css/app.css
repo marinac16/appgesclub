@@ -2,7 +2,7 @@
 
 body {
     margin: 0;
-    background-color: #333333;
+    background-color: #efefef;
 
 }
 
@@ -110,24 +110,32 @@ main {
     text-decoration: none;
 }
 
+.link-default {
+    color: #474747;
+}
+.link-default:hover {
+    text-decoration: none;
+    color: #6c6c6c;
+}
+
 /* ########### TITRE ############### */
 h1 {
-    color: #FFFFFF;
+    color: #474747;
 }
 h2 {
-    color: #FFFFFF;
+    color: #474747;
 }
 h3 {
-    color: #FFFFFF;
+    color: #555555;
 }
 h4 {
-    color: #FFFFFF;
+    color: #555555;
 }
 h5 {
-    color: #FFFFFF;
+    color: #474747;
 }
 h6 {
-    color: #FFFFFF;
+    color: #555555;
 }
 
 
@@ -144,7 +152,7 @@ h6 {
 /* ########### BACKGROUND COLOR ############### */
 
 .bg-blue {
-    background-color: rgb(40, 95, 122);
+    background-color: #0d47a1;
 }
 
 /* ########### TEXT COLOR ############### */

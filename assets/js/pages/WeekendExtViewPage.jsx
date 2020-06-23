@@ -1,57 +1,108 @@
-import React, {Fragment, useEffect, useState} from 'react';
-import Field from "../components/forms/Field";
+import React, {forwardRef, useEffect, useState} from 'react';
 import WeekendsAPI from "../services/weekendsAPI";
 import MatchsAPI from "../services/matchsAPI";
 import TeamsAPI from "../services/teamsAPI";
 import MembersAPI from "../services/membersAPI";
-import {Col, Container, Row} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import {toast} from "react-toastify";
-import Select from 'react-select';
-import NavbarMatchs from "../components/NavbarMatchs";
 import {Link} from "react-router-dom";
+import MaterialTable from "material-table";
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import RoomIcon from '@material-ui/icons/Room';
+import {blue, orange} from "@material-ui/core/colors";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import {
+  AddBox, ArrowDownward,
+  Check, ChevronLeft,
+  ChevronRight,
+  Clear,
+  DeleteOutline,
+  Edit,
+  FilterList,
+  FirstPage, LastPage, Remove,
+  SaveAlt, Search, ViewColumn
+} from "@material-ui/icons";
+import Paper from "@material-ui/core/Paper";
+import Avatar from "@material-ui/core/Avatar";
+import TableContainer from "@material-ui/core/TableContainer";
+import Chip from "@material-ui/core/Chip";
+
+const tableIcons = {
+  Add: forwardRef((props, ref) => <AddBox {...props} ref={ref}/>),
+  Check: forwardRef((props, ref) => <Check {...props} ref={ref}/>),
+  Clear: forwardRef((props, ref) => <Clear {...props} ref={ref}/>),
+  Delete: forwardRef((props, ref) => <DeleteOutline {...props} ref={ref}/>),
+  DetailPanel: forwardRef((props, ref) => <ChevronRight {...props} ref={ref}/>),
+  Edit: forwardRef((props, ref) => <Edit {...props} ref={ref}/>),
+  Export: forwardRef((props, ref) => <SaveAlt {...props} ref={ref}/>),
+  Filter: forwardRef((props, ref) => <FilterList {...props} ref={ref}/>),
+  FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref}/>),
+  LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref}/>),
+  NextPage: forwardRef((props, ref) => <ChevronRight {...props} ref={ref}/>),
+  PreviousPage: forwardRef((props, ref) => <ChevronLeft {...props} ref={ref}/>),
+  ResetSearch: forwardRef((props, ref) => <Clear {...props} ref={ref}/>),
+  Search: forwardRef((props, ref) => <Search {...props} ref={ref}/>),
+  SortArrow: forwardRef((props, ref) => <ArrowDownward {...props} ref={ref}/>),
+  ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref}/>),
+  ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref}/>)
+};
 
 const WeekendDomViewPage = ({match, history}) => {
+
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      height: '100vh',
+    },
+    large: {
+      width: theme.spacing(7),
+      height: theme.spacing(7),
+    },
+    form: {
+      width: '100%', // Fix IE 11 issue.
+      marginTop: theme.spacing(4),
+      padding: theme.spacing(2),
+      backgroundColor:
+        theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+    },
+    backButton: {
+      color: '#fff',
+      backgroundColor: blue[800],
+      marginRight: theme.spacing(3),
+      marginLeft: theme.spacing(3),
+      marginTop: theme.spacing(1),
+    },
+    chipButton: {
+      color: '#fff',
+      backgroundColor: orange[400],
+      marginRight: theme.spacing(3),
+      marginTop: theme.spacing(1),
+      border: 'none',
+    },
+    white: {
+      color: '#fff',
+    }
+  }));
+
+  const classes = useStyles();
 
   const {id = "new"} = match.params;
 
   const [showing, setShowing] = useState(false);
-  const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(true);
   const [teams, setTeams] = useState([]);
   const [members, setMembers] = useState([]);
+  const [iserror, setIserror] = useState(false);
+  const [errorMessage, setErrorMessage] = useState([]);
+  const [data, setData] = useState([]);
   const [weekend, setWeekend] = useState({
     id:"",
     name: "",
     beginDate: "",
     endDate: "",
   });
-  const [matches, setMatches] = useState([]);
-  const [newMatch, setNewMatch] = useState({
-    refMatch: "",
-    location: "",
-    teamLocal: "",
-    teamOpponent: "",
-    startTime: "",
-    home: false,
-    weekend: {id},
-    clubReferent: "",
-    referees: [],
-  });
-  const [errors, setErrors] = useState({
-    refMatch: "",
-    teamLocal: "",
-    teamOpponent: "",
-    startTime: "",
-    home: false,
-    weekend: ""
-  });
-
-  const handleShowForm = () => {
-    setShowForm(true)
-  };
-  const handleHideForm = () => {
-    setShowForm(false)
-  };
 
 
   //Récupérer la liste des équipes locales
@@ -59,7 +110,6 @@ const WeekendDomViewPage = ({match, history}) => {
     try {
       const data = await TeamsAPI.findAll();
       setTeams(data);
-
     } catch (error) {
       console.log(error.response);
       toast.error("Une erreur est survenue ...");
@@ -92,7 +142,7 @@ const WeekendDomViewPage = ({match, history}) => {
   const fetchMatches = async () => {
     try {
       const data = await MatchsAPI.findAllByWeekendAndisHome(id, false);
-      setMatches(data);
+      setData(data);
     } catch (error) {
       console.log(error.response);
       toast.error("Une erreur est survenue ...");
@@ -109,189 +159,180 @@ const WeekendDomViewPage = ({match, history}) => {
   // Récupération du bon weekend quand l'identifiant de l'url change
   useEffect(() => {
     if (id !== "new") {
-      setShowing(true);
       fetchWeekend(id);
     }
   }, [id]);
 
+  const memberLookup = {};
+  members.map(m => {
+    const {id, firstName, lastName} = m;
+    memberLookup[id] = firstName + ' ' + lastName;
+  });
 
-// Gestion de la suppression d'un customers
-  const handleDelete = async id => {
-    const originalMatchs = [weekend.matches];
+  const teamLookup = {};
+  teams.map(t => {
+    const {id, name} = t;
+    teamLookup[id] = name;
+  });
 
-    //1. L'approche optimiste
-    setWeekend({matches: weekend.matches.filter(match => match.id !== id)});
+  var columns = [
+    {title: "id", field: "id", hidden: true},
+    {title: 'Ref Match', field: 'refMatch'},
+    {title: 'Heure du début', field: 'startTime'},
+    {title: 'Équipe Locale', field: 'teamLocal.id', lookup: teamLookup},
+    {title: 'Équipe adverse', field: 'teamOpponent'},
+    {title: 'Lieu', field: 'location'},
+  ];
 
-    //2. L'approche pessismiste
-    try {
-      await MatchsAPI.delete(id);
-      toast.info("Le match à bien été supprimé !")
-    } catch (error) {
-      setWeekend(originalMatchs);
-      toast.error("Une erreur est survenue ...")
+  const handleRowDelete = async (oldData, resolve) => {
+
+    await MatchsAPI.delete(oldData.id);
+    const dataDelete = [...data];
+    const index = oldData.tableData.id;
+    dataDelete.splice(index, 1);
+    setData([...dataDelete]);
+    resolve()
+      .catch(error => {
+        setErrorMessage(["Erreur serveur ! "]);
+        setIserror(true);
+        resolve()
+      })
+  };
+
+  const handleRowUpdate = async (newData, oldData, resolve) => {
+    //validation
+    let errorList = [];
+    //enregistrement
+    if (errorList.length < 1) {
+      await MatchsAPI.updateME(newData, oldData.id);
+      const dataUpdate = [...data];
+      const index = oldData.tableData.id;
+      dataUpdate[index] = newData;
+      setData([...dataUpdate]);
+      resolve();
+      setIserror(false);
+      setErrorMessage([])
+    } else {
+      setErrorMessage(errorList);
+      setIserror(true);
+      resolve()
+    }
+  };
+  const handleRowAdd = async (newData, resolve) => {
+    //Match à l'extérieur
+    var home = false;
+    //validation
+    let errorList = [];
+    if(newData.teamLocal.id === undefined){
+      errorList.push("Merci de définir l'équipe locale")
+    }
+    if(errorList.length < 1){ //no error
+      await MatchsAPI.create(newData, weekend.id, home)
+        .then(res => {
+          let dataToAdd = [...data];
+          dataToAdd.push(newData);
+          setData(dataToAdd);
+          resolve();
+          setErrorMessage([]);
+          setIserror(false)
+        })
+        .catch(error => {
+          setErrorMessage(["Cannot add data. Server error!"]);
+          setIserror(true);
+          resolve()
+        })
+    }else{
+      setErrorMessage(errorList);
+      setIserror(true);
+      resolve()
     }
   };
 
-  // Gestion des changements / enregistrements des inputs dans le formulaires
-  const handleChange = ({currentTarget}) => {
-    const {name, value} = currentTarget;
-    setNewMatch({
-      ...newMatch, [name]: value,
-      weekend: id,
-    });
-  };
-
-  //Gestion de la soumission du formulaire
-  const handleSubmit = async event => {
-    event.preventDefault();
-
-    try {
-      await MatchsAPI.create(newMatch);
-      window.location.reload();
-    } catch ({response}) {
-      toast.error("Une erreur est survenue ...");
-      const {violations} = response.data;
-      if (violations) {
-        const apiErrors = {};
-        violations.forEach(({propertyPath, message}) => {
-          apiErrors[propertyPath] = message;
-        });
-        setErrors(apiErrors);
-
-      }
-    }
-  };
 
   return (<>
 
       <Container fluid>
-        <div className="bg-container mt-4">
+        <TableContainer component={Paper}>
           <div className="mb-3 d-flex justify-content-between align-items-center">
-            <div className="mb-3 d-flex justify-content">
-              <Link to={"/weekends"} ><i className="mr-3 text-white fas fa-3x fa-arrow-alt-circle-left"/></Link>
-              <h1>{weekend.name} - Matchs à l'extérieur</h1></div>
-            {!showForm && (<button onClick={handleShowForm} className="btn btn-success">Ajouter un match
-              <i className="pl-2 fas fa-location-arrow"/>
-            </button>)}
+            <div className="mb-3 mt-3 d-flex justify-content">
+              <Link to={"/weekends"}><Avatar className={classes.backButton}><ArrowBackIcon/></Avatar></Link>
+              <h1>{weekend.name} - Matchs à l'extérieur</h1>
+            </div>
+            <div>
+              <Link to={"/weekend/domicile/" + id}>
+                <Chip
+                  icon={<RoomIcon className={classes.white}/>}
+                  label="Voir les Matchs à domicile"
+                  clickable
+                  className={classes.chipButton}
+                />
+              </Link>
+            </div>
           </div>
-          <hr/>
 
-          <nav className="nav nav-tabs  flex-column flex-sm-row mt-3 mb-3">
+        </TableContainer>
 
-            <Link to={"/weekend/domicile/" + id} className="navlink-custom"><i className="fas fa-map-marker"/> Matchs à
-              domicile</Link>
-            <Link to={"/weekend/exterieur/" + id} className="navlink-custom text-warning"><i
-              className="fas fa-location-arrow"/> Matchs à l'extérieur</Link>
+        <br/>
+        <MaterialTable
+          options={{
+            exportButton: true,
+            actionsColumnIndex: -1,
+            paging: false,
+            searchFieldAlignment: 'left',
+          }}
 
-          </nav>
+          title=""
+          columns={columns}
+          data={data}
+          icons={tableIcons}
+          editable={{
+            onRowAdd: (newData) =>
+              new Promise((resolve) => {
+                handleRowAdd(newData, resolve)
+              }),
+            onRowUpdate: (newData, oldData) =>
+              new Promise((resolve) => {
+                handleRowUpdate(newData, oldData, resolve);
+              }),
 
-          {showForm && (
-            <form onSubmit={handleSubmit}>
-              <Row>
-                <Col sm={4}>
-                  <Field
-                    name="refMatch"
-                    placeholder="Réf Match"
-                    label="Référence du Match"
-                    value={newMatch.refMatch}
-                    onChange={handleChange}
-                    error={errors.refMatch}
-                  />
-                </Col>
-                <Col sm={4}>
-                  <Field
-                    name="startTime"
-                    placeholder="00:00"
-                    label="Heure du Match"
-                    onChange={handleChange}
-                    value={newMatch.startTime}
-                    error={errors.startTime}
-                  />
-                </Col>
-                <Col sm={4}>
-                  <Field
-                    name="location"
-                    placeholder="Lieu"
-                    label="Lieu du Match"
-                    onChange={handleChange}
-                    value={newMatch.location}
-                    error={errors.location}
-                  />
-                </Col>
-              </Row>
-              <Row>
-                <Col sm={6}>
-                  <Field type="text"
-                         placeholder="Choisissez une équipe ..."
-                         label="Équipe locale"
-                         name="teamLocal"
-                         onChange={handleChange}
-                         list="teams"/>
-                  <datalist id="teams">
-                    {teams.map((team, key) => (
-                      <option key={key}
-                              value={team.id}
-                              label={team.name}
-                      >
-                      </option>
-                    ))}
-                  </datalist>
-                </Col>
-                <Col sm={6}>
-                  <Field
-                    name="teamOpponent"
-                    label="Équipe adverse"
-                    placeholder="Choisissez une équipe adverse ..."
-                    onChange={handleChange}
-                    value={newMatch.teamOpponent}
-                    error={errors.teamOpponent}
-                  />
-                </Col>
-              </Row>
-              <div className="mt-2 form-group d-flex flex-row-reverse">
-                <button type="submit" className="btn btn-success">Enregistrer</button>
-                <button onClick={handleHideForm} className="btn btn-link text-white">Annuler</button>
-              </div>
-            </form>
-          )}
+            onRowDelete: (oldData) =>
+              new Promise((resolve) => {
+                handleRowDelete(oldData, resolve)
+              }),
+          }}
+          localization={{
+            body: {
+              emptyDataSourceMessage: 'Ce weekend ne contient pas encore de match !',
+              addTooltip: 'Ajouter',
+              deleteTooltip: 'Supprimer',
+              editTooltip: 'Modifier',
+              filterRow: {
+                filterTooltip: 'Filtrer'
+              },
+              editRow: {
+                cancelTooltip: 'Annuler',
+                saveTooltip: 'Enregistrer',
+                deleteText: 'Êtes vous sûre de vouloir supprimer ce match ?'
+              }
+            },
+            pagination: {
+              labelDisplayedRows: '{count} de {from}-{to}',
+              firstTooltip: 'Première page',
+              previousTooltip: 'Page précedente',
+              nextTooltip: 'Page suivante',
+              lastTooltip: 'Dernière page',
+              labelRowsSelect: 'lignes'
+            },
+            toolbar: {
+              exportTitle: 'Télécharger',
+              exportAriaLabel: 'Télécharger',
+              exportName: 'Télécharger en CSV',
+              searchTooltip: 'Rechercher',
+              searchPlaceholder: 'Rechercher un match'
+            },
+          }}
+        />
 
-          <table className="table bg-dark text-white mt-4">
-            <thead>
-            <tr>
-              <th>Référence du match</th>
-              <th className="text-center">Heure</th>
-              <th className="text-center">Équipe</th>
-              <th className="text-center">Équipe Adverse</th>
-              <th className="text-center">Lieu</th>
-              <th/>
-            </tr>
-            </thead>
-            <tbody>
-            {matches.map(m =>
-              <tr key={m.id} className="">
-                <td>{m.refMatch}</td>
-                <td className="text-center">{m.startTime}</td>
-                <td className="text-center">{m.teamLocal.name}</td>
-                <td className="text-center">{m.teamOpponent}</td>
-                <td className="text-center">{m.location}</td>
-                <td className="text-right">
-                  <Link
-                    to={"match/" + m.id}
-                    className="btn btn-sm btn-primary">
-                    <i className="fas fa-pen"/>
-                  </Link>
-                  <button
-                    onClick={() => handleDelete(m.id)}
-                    className="ml-1 btn btn-sm btn-warning"><i className="fas fa-trash"/>
-                  </button>
-                </td>
-              </tr>
-            )}
-            </tbody>
-          </table>
-
-
-        </div>
       </Container>
 
 

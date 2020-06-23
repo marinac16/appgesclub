@@ -6,14 +6,14 @@ function findAllByWeekendAndisHome(weekend, response) {
     .then(response => response.data["hydra:member"])
 }
 
-function create(match) {
+function create(match, weekend, home) {
   return axios
     .post("http://localhost/appli-GESCLUB/public/api/matches",
       {
         ...match,
-        teamLocal: `/api/teams/${match.teamLocal}`,
-        weekend: `/api/weekends/${match.weekend}`,
-        //clubReferent: `/api/members/${match.clubReferent}`,
+        teamLocal: `/api/teams/${match.teamLocal.id}`,
+        weekend: `/api/weekends/${weekend}`,
+        home: home,
       });
 }
 
@@ -29,6 +29,15 @@ function update(match, matchUpdate, id) {
         //scorers: match.scorers.map(s => `/api/members/${s}`)
       });
 }
+function updateME(match, id) {
+  return axios
+    .put("http://localhost/appli-GESCLUB/public/api/matches/" + id ,
+      {
+        ...match,
+        teamLocal: `/api/teams/${match.teamLocal.id}`,
+        weekend: `/api/weekends/${match.weekend.id}`,
+      });
+}
 
 function deleteMatch(id) {
   return axios
@@ -39,6 +48,7 @@ export default {
   findAllByWeekendAndisHome,
   create,
   update,
+  updateME,
   delete: deleteMatch,
 
 }
