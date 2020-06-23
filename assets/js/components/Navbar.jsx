@@ -5,6 +5,7 @@ import AuthContext from "../context/AuthContext";
 import {toast} from "react-toastify";
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import Tooltip from "@material-ui/core/Tooltip";
+import Avatar from "@material-ui/core/Avatar";
 
 const Navbar = ({history}) => {
 
@@ -40,13 +41,14 @@ const Navbar = ({history}) => {
                 <NavLink to="/login" className="btn btn-primary mr-2">Connexion</NavLink>
               </li>
             </>
-          )) || (
+          )) || (<>
             <Tooltip title="Déconnexion">
               <li className="nav-items">
                 <NavLink onClick={handleLogout} to={'/login'}
                          className="nav-link text-dark"><PowerSettingsNewIcon/></NavLink>
               </li>
             </Tooltip>
+            </>
           )}
         </ul>
       </div>

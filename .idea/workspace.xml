@@ -3,13 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="4bc1c1df-6302-433b-8454-d726f195cdba" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/sidebar.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/sidebar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/G.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/components/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pages/DashBoard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/DashBoard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/WeekendDomViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/WeekendDomViewPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/WeekendExtViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/WeekendExtViewPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/WeekendsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/WeekendsPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/services/matchsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/services/matchsAPI.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,7 +254,7 @@
       <workItem from="1592317540143" duration="6078000" />
       <workItem from="1592552359345" duration="12068000" />
       <workItem from="1592835790870" duration="10099000" />
-      <workItem from="1592897551567" duration="16977000" />
+      <workItem from="1592897551567" duration="25962000" />
     </task>
     <servers />
   </component>

@@ -3,7 +3,6 @@ import WeekendsAPI from "../services/weekendsAPI";
 import {toast} from "react-toastify";
 import TableContainer from "@material-ui/core/TableContainer";
 import Table from "@material-ui/core/Table";
-import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
@@ -21,6 +20,42 @@ import moment from "moment";
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
 import Tooltip from "@material-ui/core/Tooltip";
+import MaterialTable from "material-table";
+import AddBox from '@material-ui/icons/AddBox';
+import ArrowDownward from '@material-ui/icons/ArrowDownward';
+import Check from '@material-ui/icons/Check';
+import ChevronLeft from '@material-ui/icons/ChevronLeft';
+import ChevronRight from '@material-ui/icons/ChevronRight';
+import Clear from '@material-ui/icons/Clear';
+import DeleteOutline from '@material-ui/icons/DeleteOutline';
+import Edit from '@material-ui/icons/Edit';
+import FilterList from '@material-ui/icons/FilterList';
+import FirstPage from '@material-ui/icons/FirstPage';
+import LastPage from '@material-ui/icons/LastPage';
+import Remove from '@material-ui/icons/Remove';
+import SaveAlt from '@material-ui/icons/SaveAlt';
+import Search from '@material-ui/icons/Search';
+import ViewColumn from '@material-ui/icons/ViewColumn';
+
+const tableIcons = {
+  Add: forwardRef((props, ref) => <AddBox {...props} ref={ref}/>),
+  Check: forwardRef((props, ref) => <Check {...props} ref={ref}/>),
+  Clear: forwardRef((props, ref) => <Clear {...props} ref={ref}/>),
+  Delete: forwardRef((props, ref) => <DeleteOutline {...props} ref={ref}/>),
+  DetailPanel: forwardRef((props, ref) => <ChevronRight {...props} ref={ref}/>),
+  Edit: forwardRef((props, ref) => <Edit {...props} ref={ref}/>),
+  Export: forwardRef((props, ref) => <SaveAlt {...props} ref={ref}/>),
+  Filter: forwardRef((props, ref) => <FilterList {...props} ref={ref}/>),
+  FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref}/>),
+  LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref}/>),
+  NextPage: forwardRef((props, ref) => <ChevronRight {...props} ref={ref}/>),
+  PreviousPage: forwardRef((props, ref) => <ChevronLeft {...props} ref={ref}/>),
+  ResetSearch: forwardRef((props, ref) => <Clear {...props} ref={ref}/>),
+  Search: forwardRef((props, ref) => <Search {...props} ref={ref}/>),
+  SortArrow: forwardRef((props, ref) => <ArrowDownward {...props} ref={ref}/>),
+  ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref}/>),
+  ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref}/>)
+};
 
 const WeekendsPage = (props) => {
 
@@ -69,6 +104,19 @@ const WeekendsPage = (props) => {
     fetchWeekends();
   }, []);
 
+  var columns = [
+    {title: "id", field: "id", hidden: true},
+    {title: 'Nom du weekend', field: 'name'},
+    {title: 'Début', field: 'beginDate', type: 'date'},
+    {title: 'Fin', field: 'endDate', type: 'date'},
+    {
+      title: 'Nombre de matchs',
+      field: 'matches',
+      render: rowData => <Chip color="primary" avatar={<Avatar>??</Avatar>} label="Matchs"/>,
+      editable: false
+    },
+  ];
+
 
   return (<>
       <div className="mb-3 d-flex justify-content-between align-items-center">
@@ -85,6 +133,70 @@ const WeekendsPage = (props) => {
 
       <h4>Weekends à venir</h4><br/>
 
+      <MaterialTable
+        options={{
+          exportButton: true,
+          actionsColumnIndex: -1,
+          paging: false,
+          searchFieldAlignment: 'left',
+        }}
+
+        title=""
+        columns={columns}
+        data={weekends}
+        icons={tableIcons}
+        editable={{
+          onRowAdd: (newData) =>
+            new Promise((resolve) => {
+              //handleRowAdd(newData, resolve)
+            }),
+          onRowUpdate: (newData, oldData) =>
+            new Promise((resolve) => {
+              //handleRowUpdate(newData, oldData, resolve);
+            }),
+
+          onRowDelete: (oldData) =>
+            new Promise((resolve) => {
+              //handleRowDelete(oldData, resolve)
+            }),
+        }}
+        localization={{
+          body: {
+            emptyDataSourceMessage: 'Ce weekend ne contient pas encore de match !',
+            addTooltip: 'Ajouter',
+            deleteTooltip: 'Supprimer',
+            editTooltip: 'Modifier',
+            filterRow: {
+              filterTooltip: 'Filtrer'
+            },
+            editRow: {
+              cancelTooltip: 'Annuler',
+              saveTooltip: 'Enregistrer',
+              deleteText: 'Êtes vous sûre de vouloir supprimer ce weekend ?'
+            }
+          },
+          pagination: {
+            labelDisplayedRows: '{count} de {from}-{to}',
+            firstTooltip: 'Première page',
+            previousTooltip: 'Page précedente',
+            nextTooltip: 'Page suivante',
+            lastTooltip: 'Dernière page',
+            labelRowsSelect: 'lignes'
+          },
+          toolbar: {
+            exportTitle: 'Télécharger',
+            exportAriaLabel: 'Télécharger',
+            exportName: 'Télécharger en CSV',
+            searchTooltip: 'Rechercher',
+            searchPlaceholder: 'Rechercher un Weekend'
+          },
+        }}
+      />
+
+
+      <br/>
+
+      <h4>Weekends passés</h4><br/>
 
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
@@ -124,10 +236,6 @@ const WeekendsPage = (props) => {
           </TableBody>
         </Table>
       </TableContainer>
-
-      <br/>
-
-      <h4>Weekends passés</h4><br/>
 
     </>
   )

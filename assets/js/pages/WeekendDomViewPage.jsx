@@ -7,7 +7,6 @@ import {Link} from "react-router-dom";
 import MaterialTable from "material-table";
 import TeamsAPI from "../services/teamsAPI";
 
-import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles'
 
 import {forwardRef} from 'react';
 import AddBox from '@material-ui/icons/AddBox';
