@@ -115,11 +115,7 @@ class Member
      */
     private $teamsCoached;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Group", mappedBy="members")
-     * @Groups({"members_read"})
-     */
-    private $groups;
+
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Match", mappedBy="referentClub")
@@ -137,7 +133,6 @@ class Member
         $this->teams = new ArrayCollection();
         $this->statuses = new ArrayCollection();
         $this->teamsCoached = new ArrayCollection();
-        $this->groups = new ArrayCollection();
         $this->matchesReferentClub = new ArrayCollection();
         $this->matchesReferees = new ArrayCollection();
     }
@@ -358,33 +353,6 @@ class Member
         return $this;
     }
 
-    /**
-     * @return Collection|Group[]
-     */
-    public function getGroups(): Collection
-    {
-        return $this->groups;
-    }
-
-    public function addGroup(Group $group): self
-    {
-        if (!$this->groups->contains($group)) {
-            $this->groups[] = $group;
-            $group->addMember($this);
-        }
-
-        return $this;
-    }
-
-    public function removeGroup(Group $group): self
-    {
-        if ($this->groups->contains($group)) {
-            $this->groups->removeElement($group);
-            $group->removeMember($this);
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|Match[]

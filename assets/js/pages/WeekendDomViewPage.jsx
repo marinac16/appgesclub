@@ -237,7 +237,10 @@ const WeekendDomViewPage = ({match, history}) => {
     {title: 'Équipe adverse', field: 'teamOpponent'},
     {title: 'Lieu', field: 'location'},
     {
-      title: 'Arbitres', field: 'matchUpdate', lookup: memberLookup,
+      title: 'Arbitres',
+      field: 'referees',
+      lookup: memberLookup,
+      //render: rowData => rowData.referees.map(r => r.firstName),
       editComponent: props => (
         <Select
           labelId="demo-mutiple-name-label"
@@ -350,6 +353,12 @@ const WeekendDomViewPage = ({match, history}) => {
           options={{
             exportButton: true,
             actionsColumnIndex: -1,
+            actionsCellStyle: {
+              display: 'flex',
+              justifyContent: 'center',
+              padding: 16,
+              width: '100%'
+            },
             paging: false,
             searchFieldAlignment: 'left',
           }}

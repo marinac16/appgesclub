@@ -29,15 +29,15 @@ function create(values) {
       });
 }
 
-function update(id, values) {
+function update(membre, id) {
   return axios
     .put("http://localhost/appli-GESCLUB/public/api/members/" + id,
       {
-        ...values,
-        gender: `/api/genders/${values.gender}`,
-        category: `/api/categories/${values.category}`,
-        statuses: values.statuses.map(status => `/api/statuses/${status}`),
-        team: `/api/teams/${values.team}`
+        ...membre,
+        gender: `/api/genders/${membre.gender.id}`,
+        category: `/api/categories/${membre.category.id}`,
+        statuses: membre.statuses.map(status => `/api/statuses/${status.id}`),
+        teams: membre.teams.map(team =>`/api/teams/${team.id}`)
       });
 }
 

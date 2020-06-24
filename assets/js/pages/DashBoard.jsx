@@ -145,9 +145,10 @@ const HomePage = (props) => {
                 </CardContent>
               </CardActionArea>
               <CardActions dir="rtl">
+                <Link to='/members'>
                 <Button className={classes.button1} variant="contained" size="small" color="primary">
                   Voir
-                </Button>
+                </Button></Link>
               </CardActions>
             </Card>
           </Grid>
@@ -172,9 +173,10 @@ const HomePage = (props) => {
                 </CardContent>
               </CardActionArea>
               <CardActions dir="rtl">
+                <Link to='/weekends'>
                 <Button className={classes.button2} variant="contained" size="small" color="primary">
                   Voir
-                </Button>
+                </Button></Link>
               </CardActions>
             </Card>
           </Grid>

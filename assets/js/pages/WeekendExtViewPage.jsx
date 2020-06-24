@@ -277,6 +277,12 @@ const WeekendDomViewPage = ({match, history}) => {
           options={{
             exportButton: true,
             actionsColumnIndex: -1,
+            actionsCellStyle: {
+              display: 'flex',
+              justifyContent: 'center',
+              padding: 16,
+              width: '100%'
+            },
             paging: false,
             searchFieldAlignment: 'left',
           }}

@@ -9,11 +9,10 @@ import TableBody from "@material-ui/core/TableBody";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Paper from "@material-ui/core/Paper";
 import EditIcon from '@material-ui/icons/Edit';
-import TodayIcon from '@material-ui/icons/Today';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import {Button, createStyles} from "@material-ui/core";
-import {blue, green, red, orange} from '@material-ui/core/colors';
+import {blue, green, red} from '@material-ui/core/colors';
 import {Link} from "react-router-dom";
 
 import moment from "moment";
@@ -35,6 +34,7 @@ import LastPage from '@material-ui/icons/LastPage';
 import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
+import TodayIcon from '@material-ui/icons/Today';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 
 const tableIcons = {
@@ -82,6 +82,22 @@ const WeekendsPage = (props) => {
   );
   const classes = useStyles();
 
+  var columns = [
+    {title: "id", field: "id", hidden: true},
+    {title: 'Nom du weekend', field: 'name',
+      render: rowData => <Link to={"weekend/domicile/" + rowData.id}>{rowData.name}</Link>
+    },
+
+    {title: 'Début', field: 'beginDate', type: 'date'},
+    {title: 'Fin', field: 'endDate', type: 'date'},
+    {
+      title: 'Nombre de matchs',
+      field: 'matches',
+      render: rowData => <Chip color="primary" avatar={<Avatar>{rowData.matches.length}</Avatar>} label="Matchs"/>,
+      editable: false,
+    },
+  ];
+
   //Gestion du format de date
   const formatDate = (str) => moment(str).format('DD/MM/YYYY');
 
@@ -104,19 +120,6 @@ const WeekendsPage = (props) => {
     fetchWeekends();
   }, []);
 
-  var columns = [
-    {title: "id", field: "id", hidden: true},
-    {title: 'Nom du weekend', field: 'name'},
-    {title: 'Début', field: 'beginDate', type: 'date'},
-    {title: 'Fin', field: 'endDate', type: 'date'},
-    {
-      title: 'Nombre de matchs',
-      field: 'matches',
-      render: rowData => <Chip color="primary" avatar={<Avatar>??</Avatar>} label="Matchs"/>,
-      editable: false
-    },
-  ];
-
 
   return (<>
       <div className="mb-3 d-flex justify-content-between align-items-center">
@@ -137,6 +140,12 @@ const WeekendsPage = (props) => {
         options={{
           exportButton: true,
           actionsColumnIndex: -1,
+          actionsCellStyle: {
+            display: 'flex',
+            justifyContent: 'center',
+            padding: 16,
+            width: '100%'
+          },
           paging: false,
           searchFieldAlignment: 'left',
         }}
