@@ -190,7 +190,7 @@ const MembersPageTest = (props) => {
     {
       title: 'Équipe',
       field: 'teams.id',
-      editable: false,
+      lookup: teamLookup,
       render: rowData => rowData.teams.map(t => t.name)
     },
     {

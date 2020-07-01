@@ -17,7 +17,7 @@ function create(match, weekend, home) {
       });
 }
 
-function update(match, matchUpdate, id) {
+function update(match, id) {
   return axios
     .put("http://localhost/appli-GESCLUB/public/api/matches/" + id ,
       {
@@ -25,7 +25,7 @@ function update(match, matchUpdate, id) {
         teamLocal: `/api/teams/${match.teamLocal.id}`,
         referentClub: `/api/members/${match.referentClub.id}`,
         weekend: `/api/weekends/${match.weekend.id}`,
-        referees: matchUpdate.referees.map(r => `/api/members/${r}`),
+        //referees: matchUpdate.referees.map(r => `/api/members/${r}`),
         //scorers: match.scorers.map(s => `/api/members/${s}`)
       });
 }

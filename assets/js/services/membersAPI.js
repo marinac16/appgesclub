@@ -25,19 +25,19 @@ function create(values) {
         ...values,
         gender: `/api/genders/${values.gender}`,
         category: `/api/categories/${values.category}`,
-        statuses: values.statuses.map(status => `/api/statuses/${status}`)
+        statuses: values.statuses.map(status => `/api/statuses/${status}`),
       });
 }
 
-function update(membre, id) {
+function update(values, id) {
   return axios
     .put("http://localhost/appli-GESCLUB/public/api/members/" + id,
       {
-        ...membre,
-        gender: `/api/genders/${membre.gender.id}`,
-        category: `/api/categories/${membre.category.id}`,
-        statuses: membre.statuses.map(status => `/api/statuses/${status.id}`),
-        teams: membre.teams.map(team =>`/api/teams/${team.id}`)
+        ...values,
+        gender: `/api/genders/${values.gender.id}`,
+        category: `/api/categories/${values.category.id}`,
+        statuses: values.statuses.map(status => `/api/statuses/${status.id}`),
+        teams: values.teams.map(team =>`/api/teams/${team.id}`),
       });
 }
 

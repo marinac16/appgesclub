@@ -7,7 +7,6 @@ import {Link} from "react-router-dom";
 import MaterialTable from "material-table";
 import TeamsAPI from "../services/teamsAPI";
 
-
 import {forwardRef} from 'react';
 import AddBox from '@material-ui/icons/AddBox';
 import ArrowDownward from '@material-ui/icons/ArrowDownward';
@@ -101,45 +100,16 @@ const WeekendDomViewPage = ({match, history}) => {
 
   const {id = "new"} = match.params;
 
-  const [showForm, setShowForm] = useState(false);
-  const [showing, setShowing] = useState(false);
-  const [loading, setLoading] = useState(true);
   const [teams, setTeams] = useState([]);
   const [members, setMembers] = useState([]);
   const [data, setData] = useState([]);
   const [iserror, setIserror] = useState(false);
   const [errorMessage, setErrorMessage] = useState([]);
-  const [newMatch, setNewMatch] = useState({
-    refMatch: "",
-    location: "",
-    teamLocal: "",
-    teamOpponent: "",
-    startTime: "",
-    home: true,
-    weekend: {id},
-    referentClub: "",
-    referees: [],
-  });
-  const [errors, setErrors] = useState({
-    refMatch: "",
-    teamLocal: "",
-    teamOpponent: "",
-    startTime: "",
-    home: false,
-    weekend: ""
-  });
   const [weekend, setWeekend] = useState({
     name: "",
     beginDate: "",
     endDate: "",
   });
-
-  const handleShowForm = () => {
-    setShowForm(true)
-  };
-  const handleHideForm = () => {
-    setShowForm(false)
-  };
 
   //Récupération du weekend en fonction de l'identifiant
   const fetchWeekend = async id => {
@@ -185,7 +155,6 @@ const WeekendDomViewPage = ({match, history}) => {
     }
   };
 
-
   // Au chargement du composant, on récupère des infos
   useEffect(() => {
     fetchMatches();
@@ -196,25 +165,14 @@ const WeekendDomViewPage = ({match, history}) => {
   // Récupération du bon weekend quand l'identifiant de l'url change
   useEffect(() => {
     if (id !== "new") {
-      setShowing(true);
       fetchWeekend(id);
     }
   }, [id]);
 
-
   // Gestion des changements / enregistrements des inputs dans le formulaires
   const handleChange = ({currentTarget}) => {
     const {name, value} = currentTarget;
-    setNewMatch({
-      ...newMatch, [name]: value,
-      weekend: id,
-    });
-  };
-
-  const [matchUpdate, setMatchUpdate] = useState([]);
-  const handleChangeMultiple = (event) => {
-    console.log(event.target.value);
-    setMatchUpdate(event.target.value);
+    setData({...data, [name]: value});
   };
 
   const memberLookup = {};
@@ -246,8 +204,8 @@ const WeekendDomViewPage = ({match, history}) => {
           labelId="demo-mutiple-name-label"
           id="demo-mutiple-name"
           multiple
-          value={matchUpdate}
-          onChange={handleChangeMultiple}
+          value={[data.referees]}
+          onChange={handleChange}
           input={<Input/>}
         >
           {members.map((m) => (
@@ -276,7 +234,7 @@ const WeekendDomViewPage = ({match, history}) => {
       })
   };
 
-  const handleRowUpdate = async (newData, matchUpdate, oldData, resolve) => {
+  const handleRowUpdate = async (newData, oldData, resolve) => {
     //validation
     let errorList = [];
     //enregistrement

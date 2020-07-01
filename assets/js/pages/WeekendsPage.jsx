@@ -36,6 +36,8 @@ import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import TodayIcon from '@material-ui/icons/Today';
 import ViewColumn from '@material-ui/icons/ViewColumn';
+import NavbarMembers from "../components/NavbarMembers";
+import Grid from "@material-ui/core/Grid";
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref}/>),
@@ -61,25 +63,14 @@ const WeekendsPage = (props) => {
 
   const useStyles = makeStyles((theme) =>
     createStyles({
-      root: {
-        display: 'flex',
-        '& > *': {
-          margin: theme.spacing(1),
-        },
+      paper: {
+        padding: theme.spacing(2),
+        marginBottom: theme.spacing(2),
+        color: theme.palette.text.secondary,
       },
-      square: {
-        color: theme.palette.getContrastText(green[500]),
-        backgroundColor: green[500],
-      },
-      rounded: {
-        color: '#fff',
-        backgroundColor: green[500],
-      },
-      table: {
-        minWidth: 650,
-      },
-    }),
+    })
   );
+
   const classes = useStyles();
 
   var columns = [
@@ -98,18 +89,13 @@ const WeekendsPage = (props) => {
     },
   ];
 
-  //Gestion du format de date
-  const formatDate = (str) => moment(str).format('DD/MM/YYYY');
-
   const [weekends, setWeekends] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   //Récupérer la liste des weekends
   const fetchWeekends = async () => {
     try {
       const data = await WeekendsAPI.findAll();
       setWeekends(data);
-      setLoading(false);
     } catch (error) {
       toast.error("Une erreur est survenue ...");
     }
@@ -122,19 +108,11 @@ const WeekendsPage = (props) => {
 
 
   return (<>
-      <div className="mb-3 d-flex justify-content-between align-items-center">
-        <h1>Liste des weekends</h1>
-        <Link to={"/weekends/new"}>
-          <Tooltip title="Ajouter un weekend">
-            <Avatar variant="rounded" className={classes.rounded}>
-              <AddIcon/>
-            </Avatar>
-          </Tooltip>
-        </Link>
-      </div>
-
-
-      <h4>Weekends à venir</h4><br/>
+      <Grid item xs={12}>
+        <Paper className={classes.paper}>
+          <h1>Liste des weekends</h1>
+        </Paper>
+      </Grid>
 
       <MaterialTable
         options={{
@@ -147,10 +125,10 @@ const WeekendsPage = (props) => {
             width: '100%'
           },
           paging: false,
-          searchFieldAlignment: 'left',
+          searchFieldAlignment: 'right',
         }}
 
-        title=""
+        title="Weekends à venir"
         columns={columns}
         data={weekends}
         icons={tableIcons}
@@ -171,7 +149,7 @@ const WeekendsPage = (props) => {
         }}
         localization={{
           body: {
-            emptyDataSourceMessage: 'Ce weekend ne contient pas encore de match !',
+            emptyDataSourceMessage: 'Pas de weekend disponible',
             addTooltip: 'Ajouter',
             deleteTooltip: 'Supprimer',
             editTooltip: 'Modifier',
@@ -207,44 +185,7 @@ const WeekendsPage = (props) => {
 
       <h4>Weekends passés</h4><br/>
 
-      <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="simple table">
-          <TableBody>
-            {weekends.map((row, key) => (
-              <TableRow key={key}>
-                <TableCell component="th" scope="row">
-                  <Link to={"weekend/domicile/" + row.id} className="link-default">
-                    {row.name.toUpperCase()}
-                  </Link>
-                </TableCell>
-                <TableCell component="th" scope="row">
-                  <TodayIcon style={{color: blue[700]}} fontSize="small"/> {formatDate(row.beginDate)}
-                </TableCell>
-                <TableCell component="th" scope="row">
-                  <TodayIcon style={{color: blue[700]}} fontSize="small"/> {formatDate(row.endDate)}
-                </TableCell>
-                <TableCell component="th" scope="row">
-                  <Link to={"weekend/domicile/" + row.id} className="link-default">
-                    <Chip color="primary" avatar={<Avatar>{row.matches.length}</Avatar>} label="Matchs"/>
-                  </Link>
-                </TableCell>
-                <TableCell className="text-right">
-                  <Tooltip title="Modifier">
-                    <Link to={"weekends/" + row.id}>
-                      <EditIcon style={{color: blue[700]}}/>
-                    </Link>
-                  </Tooltip>
-                  <Tooltip title="Supprimer">
-                    <Button>
-                      <DeleteOutlineIcon style={{color: red[300]}}/>
-                    </Button>
-                  </Tooltip>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+
 
     </>
   )

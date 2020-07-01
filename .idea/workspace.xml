@@ -3,16 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="4bc1c1df-6302-433b-8454-d726f195cdba" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/components/NavbarMembers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/NavbarMembers.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/DashBoard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/DashBoard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pages/MembersPageTest.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/MembersPageTest.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/WeekendDomViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/WeekendDomViewPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/WeekendExtViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/WeekendExtViewPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/WeekendsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/WeekendsPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/services/matchsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/services/matchsAPI.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/services/membersAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/services/membersAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Member.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Member.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,7 +255,9 @@
       <workItem from="1592552359345" duration="12068000" />
       <workItem from="1592835790870" duration="10099000" />
       <workItem from="1592897551567" duration="26042000" />
-      <workItem from="1592981726184" duration="20127000" />
+      <workItem from="1592981726184" duration="20245000" />
+      <workItem from="1593073850021" duration="2449000" />
+      <workItem from="1593606386836" duration="1690000" />
     </task>
     <servers />
   </component>
