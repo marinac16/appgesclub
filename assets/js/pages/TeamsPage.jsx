@@ -1,132 +1,301 @@
-import React, {useEffect, useState} from 'react';
-import moment from "moment";
-import Pagination from "../components/Pagination";
+import React, {forwardRef, useEffect, useState} from 'react';
 import TeamsAPI from "../services/teamsAPI"
-import {Link} from "react-router-dom";
+import GendersAPI from "../services/gendersAPI";
+import CategoriesAPI from "../services/categoriesAPI";
+import MembersAPI from "../services/membersAPI";
 import NavbarMembers from "../components/NavbarMembers";
 import {toast} from "react-toastify";
-import ThreeDotsLoader from "../components/Loader/ThreeDotsLoader";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import {createStyles} from "@material-ui/core";
+import MaterialTable from "material-table";
+import {Link} from "react-router-dom";
+
+import AddBox from '@material-ui/icons/AddBox';
+import ArrowDownward from '@material-ui/icons/ArrowDownward';
+import Check from '@material-ui/icons/Check';
+import ChevronLeft from '@material-ui/icons/ChevronLeft';
+import ChevronRight from '@material-ui/icons/ChevronRight';
+import Clear from '@material-ui/icons/Clear';
+import DeleteOutline from '@material-ui/icons/DeleteOutline';
+import Edit from '@material-ui/icons/Edit';
+import FilterList from '@material-ui/icons/FilterList';
+import FirstPage from '@material-ui/icons/FirstPage';
+import LastPage from '@material-ui/icons/LastPage';
+import Remove from '@material-ui/icons/Remove';
+import SaveAlt from '@material-ui/icons/SaveAlt';
+import Search from '@material-ui/icons/Search';
+import ViewColumn from '@material-ui/icons/ViewColumn';
+import Avatar from "@material-ui/core/Avatar";
+import Chip from "@material-ui/core/Chip";
+
+const tableIcons = {
+  Add: forwardRef((props, ref) => <AddBox {...props} ref={ref}/>),
+  Check: forwardRef((props, ref) => <Check {...props} ref={ref}/>),
+  Clear: forwardRef((props, ref) => <Clear {...props} ref={ref}/>),
+  Delete: forwardRef((props, ref) => <DeleteOutline {...props} ref={ref}/>),
+  DetailPanel: forwardRef((props, ref) => <ChevronRight {...props} ref={ref}/>),
+  Edit: forwardRef((props, ref) => <Edit {...props} ref={ref}/>),
+  Export: forwardRef((props, ref) => <SaveAlt {...props} ref={ref}/>),
+  Filter: forwardRef((props, ref) => <FilterList {...props} ref={ref}/>),
+  FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref}/>),
+  LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref}/>),
+  NextPage: forwardRef((props, ref) => <ChevronRight {...props} ref={ref}/>),
+  PreviousPage: forwardRef((props, ref) => <ChevronLeft {...props} ref={ref}/>),
+  ResetSearch: forwardRef((props, ref) => <Clear {...props} ref={ref}/>),
+  Search: forwardRef((props, ref) => <Search {...props} ref={ref}/>),
+  SortArrow: forwardRef((props, ref) => <ArrowDownward {...props} ref={ref}/>),
+  ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref}/>),
+  ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref}/>)
+};
 
 const TeamsPage = () => {
 
+  const useStyles = makeStyles((theme) =>
+    createStyles({
+      paper: {
+        padding: theme.spacing(2),
+        marginBottom: theme.spacing(2),
+        color: theme.palette.text.secondary,
+      },
+    })
+  );
+
+  const classes = useStyles();
+
   const [teams, setTeams] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [search, setSearch] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [genders, setGenders] = useState([]);
+  const [coachs, setCoachs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [iserror, setIserror] = useState(false);
+  const [errorMessage, setErrorMessage] = useState([]);
 
-  //Nombre d'items par page
-  const itemsPerPage = 10;
-
-  //Récupérer la liste des équipes féminines
+  //Récupérer la liste de toutes les équipes équipes
   const fetchTeams = async () => {
     try {
       const data = await TeamsAPI.findAll();
       setTeams(data);
-      setLoading(false);
     }catch (error) {
       toast.error("Une erreur est survenue ...");
+    }
+  };
+
+  //Récupération des genres (F/M)
+  const fetchGenders = async () => {
+    try {
+      const data = await GendersAPI.findAll();
+      setGenders(data);
+    } catch (error) {
+      toast.error("Une erreur est survenue ...");
+      history.replace('/members');
+    }
+  };
+
+  //Récupération des Catégories
+  const fetchCategories = async () => {
+    try {
+      const data = await CategoriesAPI.findAll();
+      setCategories(data);
+    } catch (error) {
+      history.replace('/members');
+      toast.error("Une erreur est survenue ...")
+    }
+  };
+
+  //Récupérer la liste des joueurs
+  const fetchCoachs = async () => {
+    try {
+      const data = await MembersAPI.findAllByStatus("Coach");
+      setCoachs(data);
+    } catch (error) {
+      console.log(error.response)
     }
   };
 
   // Au chargement du composant, on va chercher les teams
   useEffect(() => {
     fetchTeams();
+    fetchCategories();
+    fetchGenders();
+    fetchCoachs();
   }, []);
 
-  // Gestion de la suppression d'un customers
-  const handleDelete = async id => {
-    const originalTeams = [...teams];
+  const genderLookup = {};
+  genders.map(g => {
+    const {id, type} = g;
+    genderLookup[id] = type;
+  });
 
-    //1. L'approche optimiste
-    setTeams(teams.filter(team => team.id !== id));
+  const categoryLookup = {};
+  categories.map(g => {
+    const {id, name} = g;
+    categoryLookup[id] = name;
+  });
 
-    //2. L'approche pessismiste
-    try {
-      await TeamsAPI.delete(id);
-      toast.info("L'équipe a bien été supprimée !");
-    } catch (error) {
-      setTeams(originalTeams);
-      toast.error("Une erreur est survenue ...");
+  const coachLookup = {};
+  coachs.map(c => {
+    const {id, firstName, lastName} = c;
+    coachLookup[id] = firstName + ' ' + lastName;
+  });
+
+  var columns = [
+    {title: "id", field: "id", hidden: true},
+    {
+      title: "Équipes",
+      field: "name",
+      render: rowData => <Link to={"team/" + rowData.id}>{rowData.name}</Link>
+    },
+    {title: "Catégories", field: "category.id", lookup:categoryLookup},
+    {title: "Genre", field: "gender.id", lookup:genderLookup},
+    {
+      title: "Coachs",
+      field: "coachs.id",
+      lookup:coachLookup,
+      render: rowData => rowData.coachs.map(c => <li key={c.id} className="li-without-decoration">{c.firstName+' '+c.lastName}</li>)
+    },
+    {
+      title: "Nombre de joueurs",
+      field: "nbJoueurs",
+      render: rowData => <Chip color="primary" avatar={<Avatar>{rowData.players.length}</Avatar>} label="Joueurs"/>
+    },
+  ];
+
+  const handleRowDelete = async (oldData, resolve) => {
+
+    await TeamsAPI.delete(oldData.id);
+    const dataDelete = [...teams];
+    const index = oldData.tableData.id;
+    dataDelete.splice(index, 1);
+    setTeams([...dataDelete]);
+    resolve()
+      .catch(error => {
+        setErrorMessage(["Erreur serveur ! "]);
+        setIserror(true);
+        resolve()
+      })
+  };
+
+  const handleRowUpdate = async (newData, oldData, resolve) => {
+    //validation
+    let errorList = [];
+    //enregistrement
+    if (errorList.length < 1) {
+      await TeamsAPI.update(newData, oldData.id);
+      const dataUpdate = [...teams];
+      const index = oldData.tableData.id;
+      dataUpdate[index] = newData;
+      setTeams([...dataUpdate]);
+      resolve();
+      setIserror(false);
+      setErrorMessage([])
+    } else {
+      setErrorMessage(errorList);
+      setIserror(true);
+      resolve()
     }
   };
 
-//Gestion du changement de page
-  const handlePageChange = page => setCurrentPage(page);
-
-// Gestion de la recherche
-  const handleSearch = ({currentTarget}) => {
-    setSearch(currentTarget.value);
-    setCurrentPage(1);
+  const handleRowAdd = async (newData, resolve) => {
+    console.log(teams);
+    //validation
+    let errorList = [];
+    if (errorList.length < 1) { //no error
+      await TeamsAPI.create(newData)
+        .then(res => {
+          let dataToAdd = [...teams];
+          dataToAdd.push(newData);
+          setTeams(dataToAdd);
+          resolve();
+          setErrorMessage([]);
+          setIserror(false)
+        })
+        .catch(error => {
+          setErrorMessage(["Cannot add data. Server error!"]);
+          setIserror(true);
+          resolve()
+        })
+    } else {
+      setErrorMessage(errorList);
+      setIserror(true);
+      resolve()
+    }
   };
-
-// Filtrage des teams en fonction de la recherche
-  const filteredTeams = teams.filter(
-    t =>
-      t.name.toLowerCase().includes(search.toLowerCase())
-  );
-
-// Pagination
-  const PaginatedTeams = Pagination.getData(filteredTeams, currentPage, itemsPerPage);
 
 
   return (
     <>
-      <div className="mb-3 d-flex justify-content-between align-items-center">
-        <NavbarMembers/>
-        <Link to="/teams/new" className="btn btn-success" >Créer une équipe</Link>
-      </div>
+      <Grid item xs={12}>
+        <Paper className={classes.paper}>
+          <h1>Gestion des licenciés - liste des équipes</h1>
+          <NavbarMembers/>
+        </Paper>
+      </Grid>
 
-      <div className="form-group">
-        <input type="text" onChange={handleSearch} value={search} className="form-control input-search"
-               placeholder="Rechercher ..."/>
-      </div>
-      <table className="table bg-dark text-white">
-        <thead>
-          <tr>
-            <th>Équipes</th>
-            <th className="text-center">Catégorie</th>
-            <th className="text-center">Genre</th>
-            <th className="text-center">Coachs</th>
-            <th></th>
-          </tr>
-        </thead>
+      <MaterialTable
+        options={{
+          exportButton: true,
+          actionsColumnIndex: -1,
+          actionsCellStyle: {
+            display: 'flex',
+            justifyContent: 'center',
+            padding: 16,
+            width: '100%'
+          },
+          searchFieldAlignment: 'left',
+        }}
+        title=""
+        columns={columns}
+        data={teams}
+        icons={tableIcons}
+        editable={{
+          onRowAdd: (newData) =>
+            new Promise((resolve) => {
+              handleRowAdd(newData, resolve)
+            }),
+          onRowUpdate: (newData, oldData) =>
+            new Promise((resolve) => {
+              handleRowUpdate(newData, oldData, resolve);
+            }),
 
-        {!loading && (<tbody>
-        {PaginatedTeams.map(team =>
-          <tr key={team.id}>
-            <td><Link to={"team/" + team.id} className="link-white text-orange">
-              <h6><strong>{team.name}</strong></h6>
-            </Link></td>
-            <td className="text-center">{team.category.name}</td>
-            <td className="text-center">{team.gender.type}</td>
-            <td className="text-center">{team.coachs.map(c=> <li className="li-without-decoration">{c.firstName} {c.lastName}</li>)}</td>
-
-            <td className="text-right">
-              <Link
-                to={"teams/" + team.id}
-                className="btn btn-sm btn-primary">
-                <i className="fas fa-pen"/>
-              </Link>
-              <button
-                onClick={() => handleDelete(team.id)}
-                className="ml-1 btn btn-sm btn-primary"><i className="fas fa-trash"/>
-              </button>
-            </td>
-          </tr>
-        )}
-
-        </tbody>)}
-      </table>
-      {loading && <ThreeDotsLoader/>}
-      {itemsPerPage < filteredTeams.length && (
-        <Pagination
-          currentPage={currentPage}
-          itemsPerPage={itemsPerPage}
-          length={filteredTeams.length}
-          onPageChanged={handlePageChange}
-        />
-      )}
-
+          onRowDelete: (oldData) =>
+            new Promise((resolve) => {
+              handleRowDelete(oldData, resolve)
+            }),
+        }}
+        localization={{
+          body: {
+            emptyDataSourceMessage: 'Vous n\'avez pas encore d\'équipe...',
+            addTooltip: 'Ajouter',
+            deleteTooltip: 'Supprimer',
+            editTooltip: 'Modifier',
+            filterRow: {
+              filterTooltip: 'Filtrer'
+            },
+            editRow: {
+              cancelTooltip: 'Annuler',
+              saveTooltip: 'Enregistrer',
+              deleteText: 'Êtes vous sûre de vouloir supprimer cette équipe ?'
+            }
+          },
+          pagination: {
+            labelDisplayedRows: '{count} de {from}-{to}',
+            firstTooltip: 'Première page',
+            previousTooltip: 'Page précedente',
+            nextTooltip: 'Page suivante',
+            lastTooltip: 'Dernière page',
+            labelRowsSelect: 'lignes'
+          },
+          toolbar: {
+            exportTitle: 'Télécharger',
+            exportAriaLabel: 'Télécharger',
+            exportName: 'Télécharger en CSV',
+            searchTooltip: 'Rechercher',
+            searchPlaceholder: 'Rechercher une équipe'
+          },
+        }}
+      />
     </>
 
   );

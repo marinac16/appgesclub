@@ -30,6 +30,13 @@ import NavbarMembers from "../components/NavbarMembers";
 import GendersAPI from "../services/gendersAPI";
 import TeamsAPI from "../services/teamsAPI";
 import StatusAPI from "../services/statusAPI";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from "../components/forms/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import Checkbox from "@material-ui/core/Checkbox";
+import ListItemText from "@material-ui/core/ListItemText";
+import Input from "@material-ui/core/Input";
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref}/>),
@@ -175,7 +182,6 @@ const MembersPageTest = (props) => {
     {
       title: '',
       field: 'avatar',
-      editable: false,
       render: rowData => <Avatar
         className={classes.avatar}>{rowData.firstName.substring(0, 1) + rowData.lastName.substring(0, 1)}</Avatar>
     },
@@ -185,7 +191,7 @@ const MembersPageTest = (props) => {
     {title: 'Date de naissance', field: 'birthDate', type: "date"},
     {title: 'Email', field: 'email'},
     {title: 'Téléphone', field: 'phoneNumber'},
-    {title: 'Genre', field: 'gender.id', lookup: genderLookup, editable: false},
+    {title: 'Genre', field: 'gender.id', lookup: genderLookup},
     {title: 'Catégorie', field: 'category.id', lookup: categoryLookup},
     {
       title: 'Équipe',
@@ -218,7 +224,6 @@ const MembersPageTest = (props) => {
   };
 
   const handleRowUpdate = async (newData, oldData, resolve) => {
-    console.log(newData);
     //validation
     let errorList = [];
     //enregistrement
@@ -239,12 +244,10 @@ const MembersPageTest = (props) => {
   };
 
   const handleRowAdd = async (newData, resolve) => {
-    //Match à domicile
-    var home = true;
     //validation
     let errorList = [];
     if (errorList.length < 1) { //no error
-      await MembersAPI.create(newData, weekend.id, home)
+      await MembersAPI.create(newData)
         .then(res => {
           let dataToAdd = [...data];
           dataToAdd.push(newData);

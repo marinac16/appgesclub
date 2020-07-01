@@ -1,24 +1,14 @@
 import React, {forwardRef, useEffect, useState} from 'react';
 import WeekendsAPI from "../services/weekendsAPI";
 import {toast} from "react-toastify";
-import TableContainer from "@material-ui/core/TableContainer";
-import Table from "@material-ui/core/Table";
-import TableRow from "@material-ui/core/TableRow";
-import TableCell from "@material-ui/core/TableCell";
-import TableBody from "@material-ui/core/TableBody";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Paper from "@material-ui/core/Paper";
-import EditIcon from '@material-ui/icons/Edit';
-import AddIcon from '@material-ui/icons/Add';
-import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import {Button, createStyles} from "@material-ui/core";
-import {blue, green, red} from '@material-ui/core/colors';
 import {Link} from "react-router-dom";
 
 import moment from "moment";
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
-import Tooltip from "@material-ui/core/Tooltip";
 import MaterialTable from "material-table";
 import AddBox from '@material-ui/icons/AddBox';
 import ArrowDownward from '@material-ui/icons/ArrowDownward';
@@ -34,9 +24,7 @@ import LastPage from '@material-ui/icons/LastPage';
 import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
-import TodayIcon from '@material-ui/icons/Today';
 import ViewColumn from '@material-ui/icons/ViewColumn';
-import NavbarMembers from "../components/NavbarMembers";
 import Grid from "@material-ui/core/Grid";
 
 const tableIcons = {
@@ -85,7 +73,6 @@ const WeekendsPage = (props) => {
       title: 'Nombre de matchs',
       field: 'matches',
       render: rowData => <Chip color="primary" avatar={<Avatar>{rowData.matches.length}</Avatar>} label="Matchs"/>,
-      editable: false,
     },
   ];
 

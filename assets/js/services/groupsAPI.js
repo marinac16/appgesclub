@@ -16,7 +16,13 @@ function create(group) {
   return axios.post("http://localhost/appli-GESCLUB/public/api/groups", group);
 }
 
-function update(id, group) {
+function update(group, id) {
+  return axios.put("http://localhost/appli-GESCLUB/public/api/groups/" + id,
+    {
+      ...group,
+    });
+}
+function updatePlus(group, id) {
   return axios.put("http://localhost/appli-GESCLUB/public/api/groups/" + id,
     {
       ...group,
@@ -34,5 +40,6 @@ export default {
   find,
   create,
   update,
+  updatePlus,
   delete: deleteGroup,
 }

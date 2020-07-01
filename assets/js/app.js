@@ -9,7 +9,6 @@ import HomePage from "./pages/HomePage";
 import DashBoard from "./pages/DashBoard";
 import MembersPage from "./pages/MembersPage";
 import TeamsPage from "./pages/TeamsPage";
-import TeamPage from "./pages/TeamPage";
 import TeamViewPage from "./pages/TeamViewPage";
 import CoachsPage from "./pages/CoachsPage";
 import DirigeantsPage from "./pages/DirigeantsPage";
@@ -68,7 +67,6 @@ const App = () => {
                   <PrivateRoute path="/members/:id" component={MemberPageFormik}/>
                   <PrivateRoute path="/membersTest" component={MembersPageTest}/>
                   <PrivateRoute path="/members" component={MembersPage}/>
-                  <PrivateRoute path="/teams/:id" component={TeamPage}/>
                   <PrivateRoute path="/teams" component={TeamsPage}/>
                   <PrivateRoute path="/team/:id" component={TeamViewPage}/>
                   <PrivateRoute path="/coachs" component={CoachsPage}/>

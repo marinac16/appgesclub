@@ -21,17 +21,19 @@ function create(team) {
   return axios.post("http://localhost/appli-GESCLUB/public/api/teams",
     {
       ...team,
-      gender: `/api/genders/${team.gender}`,
-      category: `/api/categories/${team.category}`
+      gender: `/api/genders/${team.gender.id}`,
+      category: `/api/categories/${team.category.id}`
     });
 }
 
-function update(id, team) {
+function update(team, id) {
   return axios.put("http://localhost/appli-GESCLUB/public/api/teams/" + id,
     {
       ...team,
-      gender: `/api/genders/${team.gender}`,
-      category: `/api/categories/${team.category}`,
+      gender: `/api/genders/${team.gender.id}`,
+      category: `/api/categories/${team.category.id}`,
+      players: team.players.map(p => `/api/members/${p.id}`),
+      coachs: team.coachs.map(c => `/api/members/${c.id}`)
     });
 }
 

@@ -3,8 +3,33 @@ import NavbarMembers from "../components/NavbarMembers";
 import moment from "moment";
 import MembersAPI from "../services/membersAPI";
 import {Link} from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
+import {createStyles} from "@material-ui/core";
+import TableContainer from "@material-ui/core/TableContainer";
+import Table from "@material-ui/core/Table";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
+import TableBody from "@material-ui/core/TableBody";
+import Paper from "@material-ui/core/Paper";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const CoachsPage= (props) => {
+
+  const useStyles = makeStyles((theme) =>
+    createStyles({
+      paper: {
+        padding: theme.spacing(2),
+        marginBottom: theme.spacing(2),
+        color: theme.palette.text.secondary,
+      },
+      head: {
+        color: theme.palette.common.white,
+      }
+    })
+  );
+
+  const classes = useStyles();
 
   //Gestion du format de date
   const formatDate = (str) => moment(str).format('DD/MM/YYYY');
@@ -27,44 +52,42 @@ const CoachsPage= (props) => {
 
   return (<>
 
-    <div className="mb-3 d-flex justify-content-between align-items-center">
-      <NavbarMembers/>
-    </div>
-    <table className="table bg-dark text-white">
-      <thead>
-      <tr>
-        <th>Coachs</th>
-        <th>Numéro de licence</th>
-        <th>Date de naissance</th>
-        <th>Email</th>
-        <th>Téléphone</th>
-        <th>Équipe(s)</th>
-      </tr>
-      </thead>
-      <tbody>
+    <Grid item xs={12}>
+      <Paper className={classes.paper}>
+        <h1>Gestion des licenciés - liste des coachs</h1>
+        <NavbarMembers/>
+      </Paper>
+    </Grid>
 
-      {coachs.map(coach =>
-        <tr key={coach.id}>
-          <td>{coach.firstName} {coach.lastName}</td>
-          <td>{coach.licenceNumber}</td>
-          <td>{formatDate(coach.birthDate)}</td>
-          <td>{coach.email}</td>
-          <td>{coach.phoneNumber}</td>
-          <td>{coach.teamsCoached.map(t =>
-            <li className="li-without-decoration">
-              <h6><span
-                key={t.id}
-                className="badge badge-pill mr-1 badge-warning">
-                {t.name}
-              </span></h6>
-            </li>)}
-          </td>
+    <TableContainer component={Paper}>
+      <Table className={classes.table} stickyHeader aria-label="sticky table">
+        <TableHead className={classes.head}>
+          <TableRow>
+            <TableCell>Coachs</TableCell>
+            <TableCell>Numéro de licence</TableCell>
+            <TableCell>Date de naissance</TableCell>
+            <TableCell>Email</TableCell>
+            <TableCell>Téléphone</TableCell>
+            <TableCell>Équipe(s)</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {coachs.map((c) => (
+            <TableRow key={c.id} hover>
+              <TableCell component="th" scope="row">{c.firstName + ' ' + c.lastName}</TableCell>
+              <TableCell component="th" scope="row">{c.licenceNumber}</TableCell>
+              <TableCell component="th" scope="row">{formatDate(c.birthDate)}</TableCell>
+              <TableCell component="th" scope="row">{c.email}</TableCell>
+              <TableCell component="th" scope="row">{c.phoneNumber}</TableCell>
+              <TableCell component="th" scope="row">{c.teams.map(t => (
+                <li key={t.id} className="li-without-decoration">{t.name}</li>
+              ))}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
 
-        </tr>
-      )}
-
-      </tbody>
-    </table>
     </>);
 };
 export default CoachsPage;
