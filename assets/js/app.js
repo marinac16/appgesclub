@@ -29,7 +29,6 @@ import PrivateRoute from "./components/PrivateRoute";
 import {Container, Row, Col} from "react-bootstrap"
 import {ToastContainer, toast} from 'react-toastify';
 
-
 import '../css/app.css';
 import '../css/sidebar.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -42,7 +41,6 @@ const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(AuthAPI.isAuthenticated());
 
   const NavbarWithRouter = withRouter(Navbar);
-
 
   return (
     <AuthContext.Provider value={{

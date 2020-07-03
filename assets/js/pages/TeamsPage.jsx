@@ -236,6 +236,7 @@ const TeamsPage = () => {
       <MaterialTable
         options={{
           exportButton: true,
+          paging: false,
           actionsColumnIndex: -1,
           actionsCellStyle: {
             display: 'flex',

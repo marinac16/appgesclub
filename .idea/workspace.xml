@@ -3,15 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="4bc1c1df-6302-433b-8454-d726f195cdba" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/CoachsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/CoachsPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/DirigeantsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/DirigeantsPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/components/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pages/GroupViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/GroupViewPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/GroupsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/GroupsPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/MembersPageTest.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/MembersPageTest.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/TeamPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pages/TeamViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/TeamViewPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/TeamsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/TeamsPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/WeekendsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/WeekendsPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/services/groupsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/services/groupsAPI.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/services/teamsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/services/teamsAPI.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
@@ -264,7 +262,9 @@
       <workItem from="1592897551567" duration="26042000" />
       <workItem from="1592981726184" duration="20245000" />
       <workItem from="1593073850021" duration="2449000" />
-      <workItem from="1593606386836" duration="12947000" />
+      <workItem from="1593606386836" duration="13143000" />
+      <workItem from="1593674603623" duration="13755000" />
+      <workItem from="1593759725504" duration="13474000" />
     </task>
     <servers />
   </component>

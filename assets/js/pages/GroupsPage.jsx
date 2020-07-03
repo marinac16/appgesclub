@@ -1,9 +1,6 @@
 import React, {forwardRef, useEffect, useState} from 'react';
 import NavbarMembers from "../components/NavbarMembers";
 import GroupsAPI from "../services/groupsAPI";
-
-import {Container, Row, Col, Button} from "react-bootstrap";
-import Modal from 'react-bootstrap/Modal';
 import {Link} from "react-router-dom";
 import TeamsAPI from "../services/teamsAPI";
 import {toast} from "react-toastify";
@@ -88,14 +85,17 @@ const GroupsPage = ({history}) => {
 
   var columns = [
     {title: "id", field: "id", hidden: true},
-    {title: "Nom du groupe", field: "name"},
+    {
+      title: "Nom du groupe",
+      field: "name",
+      render: rowData => <Link to={"groupe/" + rowData.id}>{rowData.name}</Link>
+    },
     {
       title: "Nombres de personne dans ce groupe",
       field: "nbMembers",
       editable: 'never',
       render: rowData => <Chip color="primary" avatar={<Avatar>{rowData.members.length}</Avatar>} label="Personnes"/>
       },
-
   ];
 
   const handleRowDelete = async (oldData, resolve) => {

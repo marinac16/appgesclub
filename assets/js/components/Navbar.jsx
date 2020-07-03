@@ -5,7 +5,6 @@ import AuthContext from "../context/AuthContext";
 import {toast} from "react-toastify";
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import Tooltip from "@material-ui/core/Tooltip";
-import Avatar from "@material-ui/core/Avatar";
 
 const Navbar = ({history}) => {
 
@@ -21,8 +20,9 @@ const Navbar = ({history}) => {
 
   return (
 
-    <nav className="navbar fixed-top navbar-expand-lg navbar-dark ">
-      <Link className="navbar-brand" to="/">App GESCLUB</Link>
+
+    <nav className="navbar fixed-top navbar-expand-lg bg-blue">
+      <Link className="navbar-brand text-white" to="/">App GESCLUB</Link>
 
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
               aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,7 +45,7 @@ const Navbar = ({history}) => {
             <Tooltip title="Déconnexion">
               <li className="nav-items">
                 <NavLink onClick={handleLogout} to={'/login'}
-                         className="nav-link text-dark"><PowerSettingsNewIcon/></NavLink>
+                         className="nav-link text-white"><PowerSettingsNewIcon/></NavLink>
               </li>
             </Tooltip>
             </>
@@ -53,6 +53,7 @@ const Navbar = ({history}) => {
         </ul>
       </div>
     </nav>
+
   );
 };
 

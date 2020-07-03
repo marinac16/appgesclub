@@ -37,7 +37,7 @@ function update(team, id) {
     });
 }
 
-function updateMembers(id, team) {
+function updateMembers(team, id) {
 
   return axios.put("http://localhost/appli-GESCLUB/public/api/teams/" + id,
     {

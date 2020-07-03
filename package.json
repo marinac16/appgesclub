@@ -1,6 +1,7 @@
 {
     "devDependencies": {
         "@babel/preset-react": "^7.9.4",
+        "@material-ui/styles": "^4.10.0",
         "@symfony/webpack-encore": "^0.28.2",
         "core-js": "^3.0.0",
         "random-material-color": "^1.0.5",
@@ -28,6 +29,7 @@
         "jwt-decode": "^2.2.0",
         "loaders.css": "^0.1.2",
         "material-table": "^1.59.0",
+        "material-ui": "^0.20.2",
         "moment": "^2.24.0",
         "react": "^16.8.6",
         "react-admin": "^3.4.1",
