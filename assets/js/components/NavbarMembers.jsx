@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {createStyles} from "@material-ui/core";
 import red from "@material-ui/core/colors/red";
-import {blue, orange} from "@material-ui/core/colors";
+import {blue, orange, amber} from "@material-ui/core/colors";
 import Chip from "@material-ui/core/Chip";
 import Avatar from "@material-ui/core/Avatar";
 import BubbleChartIcon from '@material-ui/icons/BubbleChart';
@@ -11,6 +11,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import GroupIcon from '@material-ui/icons/Group';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import Grid from "@material-ui/core/Grid";
 
 const NavbarMembers = (props) => {
 
@@ -27,7 +28,7 @@ const NavbarMembers = (props) => {
         marginTop: theme.spacing(5),
       },
       chip: {
-        backgroundColor: blue[800],
+        backgroundColor: amber[700],
       }
     })
   );
@@ -35,57 +36,45 @@ const NavbarMembers = (props) => {
 
   return (<>
 
-    <div className={classes.nav}>
-      <Link to="/members" className={classes.link}>
-        <Chip
-          icon={<PersonIcon/>}
-          className={classes.chip}
-          label="Membres"
-          clickable
-          color="primary"/>
-      </Link>
-      <Link to="/teams" className={classes.link}>
-        <Chip
-          icon={<GroupIcon/>}
-          className={classes.chip}
-          label="Équipes"
-          clickable
-          color="primary"/>
-      </Link>
-      <Link to="/coachs" className={classes.link}>
-        <Chip
-          icon={<PermIdentityIcon/>}
-          className={classes.chip}
-          label="Coachs"
-          clickable
-          color="primary"/>
-      </Link>
-      <Link to="/dirigeants" className={classes.link}>
-        <Chip
-          icon={<PermIdentityIcon/>}
-          className={classes.chip}
-          label="Dirigeants"
-          clickable
-          color="primary"/>
-      </Link>
-      <Link to="/groupes" className={classes.link}>
-        <Chip
-          icon={<SupervisorAccountIcon/>}
-          className={classes.chip}
-          label="Groupes"
-          clickable
-          color="primary"/>
-      </Link>
-      <Link to="#" className={classes.link}>
-        <Chip
-          icon={<BubbleChartIcon/>}
-          className={classes.chip}
-          label="Statistiques"
-          clickable
-          color="primary"
-          className={classes.chip}/>
-      </Link>
-    </div>
+
+    <Grid container direction="row" justify="flex-start" alignItems="center">
+      <div className="border-link">
+        <Link to="/members" className="link-custom">
+          <avatar><PersonIcon/></avatar>
+          Membres
+        </Link>
+      </div>
+      <div className="border-link">
+        <Link to="/teams" className="link-custom">
+          <avatar><GroupIcon/></avatar>
+          Équipes
+        </Link>
+      </div>
+      <div className="border-link">
+        <Link to="/coachs" className="link-custom">
+          <avatar><PersonIcon/></avatar>
+          Coachs
+        </Link>
+      </div>
+      <div className="border-link">
+        <Link to="/dirigeants" className="link-custom">
+          <avatar><PersonIcon/></avatar>
+          Dirigeants
+        </Link>
+      </div>
+      <div className="border-link">
+        <Link to="/groupes" className="link-custom">
+          <avatar><GroupIcon/></avatar>
+          Groupes
+        </Link>
+      </div>
+      <div className="border-link">
+        <Link to="#" className="link-custom">
+          <avatar><BubbleChartIcon/></avatar>
+          Statistiques
+        </Link>
+      </div>
+    </Grid>
 
   </>);
 };

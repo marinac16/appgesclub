@@ -7,7 +7,6 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import HomePage from "./pages/HomePage";
 import DashBoard from "./pages/DashBoard";
-import MembersPage from "./pages/MembersPage";
 import TeamsPage from "./pages/TeamsPage";
 import TeamViewPage from "./pages/TeamViewPage";
 import CoachsPage from "./pages/CoachsPage";
@@ -21,7 +20,7 @@ import WeekendExtViewPage from "./pages/WeekendExtViewPage";
 import MatchPage from "./pages/MatchPage";
 import LoginPage from "./pages/LoginPage";
 import MemberPageFormik from "./pages/MemberPageFormik";
-import MembersPageTest from "./pages/MembersPageTest";
+import MembersPage from "./pages/MembersPage";
 import RegisterPage from "./pages/RegisterPage";
 import AuthAPI from "./services/authAPI";
 import AuthContext from "./context/AuthContext";
@@ -63,7 +62,6 @@ const App = () => {
                 <main className="container-main pt-5">
                   <NavbarWithRouter/>
                   <PrivateRoute path="/members/:id" component={MemberPageFormik}/>
-                  <PrivateRoute path="/membersTest" component={MembersPageTest}/>
                   <PrivateRoute path="/members" component={MembersPage}/>
                   <PrivateRoute path="/teams" component={TeamsPage}/>
                   <PrivateRoute path="/team/:id" component={TeamViewPage}/>

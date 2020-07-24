@@ -12,7 +12,7 @@ import BlurOnIcon from '@material-ui/icons/BlurOn';
 import Avatar from "@material-ui/core/Avatar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-import BackgroundImage from '../../images/laptoploginpage.png'
+import BackgroundImage from '../../images/LoginImage.png'
 
 const RegisterPage = (props) => {
 

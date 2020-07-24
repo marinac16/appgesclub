@@ -26,6 +26,9 @@ import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import Grid from "@material-ui/core/Grid";
+import lightBlue from "@material-ui/core/colors/lightBlue";
+import blue from "@material-ui/core/colors/blue";
+import orange from "@material-ui/core/colors/orange";
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref}/>),
@@ -56,6 +59,13 @@ const WeekendsPage = (props) => {
         marginBottom: theme.spacing(2),
         color: theme.palette.text.secondary,
       },
+      chip: {
+        backgroundColor: lightBlue[800],
+        color: blue[50],
+      },
+      avatar: {
+        backgroundColor: lightBlue[100],
+      },
     })
   );
 
@@ -72,7 +82,7 @@ const WeekendsPage = (props) => {
     {
       title: 'Nombre de matchs',
       field: 'matches',
-      render: rowData => <Chip color="primary" avatar={<Avatar>{rowData.matches.length}</Avatar>} label="Matchs"/>,
+      render: rowData => <Chip className={classes.chip} avatar={<Avatar className={classes.avatar}>{rowData.matches.length}</Avatar>} label="Matchs"/>,
     },
   ];
 
@@ -113,6 +123,12 @@ const WeekendsPage = (props) => {
           },
           paging: false,
           searchFieldAlignment: 'right',
+          headerStyle: {
+            backgroundColor: orange[400],
+            color: '#FFF',
+            fontSize: '16px',
+            fontFamily: 'Cabin, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif',
+          }
         }}
 
         title="Weekends à venir"

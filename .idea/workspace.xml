@@ -2,17 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4bc1c1df-6302-433b-8454-d726f195cdba" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/js/pages/MembersPageOld.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/laptoploginpage.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/components/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/Navbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/GroupViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/GroupViewPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/components/NavbarMembers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/NavbarMembers.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/GroupsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/GroupsPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pages/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/LoginPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pages/MembersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/MembersPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pages/MembersPageTest.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pages/RegisterPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/RegisterPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/TeamViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/TeamViewPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/pages/TeamsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/TeamsPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/services/teamsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/services/teamsAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pages/WeekendDomViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/WeekendDomViewPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pages/WeekendExtViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/WeekendExtViewPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pages/WeekendsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/WeekendsPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/services/membersAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/services/membersAPI.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,24 +184,24 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/js/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/images" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/images" />
+      <recent name="$PROJECT_DIR$/assets/js/pages" />
+      <recent name="$PROJECT_DIR$/assets/js/components" />
+      <recent name="$PROJECT_DIR$/assets/js/services" />
+      <recent name="$PROJECT_DIR$/assets/js/components/forms" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets" />
       <recent name="$PROJECT_DIR$/assets/js" />
       <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/assets/js/components" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assets/js/pages" />
-      <recent name="$PROJECT_DIR$/assets/js/components" />
-      <recent name="$PROJECT_DIR$/assets/js/services" />
-      <recent name="$PROJECT_DIR$/assets/js/components/forms" />
-      <recent name="$PROJECT_DIR$/src/Controller" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -264,7 +270,9 @@
       <workItem from="1593073850021" duration="2449000" />
       <workItem from="1593606386836" duration="13143000" />
       <workItem from="1593674603623" duration="13755000" />
-      <workItem from="1593759725504" duration="13474000" />
+      <workItem from="1593759725504" duration="14584000" />
+      <workItem from="1595339930999" duration="502000" />
+      <workItem from="1595606079733" duration="17430000" />
     </task>
     <servers />
   </component>
@@ -272,18 +280,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="977" y="204" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586341039515">
-      <screen x="0" y="23" width="2048" height="1038" />
-    </state>
-    <state x="977" y="204" key="#com.intellij.execution.impl.EditConfigurationsDialog/2048.23.1440.877/0.23.2048.1038@0.23.2048.1038" timestamp="1586341039515" />
     <state x="724" y="352" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587388549645">
       <screen x="0" y="23" width="2048" height="1038" />
     </state>
     <state x="724" y="352" key="#com.intellij.fileTypes.FileTypeChooser/2048.23.1440.877/0.23.2048.1038@0.23.2048.1038" timestamp="1587388549645" />
-    <state x="150" y="316" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog" timestamp="1586342181510">
-      <screen x="0" y="23" width="2048" height="1038" />
-    </state>
-    <state x="150" y="316" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/2048.23.1440.877/0.23.2048.1038@0.23.2048.1038" timestamp="1586342181510" />
     <state x="2263" y="227" key="#com.intellij.ide.util.MemberChooser" timestamp="1588580584379">
       <screen x="2048" y="23" width="1440" height="877" />
     </state>
@@ -292,13 +292,12 @@
     <state x="2235" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1592162077904">
       <screen x="2048" y="23" width="1440" height="877" />
     </state>
-    <state x="266" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.2048.1041@0.23.2048.1041" timestamp="1585932718167" />
     <state x="266" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/2048.23.1440.877/0.23.2048.1038@0.23.2048.1038" timestamp="1587041604349" />
     <state x="2235" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/2048.23.1440.877/0.23.2048.1038@2048.23.1440.877" timestamp="1592162077904" />
-    <state x="2520" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593616802452">
+    <state x="2520" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595629588113">
       <screen x="2048" y="23" width="1440" height="877" />
     </state>
-    <state x="2520" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/2048.23.1440.877/0.23.2048.1034@2048.23.1440.877" timestamp="1593616802452" />
+    <state x="2520" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/2048.23.1440.877/0.23.2048.1034@2048.23.1440.877" timestamp="1595629588113" />
     <state x="2520" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/2048.23.1440.877/0.23.2048.1038@2048.23.1440.877" timestamp="1588357889032" />
     <state width="1398" height="230" key="GridCell.Tab.0.bottom" timestamp="1591187718483">
       <screen x="2048" y="23" width="1440" height="877" />
@@ -316,10 +315,6 @@
       <screen x="2048" y="23" width="1440" height="877" />
     </state>
     <state width="1398" height="230" key="GridCell.Tab.0.right/2048.23.1440.877/0.23.2048.1038@2048.23.1440.877" timestamp="1591187718482" />
-    <state x="388" y="472" key="NewPhpFileDialog" timestamp="1586190875830">
-      <screen x="0" y="23" width="2048" height="1038" />
-    </state>
-    <state x="388" y="472" key="NewPhpFileDialog/0.23.2048.1038@0.23.2048.1038" timestamp="1586190875830" />
     <state x="2277" y="100" key="SettingsEditor" timestamp="1587643094448">
       <screen x="2048" y="23" width="1440" height="877" />
     </state>
@@ -335,7 +330,6 @@
     <state x="2181" y="217" width="670" height="572" key="search.everywhere.popup" timestamp="1588262617641">
       <screen x="2048" y="23" width="1440" height="877" />
     </state>
-    <state x="189" y="253" width="670" height="676" key="search.everywhere.popup/2048.23.1440.877/0.23.2048.1038@0.23.2048.1038" timestamp="1586684579200" />
     <state x="2181" y="217" width="670" height="572" key="search.everywhere.popup/2048.23.1440.877/0.23.2048.1038@2048.23.1440.877" timestamp="1588262617641" />
   </component>
 </project>

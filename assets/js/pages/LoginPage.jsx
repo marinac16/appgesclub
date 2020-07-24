@@ -16,7 +16,7 @@ import BlurOnIcon from '@material-ui/icons/BlurOn';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
-import BackgroundImage from '../../images/laptoploginpage.png'
+import BackgroundImage from '../../images/LoginImage.png'
 
 const LoginPage = ({history}) => {
 

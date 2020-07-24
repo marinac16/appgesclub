@@ -1,8 +1,12 @@
+/*################### IMPORTS ##################################*/
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap');
+
 
 
 body {
     margin: 0;
     background-color: #efefef;
+    font-family: 'Cabin', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 
 }
 
@@ -97,25 +101,45 @@ main {
 .card {
     border-radius: 10px;
 }
+
+/* ########### BUTTON ############### */
+
+.btn{
+    border-radius: 20px;
+}
+
+.btn-border-bottom {
+
+}
+
 /* ########### LINK ############### */
-.link-white{
-    color: white;
-}
 
-.link-white:hover{
-    color: white;
-}
-.text-orange:hover {
-    color: #d39e2b;
-    text-decoration: none;
-}
-
-.link-default {
+a{
     color: #474747;
+    font-weight:bold;
 }
-.link-default:hover {
+a:hover {
     text-decoration: none;
-    color: #6c6c6c;
+    color: #0577BD;
+}
+
+
+/* ########### LINK MENU MEMBRES ############### */
+.link-custom {
+    color: rgba(71, 71, 71, 0.99);
+    margin-bottom: 10px;
+    margin-right: 10px;
+
+}
+.link-custom:hover {
+    color: #ff9f00;
+    text-decoration: none;
+}
+.border-link {
+    border-bottom: solid #ff9f00 3px;
+    margin: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 /* ########### TITRE ############### */
@@ -129,7 +153,7 @@ h3 {
     color: #555555;
 }
 h4 {
-    color: #555555;
+    color: #efefef;
 }
 h5 {
     color: #474747;
@@ -143,16 +167,13 @@ h6 {
     margin-bottom: 0px;
 }
 
-/* ########### BUTTON ############### */
-
-.btn{
-    border-radius: 20px;
-}
-
 /* ########### BACKGROUND COLOR ############### */
 
 .bg-blue {
-    background-color: #0d47a1;
+    background-color: rgb(39, 57, 79);
+}
+.bg-dark {
+    background-color: rgb(38, 38, 38);
 }
 
 /* ########### TEXT COLOR ############### */
@@ -171,5 +192,13 @@ h6 {
 .fa-green{
     color: #53b76f;
 }
+
+/* ########### MARGIN ############### */
+.m-5 {
+    margin: 5px;
+}
+
+
+
 
 

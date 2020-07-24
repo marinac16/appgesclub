@@ -38,6 +38,10 @@ import green from "@material-ui/core/colors/green";
 import grey from "@material-ui/core/colors/grey";
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import GroupsAPI from "../services/groupsAPI";
+import amber from "@material-ui/core/colors/amber";
+import {lightBlue} from "@material-ui/core/colors";
+import teal from "@material-ui/core/colors/teal";
+import orange from "@material-ui/core/colors/orange";
 
 
 const tableIcons = {
@@ -74,8 +78,11 @@ const TeamViewPage = ({match, history}) => {
         marginLeft: theme.spacing(2),
         backgroundColor: green[200],
       },
-      cardHeader: {
-        backgroundColor: grey[50],
+      cardHeaderCoach: {
+        backgroundColor: orange[400],
+      },
+      cardHeaderPlayer: {
+        backgroundColor: teal[400],
       },
       cardFooter: {
         backgroundColor: grey[50],
@@ -232,7 +239,7 @@ const TeamViewPage = ({match, history}) => {
       <Grid container spacing={3}>
         <Grid item xs={4}>
           <Card>
-            <CardContent className={classes.cardHeader}>
+            <CardContent className={classes.cardHeaderCoach}>
               <Box display="flex" flexDirection="row">
                 <Box flexGrow={1}><h4>Coachs</h4></Box>
               </Box>
@@ -282,7 +289,7 @@ const TeamViewPage = ({match, history}) => {
         {/* ------ CARD JOUEURS -------- */}
         <Grid item xs={8}>
           <Card>
-            <CardContent className={classes.cardHeader}>
+            <CardContent className={classes.cardHeaderPlayer}>
               <Box display="flex" flexDirection="row">
                 <Box flexGrow={1}><h4>Joueurs</h4></Box>
               </Box>
@@ -299,6 +306,7 @@ const TeamViewPage = ({match, history}) => {
                   width: '100%'
                 },
                 searchFieldAlignment: 'left',
+
               }}
               title=""
               columns={columns}
@@ -343,7 +351,7 @@ const TeamViewPage = ({match, history}) => {
               }}
             />
 
-            <CardContent className={classes.cardHeader}>
+            <CardContent className={classes.cardFooter}>
               <Box display="flex" flexDirection="row" justifyContent="center">
                 <Autocomplete
                   id="combo-box-demo2"

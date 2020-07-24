@@ -35,6 +35,7 @@ import Avatar from '@material-ui/core/Avatar';
 import {blue, brown, green, orange} from "@material-ui/core/colors";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Chip from "@material-ui/core/Chip";
+import lightBlue from "@material-ui/core/colors/lightBlue";
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref}/>),
@@ -79,7 +80,7 @@ const WeekendDomViewPage = ({match, history}) => {
     },
     backButton: {
       color: '#fff',
-      backgroundColor: blue[800],
+      backgroundColor: lightBlue[800],
       marginRight: theme.spacing(3),
       marginLeft: theme.spacing(3),
       marginTop: theme.spacing(1),
@@ -293,16 +294,13 @@ const WeekendDomViewPage = ({match, history}) => {
               <Link to={"/weekends"}><Avatar className={classes.backButton}><ArrowBackIcon/></Avatar></Link>
               <h1>{weekend.name} - Matchs à domicile</h1>
             </div>
-            <div>
-              <Link to={"/weekend/exterieur/" + id}>
-              <Chip
-                icon={<NearMeIcon className={classes.white}/>}
-                label="Voir les Matchs à l'éxterieur"
-                clickable
-                className={classes.chipButton}
-              />
+            <div className="border-link">
+              <Link to={"/weekend/exterieur/" + id} className="link-custom">
+                <avatar><NearMeIcon/></avatar>
+                Voir les Matchs à l'éxterieur
               </Link>
             </div>
+
           </div>
 
         </TableContainer>
@@ -319,6 +317,12 @@ const WeekendDomViewPage = ({match, history}) => {
             },
             paging: false,
             searchFieldAlignment: 'left',
+            headerStyle: {
+              backgroundColor: orange[400],
+              color: '#FFF',
+              fontSize: '16px',
+              fontFamily: 'Cabin, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif',
+            }
           }}
 
           title=""

@@ -29,6 +29,11 @@ import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import Avatar from "@material-ui/core/Avatar";
 import Chip from "@material-ui/core/Chip";
+import amber from "@material-ui/core/colors/amber";
+import blue from "@material-ui/core/colors/blue";
+import indigo from "@material-ui/core/colors/indigo";
+import lightBlue from "@material-ui/core/colors/lightBlue";
+import orange from "@material-ui/core/colors/orange";
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref}/>),
@@ -58,6 +63,13 @@ const TeamsPage = () => {
         padding: theme.spacing(2),
         marginBottom: theme.spacing(2),
         color: theme.palette.text.secondary,
+      },
+      chip: {
+        backgroundColor: lightBlue[800],
+        color: blue[50],
+      },
+      avatar: {
+        backgroundColor: lightBlue[100],
       },
     })
   );
@@ -158,7 +170,7 @@ const TeamsPage = () => {
     {
       title: "Nombre de joueurs",
       field: "nbJoueurs",
-      render: rowData => <Chip color="primary" avatar={<Avatar>{rowData.players.length}</Avatar>} label="Joueurs"/>
+      render: rowData => <Chip className={classes.chip} avatar={<Avatar className={classes.avatar}>{rowData.players.length}</Avatar>} label="Joueurs"/>
     },
   ];
 
@@ -245,6 +257,12 @@ const TeamsPage = () => {
             width: '100%'
           },
           searchFieldAlignment: 'left',
+          headerStyle: {
+            backgroundColor: orange[400],
+            color: '#FFF',
+            fontSize: '16px',
+            fontFamily: 'Cabin, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif',
+          }
         }}
         title=""
         columns={columns}

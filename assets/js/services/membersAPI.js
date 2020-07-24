@@ -26,6 +26,7 @@ function create(values) {
         gender: `/api/genders/${values.gender}`,
         category: `/api/categories/${values.category}`,
         statuses: values.statuses.map(status => `/api/statuses/${status}`),
+        teams: values.teams.map(team =>`/api/teams/${team.id}`),
       });
 }
 
