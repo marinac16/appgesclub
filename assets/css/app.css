@@ -25,77 +25,6 @@ main {
     padding: 0 30px 0 30px ;
 }
 
-/* ########### CONTAINER BLANC ############### */
-
-.bg-container {
-    border-radius: 10px;
-    background-color: rgb(40, 95, 122);
-    color: #FFFFFF;
-    padding: 20px;
-}
-
-.white-container-arround {
-    background-color: #FFFFFF;
-    padding: 20px;
-    border: #99b4b3 solid 6px;
-    border-radius: 20px;
-}
-
-
-/* ########### NAVBAR SECONDAIRE ############### */
-.navlink-custom {
-    padding: 5px 10px 5px 10px ;
-    color: #FFFFFF;
-
-}
-.navlink-custom:hover {
-    color: #c7c7c7;
-    text-decoration: none;
-
-}
-
-.active {
-    background-color: red;
-}
-
-/* ########### FORMULAIRES ############### */
-.form-control, .input-group{
-    border-radius: 10px;
-}
-
-.input-search {
-    background-color: rgb(71, 71, 71);
-    border-color: #222222;
-}
-
-/* ########### TABLEAUX ############### */
-.table tr:hover {
-    background-color: #2f2f2f;
-    color: #FFFFFF;
-
-}
-
-.table td{
-    border-color: #222222;
-}
-.hover-blue:hover {
-    background-color: rgb(40, 78, 105);
-}
-
-/* ########### LISTE ############### */
-
-.li-without-decoration {
-    list-style:none;
-}
-
-.dropdown-menu {
-    position: absolute;
-    will-change: transform;
-    top: 0;
-    left: 0;
-    transform: translate3d(0px, 38px, 0px);
-}
-
 /* ########### CARD ############### */
 
 .card {
@@ -126,7 +55,7 @@ a:hover {
 
 /* ########### LINK MENU MEMBRES ############### */
 .link-custom {
-    color: rgba(71, 71, 71, 0.99);
+    color: rgb(39, 57, 79);
     margin-bottom: 10px;
     margin-right: 10px;
 
@@ -142,9 +71,14 @@ a:hover {
     padding-top: 10px;
 }
 
+/* ########### LISTE ############### */
+
+.li-without-decoration{
+    list-style: none;
+}
 /* ########### TITRE ############### */
 h1 {
-    color: #474747;
+    color: rgb(39, 57, 79);
 }
 h2 {
     color: #474747;

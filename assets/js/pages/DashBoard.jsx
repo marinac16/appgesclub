@@ -22,6 +22,7 @@ import TodayIcon from '@material-ui/icons/Today';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import Avatar from "@material-ui/core/Avatar";
 import deepPurple from "@material-ui/core/colors/deepPurple";
+import NavbarMembers from "../components/NavbarMembers";
 
 const HomePage = (props) => {
 
@@ -37,6 +38,9 @@ const HomePage = (props) => {
       flexDirection: 'column',
       alignItems: 'center',
       color: theme.palette.text.secondary,
+    },
+    paperHead: {
+      padding: theme.spacing(2),
     },
     button1: {
       color: '#fff',
@@ -123,8 +127,14 @@ const HomePage = (props) => {
   return (
     <>
       <div className={classes.root}>
-        <h1>Tableau de bord</h1><br/>
+
+
         <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Paper className={classes.paperHead}>
+              <h1>Tableau de bord</h1>
+            </Paper>
+          </Grid>
           <Grid item xs>
             <Card className={classes.root}>
               <CardActionArea>

@@ -77,7 +77,6 @@ const MembersPage = (props) => {
       paper: {
         padding: theme.spacing(2),
         marginBottom: theme.spacing(2),
-        color: theme.palette.text.secondary,
       },
     })
   );

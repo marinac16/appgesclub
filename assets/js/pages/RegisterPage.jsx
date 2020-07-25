@@ -12,7 +12,8 @@ import BlurOnIcon from '@material-ui/icons/BlurOn';
 import Avatar from "@material-ui/core/Avatar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-import BackgroundImage from '../../images/LoginImage.png'
+import BackgroundImage from '../../images/LoginImageMod.png'
+import logo from "../../images/logo_inverser.png";
 
 const RegisterPage = (props) => {
 
@@ -36,7 +37,7 @@ const RegisterPage = (props) => {
     },
     avatar: {
       margin: theme.spacing(1),
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: '#2e5476',
       width: theme.spacing(7),
       height: theme.spacing(7),
     },
@@ -48,8 +49,12 @@ const RegisterPage = (props) => {
       width: '100%', // Fix IE 11 issue.
       marginTop: theme.spacing(4),
     },
+    title: {
+      color: '#2e5476',
+    },
     submit: {
       margin: theme.spacing(3, 0, 2),
+      backgroundColor: '#2e5476',
     },
   }));
 
@@ -111,13 +116,17 @@ const RegisterPage = (props) => {
 
       <Grid container component="main" className={classes.root}>
         <CssBaseline/>
-        <Grid item xs={false} sm={4} md={7} className={classes.image} />
+        <Grid item xs={false} sm={4} md={7} className={classes.image}>
+          <img src={logo}
+               alt="logo"
+               width="25%"/>
+        </Grid>
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <div className={classes.paper}>
             <Avatar className={classes.avatar}>
               <BlurOnIcon className={classes.large}/>
             </Avatar>
-            <Typography component="h1" variant="h5" color={"primary"}>
+            <Typography component="h1" variant="h5" className={classes.title}>
               Inscription
             </Typography>
             <form onSubmit={handleSubmit} className={classes.form} noValidate>

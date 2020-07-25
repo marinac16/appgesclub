@@ -59,23 +59,25 @@ const App = () => {
               <Switch>
                 <Route path="/login" component={LoginPage}/>
                 <Route path="/register" component={RegisterPage}/>
-                <main className="container-main pt-5">
-                  <NavbarWithRouter/>
-                  <PrivateRoute path="/members/:id" component={MemberPageFormik}/>
-                  <PrivateRoute path="/members" component={MembersPage}/>
-                  <PrivateRoute path="/teams" component={TeamsPage}/>
-                  <PrivateRoute path="/team/:id" component={TeamViewPage}/>
-                  <PrivateRoute path="/coachs" component={CoachsPage}/>
-                  <PrivateRoute path="/dirigeants" component={DirigeantsPage}/>
-                  <PrivateRoute path="/groupes" component={GroupsPage}/>
-                  <PrivateRoute path="/groupe/:id" component={GroupViewPage}/>
-                  <PrivateRoute path="/weekend/domicile/:id" component={WeekendDomViewPage}/>
-                  <PrivateRoute path="/weekend/exterieur/:id" component={WeekendExtViewPage}/>
-                  <PrivateRoute path="/weekends/:id/matches/:id" component={MatchPage}/>
-                  <PrivateRoute path="/weekends/:id" component={WeekendPage}/>
-                  <PrivateRoute path="/weekends/" component={WeekendsPage}/>
-                  <PrivateRoute path="/dashboard" component={DashBoard}/>
-                </main>
+                <React.Fragment>
+                  <main className="container-main pt-5">
+                    <NavbarWithRouter/>
+                    <PrivateRoute path="/members/:id" component={MemberPageFormik}/>
+                    <PrivateRoute path="/members" component={MembersPage}/>
+                    <PrivateRoute path="/teams" component={TeamsPage}/>
+                    <PrivateRoute path="/team/:id" component={TeamViewPage}/>
+                    <PrivateRoute path="/coachs" component={CoachsPage}/>
+                    <PrivateRoute path="/dirigeants" component={DirigeantsPage}/>
+                    <PrivateRoute path="/groupes" component={GroupsPage}/>
+                    <PrivateRoute path="/groupe/:id" component={GroupViewPage}/>
+                    <PrivateRoute path="/weekend/domicile/:id" component={WeekendDomViewPage}/>
+                    <PrivateRoute path="/weekend/exterieur/:id" component={WeekendExtViewPage}/>
+                    <PrivateRoute path="/weekends/:id/matches/:id" component={MatchPage}/>
+                    <PrivateRoute path="/weekends/:id" component={WeekendPage}/>
+                    <PrivateRoute path="/weekends/" component={WeekendsPage}/>
+                    <PrivateRoute path="/dashboard" component={DashBoard}/>
+                  </main>
+                </React.Fragment>
                 <Route path="/" component={HomePage}/>
               </Switch>
             </Col>

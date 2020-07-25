@@ -104,6 +104,7 @@ const WeekendDomViewPage = ({match, history}) => {
   const [teams, setTeams] = useState([]);
   const [members, setMembers] = useState([]);
   const [data, setData] = useState([]);
+  const [newReferees, setNewReferees] = useState([]);
   const [iserror, setIserror] = useState(false);
   const [errorMessage, setErrorMessage] = useState([]);
   const [weekend, setWeekend] = useState({
@@ -138,7 +139,6 @@ const WeekendDomViewPage = ({match, history}) => {
     try {
       const data = await MatchsAPI.findAllByWeekendAndisHome(id, true);
       setData(data);
-      console.log(data);
     } catch (error) {
       setErrorMessage(["Cannot load user data"]);
       setIserror(true)
@@ -173,7 +173,7 @@ const WeekendDomViewPage = ({match, history}) => {
   // Gestion des changements / enregistrements des inputs dans le formulaires
   const handleChange = ({currentTarget}) => {
     const {name, value} = currentTarget;
-    setData({...data, [name]: value});
+    setNewReferees({...newReferees, [name]: value});
   };
 
   const memberLookup = {};
@@ -204,8 +204,8 @@ const WeekendDomViewPage = ({match, history}) => {
         <Select
           labelId="demo-mutiple-name-label"
           id="demo-mutiple-name"
-          multiple
-          value={[data.referees]}
+          multiple={true}
+          value={[newReferees]}
           onChange={handleChange}
           input={<Input/>}
         >
@@ -296,8 +296,7 @@ const WeekendDomViewPage = ({match, history}) => {
             </div>
             <div className="border-link">
               <Link to={"/weekend/exterieur/" + id} className="link-custom">
-                <avatar><NearMeIcon/></avatar>
-                Voir les Matchs à l'éxterieur
+                <NearMeIcon/> Voir les Matchs à l'éxterieur
               </Link>
             </div>
 

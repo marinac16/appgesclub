@@ -261,8 +261,7 @@ const WeekendDomViewPage = ({match, history}) => {
             </div>
             <div className="border-link">
               <Link to={"/weekend/domicile/" + id} className="link-custom">
-                <avatar><RoomIcon/></avatar>
-                Voir les Matchs à domicile
+                <RoomIcon/> Voir les Matchs à domicile
               </Link>
             </div>
           </div>
